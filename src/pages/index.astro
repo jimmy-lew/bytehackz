@@ -1,10 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Card from '../components/LinkCard.astro';
 ---
 
 <Layout title="OCBC ATM">
-	<main class="m-auto p-6 max-w-5xl">
 		<div class="flex w-full items-center mb-8">
 			<div class="inline-flex w-1/2 justify-start">
 				<h1 class="whitespace-pre-line text-2xl">Hello! <br> What would you like to do today?</h1>
@@ -27,6 +26,7 @@ import Card from '../components/Card.astro';
 		<h2 class="mb-6 font-semibold text-lg">Non Cash Services</h2>
 		<ul role="list" class="grid grid-cols-3 gap-4 p-0 mb-6">
 			<Card
+				href="/transaction"
 				title="Set up quick \n transaction"
 			>
 				<svg slot="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
@@ -34,13 +34,15 @@ import Card from '../components/Card.astro';
 				</svg>
 			</Card>
 			<Card
-				title="Balance \n Inquiry"
+				href=""
+				title="Balance \n Enquiry"
 			>
 				<svg slot="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
 					<path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 				</svg>
 			</Card>
 			<Card
+				href=""
 				title="Bill \n Payment"
 			>
 				<svg slot="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
@@ -48,6 +50,7 @@ import Card from '../components/Card.astro';
 				</svg>			  
 			</Card>
 			<Card
+				href="/transfer"
 				title="Transfer \n Funds"
 			>
 				<svg slot="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
@@ -55,6 +58,7 @@ import Card from '../components/Card.astro';
 				</svg>
 			</Card>
 			<Card
+				href=""
 				title="CPF \n Services"
 			>
 				<svg slot="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
@@ -62,6 +66,7 @@ import Card from '../components/Card.astro';
 				</svg>	
 			</Card>
 			<Card
+				href=""
 				title="Investment \n Services"
 			>
 				<svg slot="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
@@ -75,5 +80,4 @@ import Card from '../components/Card.astro';
 			<span class="rounded-full w-2 h-2 bg-gray-300"></span>
 			<span class="rounded-full w-2 h-2 bg-gray-300"></span>
 		</div>
-	</main>
 </Layout>
