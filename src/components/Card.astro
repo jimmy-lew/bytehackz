@@ -1,20 +1,20 @@
 ---
 export interface Props {
 	title: string;
-	body: string;
-	href: string;
 }
 
-const { href, title, body } = Astro.props;
+const { title } = Astro.props;
 ---
 
-<li class="card bg-white rounded-md bg-astro-gradient bg-400 bg-[100%] transition-all duration-700 ease-astro hover:bg-[0]">
-	<a href={href} class="card-body text-black">
-		<h2 class="card-title transition-colors duration-700 ease-astro hover:text-astro-purple">
+<li class="card card-compact bg-white rounded-lg shadow-md transition-all ease-astro duration-300 hover:scale-105">
+	<div class="card-body text-black">
+		<div class="card-actions justify-end">
+			<span class="text-gray-400">
+				<slot name="icon"/>			  
+			</span>
+		</div>
+		<h2 class="card-title mt-14 whitespace-pre-line">
 			{title}
 		</h2>
-		<p class="mt-2 mb-0 text-gray-800">
-			{body}
-		</p>
-	</a>
+	</div>
 </li>
