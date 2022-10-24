@@ -1,6 +1,6 @@
-<script setup>
-    const amount = 25000
-    const account = {
+<script setup lang="ts">
+    const amount = 25001
+    const account: Account = {
         name: 'John Test',
         accountNumber: '123-000000-000',
         bank: 'CITI-SG',
@@ -14,7 +14,7 @@
 <template>
     <main class="mx-auto p-6 max-w-xl">
         <div class="flex flex-col items-center justify-center">
-            <h1 class="font-semibold text-2xl mb-6">{{test}}</h1>
+            <h1 class="font-semibold text-2xl mb-6">Transfer Confirmation</h1>
             <div class="card card-compact bg-white rounded-md shadow p-6 flex-row mb-4 w-full">
                 <div class="flex flex-col w-1/2 content-start mr-16">
                     <p class="text-gray-400 text-sm mb-2">Amount</p>
