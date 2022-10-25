@@ -63,4 +63,7 @@
             </LinkCard>
         </ul>
     </div>
+    <Modal>
+        Test
+    </Modal>
 </template>
