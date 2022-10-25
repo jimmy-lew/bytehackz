@@ -1,6 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  mode: "jit",
   content: [
     "./assets/**/*.css",
     "./components/*.{vue,js}",
@@ -25,7 +24,17 @@ module.exports = {
 			},
 			transitionTimingFunction: {
 				'astro': 'cubic-bezier(0.22, 1, 0.36, 1)'
-			}
+			},
+      lineHeight: {
+        '0': '0'
+      },
+      boxShadow: {
+        'right-md': '4px 0 6px 0 rgba(0,0,0,0.1),2px 0 4px 0 rgba(0,0,0,0.1)'
+      },
+      width: {
+        '3/8': '37.5%',
+        '5/8': '62.5%'
+      }
 		},
 	},
   daisyui: {
