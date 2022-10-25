@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
     modules: [
       '@vueuse/nuxt',
+      'nuxt-icon'
     ],
     css: ["@/assets/css/base.css"],
     build: {
@@ -9,5 +10,5 @@ export default defineNuxtConfig({
         postcssOptions: require("./postcss.config.js"),
       },
     },
-  });
-  
+  }
+);

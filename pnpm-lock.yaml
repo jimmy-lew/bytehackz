@@ -7,6 +7,7 @@ specifiers:
   autoprefixer: ^10.4.12
   daisyui: ^2.33.0
   nuxt: 3.0.0-rc.12
+  nuxt-icon: ^0.1.7
   postcss: ^8.4.18
   tailwindcss: ^3.2.1
 
@@ -19,6 +20,7 @@ devDependencies:
   '@vueuse/nuxt': 9.3.1_nuxt@3.0.0-rc.12
   autoprefixer: 10.4.12_postcss@8.4.18
   nuxt: 3.0.0-rc.12
+  nuxt-icon: 0.1.7
   postcss: 8.4.18
   tailwindcss: 3.2.1
 
@@ -353,6 +355,18 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@iconify/types/2.0.0:
+    resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
+    dev: true
+
+  /@iconify/vue/4.0.0:
+    resolution: {integrity: sha512-73z81Yf2HISfehu3qvN9GqL1OnUO7wEMKkiFwVGJ2pqAdGCR8FrVylhRhka+6U+gFLlng0ynnT20svk3jJYwow==}
+    peerDependencies:
+      vue: '>=3'
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
 
   /@ioredis/commands/1.2.0:
     resolution: {integrity: sha512-Sx1pU8EM64o2BrqNpEO1CNLtKQwyhuXuqyfH7oGKCk+1a33d2r5saW8zNwm3j6BTExtjrv2BxTgzzkMwts6vGg==}
@@ -3109,6 +3123,16 @@ packages:
     hasBin: true
     optionalDependencies:
       fsevents: 2.3.2
+    dev: true
+
+  /nuxt-icon/0.1.7:
+    resolution: {integrity: sha512-JQ2OKKulcDAUMiPY3Q4YaXncL5de9fiVdrgXKnNZU3Cs2VbR//RAR9xt90+hpmVzDSdEB5UXIJLnWc5uBxm/hw==}
+    dependencies:
+      '@iconify/vue': 4.0.0
+      '@nuxt/kit': 3.0.0-rc.12
+    transitivePeerDependencies:
+      - supports-color
+      - vue
     dev: true
 
   /nuxt/3.0.0-rc.12:
