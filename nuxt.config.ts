@@ -1,14 +1,15 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
     modules: [
+      '@nuxtjs/tailwindcss',
+      '@nuxtjs/color-mode',
       '@vueuse/nuxt',
       'nuxt-icon'
     ],
-    css: ["@/assets/css/base.css"],
-    build: {
-      postcss: {
-        postcssOptions: require("./postcss.config.js"),
-      },
-    },
+    colorMode: {
+      preference: 'dark', // default theme
+      dataValue: 'theme', // activate data-theme in <html> tag
+      classSuffix: '',
+    }
   }
 );

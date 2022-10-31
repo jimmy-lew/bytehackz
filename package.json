@@ -8,6 +8,8 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@nuxtjs/color-mode": "^3.1.8",
+    "@nuxtjs/tailwindcss": "^6.1.2",
     "@vueuse/core": "^9.3.1",
     "@vueuse/nuxt": "^9.3.1",
     "autoprefixer": "^10.4.12",
