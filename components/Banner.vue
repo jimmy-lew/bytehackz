@@ -7,7 +7,7 @@
 </script>
 
 <template>
-    <div v-if="isOpen" class="alert alert-warning shadow-lg rounded-md mb-4">
+    <div v-if="isOpen" class="relative alert alert-warning shadow-lg rounded-md mb-4 text-base-content">
         <div class="w-1/2">
             <slot />
         </div>
