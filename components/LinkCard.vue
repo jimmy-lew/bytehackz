@@ -1,8 +1,7 @@
 <script setup lang="ts">
-const { title, href, padding } = defineProps<{
+const { title, href } = defineProps<{
 	title: string
 	href: string
-	padding?: string
 }>()
 </script>
 
