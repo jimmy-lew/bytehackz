@@ -43,6 +43,11 @@ html[data-theme="light"] .glass-outline {
 }
 
 html[data-theme="light"] #main::before {
-    background: none;
+    @apply hidden
 }
 </style>
+
+<script setup>
+const colorMode = useColorMode()
+colorMode.preference = 'dark'
+</script>
