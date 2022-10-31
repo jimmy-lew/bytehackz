@@ -3,45 +3,45 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
-  content: [
-    "./assets/**/*.css",
-    "./components/*.{vue,js}",
-    "./components/**/*.{vue,js}",
-    "./layouts/**/*.{vue,js}",
-    "./layouts/*.{vue,js}",
-    "./pages/*.vue",
-    "./pages/**/*.vue",
-    "./plugins/**/*.{js,ts}",
-    "./*.{vue,js,ts}",
-    "./nuxt.config.{js,ts}",
-  ],
-  theme: {
+	content: [
+		'./assets/**/*.css',
+		'./components/*.{vue,js}',
+		'./components/**/*.{vue,js}',
+		'./layouts/**/*.{vue,js}',
+		'./layouts/*.{vue,js}',
+		'./pages/*.vue',
+		'./pages/**/*.vue',
+		'./plugins/**/*.{js,ts}',
+		'./*.{vue,js,ts}',
+		'./nuxt.config.{js,ts}',
+	],
+	theme: {
 		extend: {
 			colors: {
 				'astro-purple': '#7c3aed',
-				'astro-pink': '#da62c4'
+				'astro-pink': '#da62c4',
 			},
 			backgroundSize: {
-				'400': '400%'
+				400: '400%',
 			},
 			backgroundImage: {
-				'astro-gradient': 'linear-gradient(45deg, #7c3aed, #da62c4 30%, white 60%)'
+				'astro-gradient': 'linear-gradient(45deg, #7c3aed, #da62c4 30%, white 60%)',
 			},
 			transitionTimingFunction: {
-				'astro': 'cubic-bezier(0.22, 1, 0.36, 1)'
+				astro: 'cubic-bezier(0.22, 1, 0.36, 1)',
 			},
 			lineHeight: {
-				'0': '0'
+				0: '0',
 			},
 			boxShadow: {
-				'right-md': '4px 0 6px 0 rgba(0,0,0,0.1),2px 0 4px 0 rgba(0,0,0,0.1)'
+				'right-md': '4px 0 6px 0 rgba(0,0,0,0.1),2px 0 4px 0 rgba(0,0,0,0.1)',
 			},
 			width: {
 				'3/8': '37.5%',
-				'5/8': '62.5%'
+				'5/8': '62.5%',
 			},
 			content: {
-				'default': '""'
+				default: '""',
 			},
 			fontFamily: {
 				sans: ['Inter var', ...defaultTheme.fontFamily.sans],
@@ -80,5 +80,5 @@ module.exports = {
 			},
 		],
 	},
-  plugins: [require('daisyui')],
+	plugins: [require('daisyui')],
 }

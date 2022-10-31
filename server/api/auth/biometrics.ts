@@ -1,6 +1,11 @@
+import * as fs from 'fs'
+
 export default defineEventHandler((event) => {
-    return {
-      api: 'works'
-    }
+	const newData = {
+		data: 'new',
+	}
+
+	fs.writeFileSync('./public/test.json', JSON.stringify(newData))
+
+	return newData
 })
-  

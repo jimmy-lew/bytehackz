@@ -1,11 +1,11 @@
 <template>
-    <div class="w-screen h-screen bg-base-content">
-        <main class="m-auto p-12 max-w-5xl h-full flex justify-center">
-            <div id="main" class="h-full w-full rounded-xl flex relative bg-base-100">
-                <slot />
-            </div>
-        </main>
-    </div>
+	<div class="w-screen h-screen bg-base-content">
+		<main class="m-auto p-12 max-w-5xl h-full flex justify-center">
+			<div id="main" class="h-full w-full rounded-xl flex relative bg-base-100">
+				<slot />
+			</div>
+		</main>
+	</div>
 </template>
 
 <style global>
