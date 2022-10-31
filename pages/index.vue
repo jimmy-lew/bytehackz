@@ -4,23 +4,7 @@
 
 <template>
 	<div class="p-12 relative w-full space-y-8">
-		<div class="flex items-center">
-			<div class="inline-flex w-1/2 justify-start">
-				<h1 class="whitespace-pre-line text-2xl">
-					Welcome! Jimmy Lew
-				</h1>
-			</div>
-			<div class="inline-flex w-1/2 justify-end h-fit items-center">
-				<Icon size="24" name="heroicons:language-20-solid" />
-				<div class="divider divider-horizontal" />
-				<div class="flex flex-col items-center text-xs">
-					<Icon size="24" name="heroicons:arrow-right-on-rectangle-20-solid" />
-					<p class="text-gray-400">
-						Exit
-					</p>
-				</div>
-			</div>
-		</div>
+        <Header username="Jimmy Lew"/>
 		<Banner>
 			<Icon size="24" name="maki:caution" />
 			<span>Warning: This could be a scam!</span>
@@ -46,4 +30,7 @@
 			</div>
 		</div>
 	</div>
+    <Modal>
+		Test
+	</Modal>
 </template>
