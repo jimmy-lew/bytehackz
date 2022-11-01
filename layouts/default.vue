@@ -1,5 +1,10 @@
+<script setup>
+// const colorMode = useColorMode()
+// colorMode.preference = 'dark'
+</script>
+
 <template>
-	<div class="w-screen h-screen bg-base-content">
+	<div class="w-screen h-screen bg-white dark:bg-base-content">
 		<main class="m-auto p-12 max-w-5xl h-full flex justify-center">
 			<div id="main" class="h-full w-full rounded-xl flex relative bg-base-100">
 				<slot />
@@ -39,15 +44,10 @@ html[data-theme="light"] .glass-outline {
 <style scoped>
 #main::before {
     @apply content-default absolute inset-0;
-    background: radial-gradient(ellipse 100% 40% at 50% 40%, rgba(var(--rgb), .1),rgba(255, 255, 255, 0));
+    background: radial-gradient(ellipse 100% 40% at 50% 50%, rgba(var(--rgb), .1),rgba(255, 255, 255, 0));
 }
 
 html[data-theme="light"] #main::before {
     @apply hidden
 }
 </style>
-
-<script setup>
-const colorMode = useColorMode()
-colorMode.preference = 'dark'
-</script>
