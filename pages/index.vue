@@ -4,7 +4,7 @@
 
 <template>
 	<div class="p-12 relative w-full space-y-8">
-        <Header username="Jimmy Lew"/>
+		<Header username="Jimmy Lew" />
 		<Banner>
 			<Icon size="24" name="maki:caution" />
 			<span>Warning: This could be a scam!</span>
@@ -30,7 +30,7 @@
 			</div>
 		</div>
 	</div>
-    <Modal>
+	<Modal>
 		Test
 	</Modal>
 </template>

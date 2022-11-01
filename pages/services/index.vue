@@ -3,7 +3,7 @@
 
 <template>
 	<div class="flex-col w-full p-12 space-y-8">
-        <Header username="Jimmy Lew"/>
+		<Header username="Jimmy Lew" />
 		<Banner>
 			<Icon size="24" name="maki:caution" />
 			<span>Warning: This could be a scam!</span>
