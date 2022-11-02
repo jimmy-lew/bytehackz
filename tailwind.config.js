@@ -30,9 +30,6 @@ module.exports = {
 			backgroundSize: {
 				400: '400%',
 			},
-			backgroundImage: {
-				'astro-gradient': 'linear-gradient(45deg, #7c3aed, #da62c4 30%, white 60%)',
-			},
 			transitionTimingFunction: {
 				astro: 'cubic-bezier(0.22, 1, 0.36, 1)',
 			},

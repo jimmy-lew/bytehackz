@@ -1,6 +1,6 @@
 <script setup>
-// const colorMode = useColorMode()
-// colorMode.preference = 'dark'
+const colorMode = useColorMode()
+colorMode.preference = 'light'
 </script>
 
 <template>
@@ -37,7 +37,7 @@ html[data-theme="light"] .glass-outline::before {
     mask: linear-gradient(white, white) content-box content-box, linear-gradient(white, white);
 }
 html[data-theme="light"] .glass-outline {
-    background: none;
+    background: radial-gradient(ellipse 60% 70% at center,rgba(255, 255, 255, 1), rgba(255, 255, 255 ,0.3))
 }
 </style>
 
@@ -49,5 +49,6 @@ html[data-theme="light"] .glass-outline {
 
 html[data-theme="light"] #main::before {
     @apply hidden
+    /* background: rgba(220, 220, 220, 1) */
 }
 </style>
