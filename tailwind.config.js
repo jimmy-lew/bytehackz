@@ -15,6 +15,12 @@ module.exports = {
 		'./*.{vue,js,ts}',
 		'./nuxt.config.{js,ts}',
 	],
+	darkMode: 'class',
+	safelist: [
+		'rotate-90',
+		'rotate-180',
+		'rotate-270',
+	],
 	theme: {
 		extend: {
 			colors: {
@@ -45,6 +51,9 @@ module.exports = {
 			},
 			fontFamily: {
 				sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+			},
+			rotate: {
+				270: '270deg',
 			},
 		},
 	},
