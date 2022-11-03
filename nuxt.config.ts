@@ -4,6 +4,7 @@ export default defineNuxtConfig({
 		'@nuxtjs/tailwindcss',
 		'@nuxtjs/color-mode',
 		'@vueuse/nuxt',
+		'@pinia/nuxt',
 		'nuxt-icon',
 	],
 	colorMode: {
@@ -11,6 +12,9 @@ export default defineNuxtConfig({
 		dataValue: 'theme', // activate data-theme in <html> tag
 		fallback: 'dark',
 		classSuffix: '',
+	},
+	imports: {
+		dirs: ['stores'],
 	},
 },
 )
