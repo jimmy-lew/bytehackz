@@ -17,5 +17,8 @@ export default defineNuxtConfig({
 		autoImport: true,
 		dirs: ['stores'],
 	},
+	runtimeConfig: {
+		testSecret: '',
+	},
 },
 )
