@@ -30,8 +30,8 @@ const store = useAppStore()
 				</LinkCard>
 			</div>
 		</div>
+		<Modal>
+			Test
+		</Modal>
 	</div>
-	<!-- <Modal>
-		Test
-	</Modal> -->
 </template>
