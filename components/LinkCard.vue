@@ -7,12 +7,12 @@ const { title, href } = defineProps<{
 
 <template>
 	<li class="card relative rounded-2xl shadow-md transition-all ease-astro duration-300 hover:scale-105 focus:scale-105">
-		<a :href="href" class="relative card-body glass-outline ease-astro rounded-2xl">
+		<NuxtLink :to="href" class="relative card-body glass-outline ease-astro rounded-2xl">
 			<div class="my-auto flex flex-col items-center justify-center">
 				<slot />
 				<p class="font-medium">{{ title }}</p>
 			</div>
-		</a>
+		</NuxtLink>
 	</li>
 </template>
 

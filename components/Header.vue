@@ -16,12 +16,12 @@ const { username } = defineProps<{
 				<Icon size="24" name="heroicons:language-20-solid" />
 			</div>
 			<div class="divider divider-horizontal mx-0" />
-			<a href="/" class="flex flex-col items-center text-xs btn btn-ghost btn-circle">
+			<NuxtLink to="/" class="flex flex-col items-center text-xs btn btn-ghost btn-circle">
 				<Icon size="24" name="heroicons:arrow-right-on-rectangle-20-solid" />
 				<p class="text-gray-400">
 					Exit
 				</p>
-			</a>
+			</NuxtLink>
 		</div>
 	</div>
 </template>
