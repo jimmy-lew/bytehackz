@@ -1,23 +1,23 @@
 <script setup lang="ts">
-
+const store = useAppStore()
 </script>
 
 <template>
 	<div class="p-12 relative w-full space-y-8">
-		<Header username="Jimmy Lew" />
+		<Header :username="store.name" />
 		<Banner>
 			<Icon size="24" name="maki:caution" />
 			<span>Warning: This could be a scam!</span>
 		</Banner>
 		<div class="flex gap-8">
-			<LinkCard title="Withdrawal" href="/">
+			<LinkCard title="Withdrawal" href="/withdraw">
 				<Icon size="36" name="fluent:money-hand-24-regular" class="" />
 			</LinkCard>
 			<ul class="flex flex-col gap-8">
 				<LinkCard title="Payment" href="/">
 					<Icon size="36" name="fa6-solid:file-signature" class="" />
 				</LinkCard>
-				<LinkCard title="Transfer" href="/">
+				<LinkCard title="Transfer" href="/transfer">
 					<Icon size="36" name="heroicons:arrows-right-left-20-solid" />
 				</LinkCard>
 			</ul>
