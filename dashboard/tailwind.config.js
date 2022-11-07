@@ -13,8 +13,8 @@ module.exports = {
 		'./nuxt.config.{js,ts}',
 	],
 	darkMode: 'class',
-  theme: {
-    extend: {},
-  },
-  plugins: [require('daisyui')],
+	theme: {
+		extend: {},
+	},
+	plugins: [require('daisyui')],
 }
