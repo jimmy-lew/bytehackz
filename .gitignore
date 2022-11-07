@@ -1,2 +1,7 @@
 node_modules
 .pnpm-debug.log
+
+# iOS
+xcuserdata/
+.DS_Store
+*.xcuserdatad
