@@ -70,6 +70,7 @@ struct ContentView: View {
                     }
                 }
                 .frame(height: 48)
+                .padding(.bottom)
                 
                 HStack(alignment: .top) {
                     HomeViewActionButton(title: "Transfers", systemName: "banknote")
