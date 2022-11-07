@@ -7,7 +7,7 @@ const store = useAppStore()
 		<Header :username="store.name" />
 		<Banner>
 			<Icon size="24" name="maki:caution" />
-			<span>Warning: This could be a scam!</span>
+			<span>Scam warning banner</span>
 		</Banner>
 		<div class="flex gap-8">
 			<LinkCard title="Withdrawal" href="/withdraw">
@@ -31,7 +31,7 @@ const store = useAppStore()
 			</div>
 		</div>
 		<Modal>
-			Test
+			Sample Scam Warning Modal
 		</Modal>
 	</div>
 </template>

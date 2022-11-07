@@ -1,10 +1,10 @@
 <script setup lang="ts">
-const route = useRoute()
+
 </script>
 
 <template>
 	<div>
-		{{ route.query }}
+		{{ $route.params }}
 	</div>
 </template>
 
