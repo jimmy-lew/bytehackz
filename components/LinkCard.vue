@@ -10,7 +10,9 @@ const { title, href } = defineProps<{
 		<NuxtLink :to="href" class="relative card-body glass-outline ease-astro rounded-2xl">
 			<div class="my-auto flex flex-col items-center justify-center">
 				<slot />
-				<p class="font-medium">{{ title }}</p>
+				<p class="font-medium">
+					{{ title }}
+				</p>
 			</div>
 		</NuxtLink>
 	</li>

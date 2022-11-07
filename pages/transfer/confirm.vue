@@ -27,7 +27,7 @@ const { name, accountNumber, bank, balance } = account
 					</h2>
 				</div>
 				<div class="inline-flex items-center">
-					<Icon size="32" name="heroicons:arrow-right-circle-20-solid" class="stroke-gray-300" />
+					<Icon size="32" name="heroicons:arrow-right-circle" class="stroke-gray-300" />
 				</div>
 				<div class="flex flex-col w-1/2 content-end text-end ml-16">
 					<p class="text-sm mb-2">
@@ -42,8 +42,8 @@ const { name, accountNumber, bank, balance } = account
 					</p>
 				</div>
 			</div>
-			<div class="card card-compact bg-base-100 rounded-md shadow mb-12">
-				<div class="card-body relative glass-outline flex-row">
+			<div class="card card-compact bg-base-100 relative glass-outline rounded-md shadow mb-12">
+				<div class="card-body flex-row">
 					<p class="w-1/2">
 						Payment mode
 					</p>
@@ -53,7 +53,7 @@ const { name, accountNumber, bank, balance } = account
 				</div>
 			</div>
 		</div>
-		<button class="btn rounded-md">
+		<button class="btn relative glass-outline rounded-md">
 			Confirm
 		</button>
 	</div>

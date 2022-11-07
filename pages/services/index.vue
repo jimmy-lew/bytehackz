@@ -12,22 +12,22 @@
 			Non Cash Services
 		</h2>
 		<ul role="list" class="grid grid-cols-3 gap-4 p-0">
-			<LinkCard :title="'Set up quick \n transaction'" href="/transaction">
+			<LinkCard title="Set up quick \n transaction" href="/transaction">
 				<Icon size="32" name="heroicons:bars-3-bottom-left-20-solid" />
 			</LinkCard>
-			<LinkCard :title="'Balance \n Enquiry'" href="">
+			<LinkCard title="Balance \n Enquiry" href="">
 				<Icon size="32" name="heroicons:currency-dollar" />
 			</LinkCard>
-			<LinkCard :title="'Bill \n Payment'" href="">
+			<LinkCard title="Bill \n Payment" href="">
 				<Icon size="32" name="heroicons:banknotes" />
 			</LinkCard>
-			<LinkCard :title="'Transfer \n Funds'" href="/transfer">
+			<LinkCard title="Transfer \n Funds" href="/transfer">
 				<Icon size="32" name="heroicons:arrows-right-left-20-solid" />
 			</LinkCard>
-			<LinkCard :title="'CPF \n Services'" href="">
+			<LinkCard title="CPF \n Services" href="">
 				<Icon size="32" name="heroicons:key" />
 			</LinkCard>
-			<LinkCard :title="'Investment \n Services'" href="">
+			<LinkCard title="Investment \n Services" href="">
 				<Icon size="32" name="fe:line-chart" />
 			</LinkCard>
 		</ul>
