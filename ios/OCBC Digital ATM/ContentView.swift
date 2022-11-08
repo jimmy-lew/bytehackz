@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var isSheetPresented = false
+    
     var body: some View {
         ZStack {
             VStack(spacing: 0) {
@@ -39,7 +42,7 @@ struct ContentView: View {
                     .font(.system(size: 32, weight: .bold))
                 
                 Button {
-                    
+                    isSheetPresented.toggle()
                 } label: {
                     ZStack {
                         LinearGradient(colors: [.teal, .green], startPoint: .topLeading, endPoint: .bottomTrailing)
@@ -52,7 +55,7 @@ struct ContentView: View {
                 .frame(height: 56)
                 
                 Button {
-                    
+                    isSheetPresented.toggle()
                 } label: {
                     ZStack {
                         RoundedRectangle(cornerRadius: 8)
@@ -101,6 +104,10 @@ struct ContentView: View {
                 .cornerRadius(24)
             }
             .padding()
+        }
+        .sheet(isPresented: $isSheetPresented) {
+            ATMWelcomeView()
+                .interactiveDismissDisabled(true)
         }
     }
 }
