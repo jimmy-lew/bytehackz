@@ -14,7 +14,8 @@ struct ContentView: View {
                 Color.white
                 LinearGradient(colors: [.white, Color(uiColor: .systemGray6)], startPoint: .top, endPoint: .bottom)
             }
-                .edgesIgnoringSafeArea(.all)
+            .edgesIgnoringSafeArea(.all)
+            
             VStack {
                 HStack {
                     Button {
