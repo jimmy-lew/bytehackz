@@ -69,7 +69,7 @@ struct ContentView: View {
                         .fontWeight(.bold)
                     }
                 }
-                .frame(height: 48)
+                .frame(height: 56)
                 .padding(.bottom)
                 
                 HStack(alignment: .top) {
