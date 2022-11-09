@@ -7,12 +7,19 @@
 
 import SwiftUI
 
+enum SelectionState {
+    case selectedYes
+    case selectedNo
+    case noSelection
+}
+
 struct QuestionView: View {
     
     var title: String = "Were you pressured to make this transaction?"
     var subtitle: String = "Please answer as truthfully as possible."
     
     @Binding var selected: Int
+    @Binding var selectionState: SelectionState
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -23,14 +30,20 @@ struct QuestionView: View {
             
             Button {
                 withAnimation {
+                    selectionState = .selectedYes
                     selected += 1
                 }
             } label: {
                 ZStack {
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.gray)
+                    if selectionState == .selectedYes {
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(.red)
+                    } else {
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(Color.gray)
+                    }
                     Text("Yes")
-                        .foregroundColor(.black)
+                        .foregroundColor(selectionState == .selectedYes ? .white : .black)
                         .fontWeight(.bold)
                 }
             }
@@ -38,14 +51,20 @@ struct QuestionView: View {
             
             Button {
                 withAnimation {
+                    selectionState = .selectedNo
                     selected += 1
                 }
             } label: {
                 ZStack {
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.gray)
+                    if selectionState == .selectedNo {
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(.red)
+                    } else {
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(Color.gray)
+                    }
                     Text("No")
-                        .foregroundColor(.black)
+                        .foregroundColor(selectionState == .selectedNo ? .white : .black)
                         .fontWeight(.bold)
                 }
             }
@@ -59,6 +78,6 @@ struct QuestionView: View {
 
 struct QuestionView_Previews: PreviewProvider {
     static var previews: some View {
-        QuestionView(selected: .constant(1))
+        QuestionView(selected: .constant(1), selectionState: .constant(.noSelection))
     }
 }

@@ -14,6 +14,8 @@ struct ATMWelcomeView: View {
     @State var tabSelection = 0
     @State var selection = 0
     
+    @State var questionSelection: SelectionState = .noSelection
+    
     var body: some View {
         VStack {
             HStack {
@@ -39,7 +41,7 @@ struct ATMWelcomeView: View {
             TabView(selection: $tabSelection) {
                 WelcomeView(selected: $tabSelection)
                     .tag(0)
-                QuestionView(selected: $tabSelection)
+                QuestionView(selected: $tabSelection, selectionState: $questionSelection)
                     .tag(1)
                 Text("Question3")
                     .tag(2)
