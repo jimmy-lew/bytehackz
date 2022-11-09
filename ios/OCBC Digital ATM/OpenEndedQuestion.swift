@@ -11,6 +11,10 @@ struct OpenEndedQuestion: View {
     
     @State var text: String = ""
     
+    @StateObject var speechRecognizer = SpeechRecognizer()
+    
+    @State var isTranscribing = false
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             Text("What is the purpose of this transaction?")
@@ -18,27 +22,47 @@ struct OpenEndedQuestion: View {
             
             Text("Are you sending this money to someone? Why?")
             
-            ZStack {
-                RoundedRectangle(cornerRadius: 8)
-                    .stroke(Color.gray)
-                HStack {
-                    TextField("Text", text: $text)
-                        .padding()
-                    Button {
+            ScrollView {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(Color.gray)
+                    
+                    HStack(alignment: .top) {
+                        TextEditor(text: $text)
+                            .padding(8)
                         
-                    } label: {
-                        Image(systemName: "mic")
-                            .foregroundColor(.red)
-                            .padding()
+                        Button {
+                            if isTranscribing {
+                                let transcribedText = speechRecognizer.transcript
+                                speechRecognizer.stopTranscribing()
+                                Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { _ in
+                                    text = transcribedText
+                                }
+                            } else {
+                                speechRecognizer.transcribe()
+                            }
+                            
+                            isTranscribing.toggle()
+                        } label: {
+                            Image(systemName: isTranscribing ? "mic.fill" : "mic")
+                                .foregroundColor(.red)
+                                .padding()
+                        }
                     }
                 }
+                .frame(height: 100)
                 
             }
-            .frame(height: 56)
             
             Spacer()
         }
         .padding()
+        .onAppear {
+            speechRecognizer.reset()
+        }
+        .onChange(of: speechRecognizer.transcript) { newValue in
+            text = newValue
+        }
     }
 }
 

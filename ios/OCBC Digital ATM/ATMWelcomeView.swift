@@ -14,7 +14,7 @@ struct ATMWelcomeView: View {
     @State var tabSelection = 0
     @State var selection = 0
     
-    @State var questionSelection: SelectionState = .noSelection
+    @State var wasUserPressured: SelectionState = .noSelection
     
     var body: some View {
         VStack {
@@ -30,23 +30,16 @@ struct ATMWelcomeView: View {
                 RoundedRectangle(cornerRadius: 7.5)
                     .fill(selection == 2 ? .red : .gray)
                     .frame(width: selection == 2 ? 30 : 15, height: 15)
-                
-                RoundedRectangle(cornerRadius: 7.5)
-                    .fill(selection == 3 ? .red : .gray)
-                    .frame(width: selection == 3 ? 30 : 15, height: 15)
-                
                 Spacer()
             }
             .padding()
             TabView(selection: $tabSelection) {
                 WelcomeView(selected: $tabSelection)
                     .tag(0)
-                QuestionView(selected: $tabSelection, selectionState: $questionSelection)
+                QuestionView(selected: $tabSelection, selectionState: $wasUserPressured)
                     .tag(1)
-                Text("Question3")
-                    .tag(2)
                 OpenEndedQuestion()
-                    .tag(3)
+                    .tag(2)
             }
             .tabViewStyle(.page)
             .tint(.clear)
