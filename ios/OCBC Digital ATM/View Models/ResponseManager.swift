@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class ResponseManager: ObservableObject {
     @Published var purposeOfTransaction: String = ""
@@ -13,11 +14,17 @@ class ResponseManager: ObservableObject {
     
     @Published var isEmergency = false
     
+    @Published var score: Int?
+    
     func calculateScore() {
         var score = 0
         
         if wasUserPressured == .selectedYes {
             score = -1000
+        }
+        
+        withAnimation {
+            self.score = score
         }
     }
 }

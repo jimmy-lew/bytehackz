@@ -29,7 +29,6 @@ class SpeechRecognizer: ObservableObject {
     
     @Published var transcript: String = "" {
         didSet {
-            print("ejhfgsdvcbjkndfsvhfwfjdsck")
             print(transcript)
         }
     }

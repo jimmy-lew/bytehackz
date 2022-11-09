@@ -17,6 +17,8 @@ struct OpenEndedQuestion: View {
     
     @State var isTranscribing = false
     
+    var continueButtonPressed: (() -> ())
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             Text("What is the purpose of this transaction?")
@@ -58,7 +60,7 @@ struct OpenEndedQuestion: View {
                 .frame(height: 100)
                 
                 Button {
-                    
+                    continueButtonPressed()
                 } label: {
                     ZStack {
                         Color.red
@@ -83,6 +85,8 @@ struct OpenEndedQuestion: View {
 
 struct OpenEndedQuestion_Previews: PreviewProvider {
     static var previews: some View {
-        OpenEndedQuestion(text: .constant(""))
+        OpenEndedQuestion(text: .constant("")) {
+            
+        }
     }
 }

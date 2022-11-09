@@ -15,27 +15,35 @@ struct ATMView: View {
     @StateObject var responseManager = ResponseManager()
     
     var body: some View {
-        VStack {
-            CustomPageControl(selection: selection)
-                .padding()
-            
-            TabView(selection: $tabSelection) {
-                WelcomeView(selected: $tabSelection)
-                    .tag(0)
-                QuestionView(selected: $tabSelection, selectionState: $responseManager.wasUserPressured)
-                    .tag(1)
-                OpenEndedQuestion(text: $responseManager.purposeOfTransaction)
+        if responseManager.score == nil {
+            VStack {
+                CustomPageControl(selection: selection)
+                    .padding()
+                
+                TabView(selection: $tabSelection) {
+                    WelcomeView(selected: $tabSelection)
+                        .tag(0)
+                    QuestionView(selected: $tabSelection, selectionState: $responseManager.wasUserPressured)
+                        .tag(1)
+                    OpenEndedQuestion(text: $responseManager.purposeOfTransaction) {
+                        responseManager.calculateScore()
+                    }
                     .tag(2)
-            }
-            .tabViewStyle(.page)
-            .tint(.clear)
-            .onChange(of: tabSelection) { newValue in
-                withAnimation(.spring()) {
-                    selection = newValue
                 }
+                .tabViewStyle(.page)
+                .tint(.clear)
+                .onChange(of: tabSelection) { newValue in
+                    withAnimation(.spring()) {
+                        selection = newValue
+                    }
+                }
+                
+                EmergencyHelpButton(isEmergency: $responseManager.isEmergency)
             }
-            
-            EmergencyHelpButton(isEmergency: $responseManager.isEmergency)
+            .interactiveDismissDisabled(true)
+        } else {
+            ATMSuccessView()
+                .interactiveDismissDisabled(false)
         }
     }
 }
