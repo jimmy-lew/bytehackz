@@ -12,4 +12,12 @@ class ResponseManager: ObservableObject {
     @Published var wasUserPressured: SelectionState = .noSelection
     
     @Published var isEmergency = false
+    
+    func calculateScore() {
+        var score = 0
+        
+        if wasUserPressured == .selectedYes {
+            score = -1000
+        }
+    }
 }
