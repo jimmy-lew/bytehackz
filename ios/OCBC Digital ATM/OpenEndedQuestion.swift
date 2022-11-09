@@ -9,9 +9,11 @@ import SwiftUI
 
 struct OpenEndedQuestion: View {
     
-    @State var text: String = ""
+    @Binding var text: String
     
     @StateObject var speechRecognizer = SpeechRecognizer()
+    
+    @FocusState var isEditing: Bool
     
     @State var isTranscribing = false
     
@@ -26,12 +28,15 @@ struct OpenEndedQuestion: View {
                 ZStack {
                     RoundedRectangle(cornerRadius: 8)
                         .stroke(Color.gray)
+                        .padding(1)
                     
                     HStack(alignment: .top) {
                         TextEditor(text: $text)
+                            .focused($isEditing)
                             .padding(8)
                         
                         Button {
+                            isEditing = false
                             if isTranscribing {
                                 let transcribedText = speechRecognizer.transcript
                                 speechRecognizer.stopTranscribing()
@@ -52,9 +57,19 @@ struct OpenEndedQuestion: View {
                 }
                 .frame(height: 100)
                 
+                Button {
+                    
+                } label: {
+                    ZStack {
+                        Color.red
+                            .cornerRadius(8)
+                        Text("Continue")
+                            .foregroundColor(.white)
+                            .fontWeight(.bold)
+                    }
+                }
+                .frame(height: 56)
             }
-            
-            Spacer()
         }
         .padding()
         .onAppear {
@@ -68,6 +83,6 @@ struct OpenEndedQuestion: View {
 
 struct OpenEndedQuestion_Previews: PreviewProvider {
     static var previews: some View {
-        OpenEndedQuestion()
+        OpenEndedQuestion(text: .constant(""))
     }
 }

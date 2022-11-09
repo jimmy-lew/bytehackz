@@ -7,12 +7,6 @@
 
 import SwiftUI
 
-enum SelectionState {
-    case selectedYes
-    case selectedNo
-    case noSelection
-}
-
 struct QuestionView: View {
     
     var title: String = "Were you pressured to make this transaction?"

@@ -9,12 +9,10 @@ import SwiftUI
 
 struct ATMWelcomeView: View {
     
-    @State var userScore = 0
-    
     @State var tabSelection = 0
     @State var selection = 0
     
-    @State var wasUserPressured: SelectionState = .noSelection
+    @StateObject var responseManager = ResponseManager()
     
     var body: some View {
         VStack {
@@ -36,9 +34,9 @@ struct ATMWelcomeView: View {
             TabView(selection: $tabSelection) {
                 WelcomeView(selected: $tabSelection)
                     .tag(0)
-                QuestionView(selected: $tabSelection, selectionState: $wasUserPressured)
+                QuestionView(selected: $tabSelection, selectionState: $responseManager.wasUserPressured)
                     .tag(1)
-                OpenEndedQuestion()
+                OpenEndedQuestion(text: $responseManager.purposeOfTransaction)
                     .tag(2)
             }
             .tabViewStyle(.page)

@@ -12,38 +12,39 @@ struct EmergencyHelpButton: View {
     @State var offset = 0.0
     
     var body: some View {
-        
         ZStack(alignment: .leading) {
-            ZStack {
-                LinearGradient(colors: [.red, .orange], startPoint: .topLeading, endPoint: .bottomTrailing)
-                    .opacity(0.1)
+            GeometryReader { reader in
+                ZStack {
+                    LinearGradient(colors: [.red, .orange], startPoint: .topLeading, endPoint: .bottomTrailing)
+                        .opacity(0.1)
+                    
+                    Text("Emergency Help")
+                        .foregroundColor(.black)
+                        .fontWeight(.bold)
+                }
                 
-                Text("Emergency Help")
-                    .foregroundColor(.black)
-                    .fontWeight(.bold)
-            }
-            
-            ZStack {
-                LinearGradient(colors: [.red, .orange], startPoint: .topLeading, endPoint: .bottomTrailing)
-                    .frame(width: 56, height: 56)
-                    .cornerRadius(8)
-                
-                Image(systemName: "chevron.right")
-                    .imageScale(.large)
-                    .foregroundColor(.white)
-            }
-            .offset(x: offset)
-            .gesture(
-                DragGesture()
-                    .onChanged { dragValue in
-                        offset = dragValue.location.x
-                    }
-                    .onEnded { dragValue in
-                        withAnimation(.spring()) {
-                            offset = 0
+                ZStack {
+                    LinearGradient(colors: [.red, .orange], startPoint: .topLeading, endPoint: .bottomTrailing)
+                        .frame(width: 56, height: 56)
+                        .cornerRadius(8)
+                    
+                    Image(systemName: "chevron.right")
+                        .imageScale(.large)
+                        .foregroundColor(.white)
+                }
+                .offset(x: offset)
+                .gesture(
+                    DragGesture()
+                        .onChanged { dragValue in
+                            offset = dragValue.translation.width
                         }
-                    }
-            )
+                        .onEnded { dragValue in
+                            withAnimation(.spring()) {
+                                offset = 0
+                            }
+                        }
+                )
+            }
         }
         .clipped()
         .cornerRadius(8)
