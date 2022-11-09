@@ -11,5 +11,5 @@ class ResponseManager: ObservableObject {
     @Published var purposeOfTransaction: String = ""
     @Published var wasUserPressured: SelectionState = .noSelection
     
-    
+    @Published var isEmergency = false
 }

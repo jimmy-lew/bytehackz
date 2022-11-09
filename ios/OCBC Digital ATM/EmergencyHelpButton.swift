@@ -9,41 +9,61 @@ import SwiftUI
 
 struct EmergencyHelpButton: View {
     
+    @Binding var isEmergency: Bool
     @State var offset = 0.0
     
     var body: some View {
         ZStack(alignment: .leading) {
-            GeometryReader { reader in
+            if isEmergency {
                 ZStack {
                     LinearGradient(colors: [.red, .orange], startPoint: .topLeading, endPoint: .bottomTrailing)
-                        .opacity(0.1)
-                    
-                    Text("Emergency Help")
-                        .foregroundColor(.black)
-                        .fontWeight(.bold)
+                    VStack {
+                        Text("Emergency Mode Activated")
+                            .foregroundColor(.white)
+                            .fontWeight(.bold)
+                        Text("The authorities have been notified")
+                            .foregroundColor(.white)
+                    }
                 }
-                
-                ZStack {
-                    LinearGradient(colors: [.red, .orange], startPoint: .topLeading, endPoint: .bottomTrailing)
-                        .frame(width: 56, height: 56)
-                        .cornerRadius(8)
+            } else {
+                GeometryReader { reader in
+                    ZStack {
+                        LinearGradient(colors: [.red, .orange], startPoint: .topLeading, endPoint: .bottomTrailing)
+                            .opacity(0.1)
+                        
+                        Text("Emergency Help")
+                            .foregroundColor(.black)
+                            .fontWeight(.bold)
+                    }
                     
-                    Image(systemName: "chevron.right")
-                        .imageScale(.large)
-                        .foregroundColor(.white)
-                }
-                .offset(x: offset)
-                .gesture(
-                    DragGesture()
-                        .onChanged { dragValue in
-                            offset = dragValue.translation.width
-                        }
-                        .onEnded { dragValue in
-                            withAnimation(.spring()) {
-                                offset = 0
+                    ZStack {
+                        LinearGradient(colors: [.red, .orange], startPoint: .topLeading, endPoint: .bottomTrailing)
+                            .frame(width: 56, height: 56)
+                            .cornerRadius(8)
+                        
+                        Image(systemName: "chevron.right")
+                            .imageScale(.large)
+                            .foregroundColor(.white)
+                    }
+                    .offset(x: offset)
+                    .gesture(
+                        DragGesture()
+                            .onChanged { dragValue in
+                                offset = dragValue.translation.width
                             }
-                        }
-                )
+                            .onEnded { dragValue in
+                                if dragValue.translation.width > reader.size.width / 2 {
+                                    withAnimation {
+                                        isEmergency = true
+                                    }
+                                } else {
+                                    withAnimation(.spring()) {
+                                        offset = 0
+                                    }
+                                }
+                            }
+                    )
+                }
             }
         }
         .clipped()
@@ -55,6 +75,6 @@ struct EmergencyHelpButton: View {
 
 struct EmergencyHelpButton_Previews: PreviewProvider {
     static var previews: some View {
-        EmergencyHelpButton()
+        EmergencyHelpButton(isEmergency: .constant(false))
     }
 }

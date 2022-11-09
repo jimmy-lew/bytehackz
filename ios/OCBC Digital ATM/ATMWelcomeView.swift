@@ -47,7 +47,7 @@ struct ATMWelcomeView: View {
                 }
             }
             
-            EmergencyHelpButton()
+            EmergencyHelpButton(isEmergency: $responseManager.isEmergency)
         }
     }
 }
