@@ -14,14 +14,18 @@ class ResponseManager: ObservableObject {
     
     @Published var isEmergency = false
     
-    @Published var score: Int?
+    @Published var score: Double?
     
     func calculateScore() {
-        var score = 0
+        var score = 0.0
         
-        if wasUserPressured == .selectedYes {
-            score = -1000
-        }
+        let dataToSend = SentData(isFailure: wasUserPressured == .selectedYes || isEmergency,
+                                  isEmergency: isEmergency,
+                                  score: score)
+        
+        let encoder = JSONEncoder()
+        let encodedData = try! encoder.encode(dataToSend)
+        let stringJSON = String(data: encodedData, encoding: .utf8)
         
         withAnimation {
             self.score = score
