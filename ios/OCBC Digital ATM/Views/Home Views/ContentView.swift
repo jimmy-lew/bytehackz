@@ -106,7 +106,7 @@ struct ContentView: View {
             .padding()
         }
         .sheet(isPresented: $isSheetPresented) {
-            ATMWelcomeView()
+            ATMView()
                 .interactiveDismissDisabled(true)
         }
     }

@@ -1,5 +1,5 @@
 //
-//  ATMWelcomeView.swift
+//  ATMView.swift
 //  OCBC Digital ATM
 //
 //  Created by Jia Chen Yee on 8/11/22.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ATMWelcomeView: View {
+struct ATMView: View {
     
     @State var tabSelection = 0
     @State var selection = 0
@@ -16,21 +16,9 @@ struct ATMWelcomeView: View {
     
     var body: some View {
         VStack {
-            HStack {
-                RoundedRectangle(cornerRadius: 7.5)
-                    .fill(selection == 0 ? .red : .gray)
-                    .frame(width: selection == 0 ? 30 : 15, height: 15)
-                
-                RoundedRectangle(cornerRadius: 7.5)
-                    .fill(selection == 1 ? .red : .gray)
-                    .frame(width: selection == 1 ? 30 : 15, height: 15)
-                
-                RoundedRectangle(cornerRadius: 7.5)
-                    .fill(selection == 2 ? .red : .gray)
-                    .frame(width: selection == 2 ? 30 : 15, height: 15)
-                Spacer()
-            }
-            .padding()
+            CustomPageControl(selection: selection)
+                .padding()
+            
             TabView(selection: $tabSelection) {
                 WelcomeView(selected: $tabSelection)
                     .tag(0)
@@ -52,8 +40,8 @@ struct ATMWelcomeView: View {
     }
 }
 
-struct ATMWelcomeView_Previews: PreviewProvider {
+struct ATMView_Previews: PreviewProvider {
     static var previews: some View {
-        ATMWelcomeView()
+        ATMView()
     }
 }
