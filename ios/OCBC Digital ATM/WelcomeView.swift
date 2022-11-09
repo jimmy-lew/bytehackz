@@ -24,7 +24,6 @@ struct WelcomeView: View {
                 localAuthenticationContext.localizedFallbackTitle = "Try again."
                 
                 localAuthenticationContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "To verify your identity") { (value, error) in
-                    print(error)
                     if value {
                         withAnimation {
                             selected += 1
