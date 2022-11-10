@@ -2,7 +2,6 @@ import cv2
 import numpy as np
 from keras.models import model_from_json
 
-
 emotion_dict = {0: "Angry", 1: "Disgusted", 2: "Fearful", 3: "Happy", 4: "Neutral", 5: "Sad", 6: "Surprised"}
 
 # load json and create model
@@ -11,7 +10,7 @@ loaded_model_json = json_file.read()
 json_file.close()
 emotion_model = model_from_json(loaded_model_json)
 
-# load weights into new model
+# load weights into new modelq
 emotion_model.load_weights("model/emotion_model.h5")
 
 # start the webcam feed
@@ -23,7 +22,7 @@ while True:
     frame = cv2.resize(frame, (1280, 720))
     if not ret:
         break
-    face_detector = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+    face_detector = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
     gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
     # detect faces available on camera
