@@ -1,4 +1,21 @@
 <script setup lang="ts">
+import { collection, onSnapshot } from 'firebase/firestore'
+
+let isInitialLoad = true
+
+onSnapshot(collection(firestoreDb, 'atm/000001/sessions'), (snapshot) => {
+	if (isInitialLoad) {
+		isInitialLoad = false
+		return
+	}
+
+	snapshot.docChanges().forEach((docChange) => {
+		const { doc } = docChange
+		const docIdCookie = useCookie('doc_id')
+		docIdCookie.value = doc.id
+		navigateTo('/auth')
+	})
+})
 </script>
 
 <template>

@@ -1,4 +1,7 @@
 <script setup lang="ts">
+const accStore = useAccountStore()
+const { transferTo } = accStore
+
 const amount = 25001
 const account: Account = {
 	name: 'John Test',
@@ -37,7 +40,7 @@ const { name, accountNumber, bank, balance } = account
 						{{ name.toUpperCase() }}
 					</h2>
 					<p class="font-semibold text-sm whitespace-pre-line">
-						{{ accountNumber }}
+						{{ transferTo }}
 						{{ bank }}
 					</p>
 				</div>

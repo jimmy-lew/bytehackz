@@ -1,14 +1,13 @@
 <script setup lang="ts">
-import { collection, doc, limitToLast, onSnapshot, orderBy, query } from 'firebase/firestore'
+import { doc, onSnapshot } from 'firebase/firestore'
 
-const q = query(collection(firestoreDb, 'atm'), orderBy('timeCreated'), limitToLast(1))
+const docIdCookie = useCookie('doc_id')
 
-onSnapshot(q, (snapshot) => {
-	snapshot.forEach((doc) => {
-		const { isBioValidated } = doc.data()
-		if (isBioValidated)
-			navigateTo('/services')
-	})
+onSnapshot(doc(firestoreDb, 'atm/000001/sessions', docIdCookie.value), (doc) => {
+	const { isBioValidated } = doc.data()
+
+	if (isBioValidated)
+		navigateTo('/services')
 })
 </script>
 
