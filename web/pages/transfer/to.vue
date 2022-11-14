@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const keyStore = useKeyInputStore()
 const accStore = useAccountStore()
-const { transferFrom, setTransferTo } = accStore
+const { setTransferTo } = accStore
 
 const {
 	input,
@@ -22,7 +22,7 @@ const handleClick = () => {
 		return
 
 	setTransferTo(accountNo.value)
-	navigateTo('/transfer/amount')
+	navigateTo('/transfer/confirm')
 }
 </script>
 

@@ -21,7 +21,7 @@ const handleClick = (accNo: string) => {
 						<Icon size="48" name="fluent:vault-16-regular" />
 						Current Account
 						<div class="flex flex-col items-center justify-center text-xs mt-2">
-							100-000000-0
+							100-000000-000
 							<span class="text-gray-400">
 								Singapore Dollar
 							</span>
