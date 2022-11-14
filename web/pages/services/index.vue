@@ -1,36 +1,37 @@
-<script setup>
+<script setup lang="ts">
+const store = useAppStore()
 </script>
 
-<!-- eslint-disable vue/no-useless-v-bind -->
 <template>
-	<div class="flex-col w-full p-12 space-y-8">
-		<Header username="Jimmy Lew" />
+	<div class="p-12 relative w-full space-y-8">
+		<Header :username="store.name" />
 		<Banner>
 			<Icon size="24" name="maki:caution" />
-			<span>Warning: This could be a scam!</span>
+			<span>Scam warning banner</span>
 		</Banner>
-		<h2 class="font-semibold text-lg">
-			Non Cash Services
-		</h2>
-		<ul role="list" class="grid grid-cols-3 gap-4 p-0">
-			<LinkCard :title="'Set up quick \n transaction'" href="/transaction">
-				<Icon size="32" name="heroicons:bars-3-bottom-left-20-solid" />
+		<div class="flex gap-8">
+			<LinkCard title="Withdrawal" href="/withdraw">
+				<Icon size="36" name="fluent:money-hand-24-regular" class="" />
 			</LinkCard>
-			<LinkCard :title="'Balance \n Enquiry'" href="">
-				<Icon size="32" name="heroicons:currency-dollar" />
-			</LinkCard>
-			<LinkCard :title="'Bill \n Payment'" href="">
-				<Icon size="32" name="heroicons:banknotes" />
-			</LinkCard>
-			<LinkCard :title="'Transfer \n Funds'" href="/transfer">
-				<Icon size="32" name="heroicons:arrows-right-left-20-solid" />
-			</LinkCard>
-			<LinkCard :title="'CPF \n Services'" href="">
-				<Icon size="32" name="heroicons:key" />
-			</LinkCard>
-			<LinkCard :title="'Investment \n Services'" href="">
-				<Icon size="32" name="fe:line-chart" />
-			</LinkCard>
-		</ul>
+			<ul class="flex flex-col gap-8">
+				<LinkCard title="Payment" href="/">
+					<Icon size="36" name="fa6-solid:file-signature" class="" />
+				</LinkCard>
+				<LinkCard title="Transfer" href="/transfer">
+					<Icon size="36" name="heroicons:arrows-right-left-20-solid" />
+				</LinkCard>
+			</ul>
+			<!-- <div class="flex w-1/2 gap-8">
+			</div> -->
+			<TheCashRadialMenu />
+			<div class="ml-auto">
+				<LinkCard title="More" href="/services/more" class="h-2/3">
+					<Icon size="32" name="heroicons-solid:dots-horizontal" class="" />
+				</LinkCard>
+			</div>
+		</div>
+		<Modal>
+			Sample Scam Warning Modal
+		</Modal>
 	</div>
 </template>
