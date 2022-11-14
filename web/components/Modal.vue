@@ -16,12 +16,16 @@ const close = () => {
 		return
 	isOpen.value = false
 }
+
+onKeyStroke('Escape', (e) => {
+	close()
+})
 </script>
 
 <template>
 	<div v-if="isOpen" class="modal modal-open">
 		<div v-on-click-outside="close" class="modal-box rounded-md relative">
-			<button v-if="!noCloseButton" class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" @click="close">
+			<button v-if="!noCloseButton && !forceOpen" class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" @click="close">
 				✕
 			</button>
 			<slot />
