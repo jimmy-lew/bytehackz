@@ -1,13 +1,17 @@
 import * as fs from 'fs'
 
 export default defineEventHandler((event) => {
-	const { auth } = getQuery(event)
+	const { auth: hasDistress } = getQuery(event)
 
-	const newData = {
-		data: auth,
-	}
+	if (!fs.existsSync('./scs.json'))
+		fs.writeFileSync('./scs.json', JSON.stringify({}, null, '\t'))
 
-	fs.writeFileSync('./public/test.json', JSON.stringify(newData))
+	const rawData = fs.readFileSync('./scs.json')
+	const scsData = JSON.parse(rawData.toString())
 
-	return newData
+	scsData.hasDistress = !!(parseInt(hasDistress.toString()))
+
+	fs.writeFileSync('./scs.json', JSON.stringify(scsData, null, '\t'))
+
+	return scsData
 })

@@ -3,11 +3,15 @@ import * as fs from 'fs'
 export default defineEventHandler((event) => {
 	const { auth } = getQuery(event)
 
-	const newData = {
-		data: auth,
-	}
+	if (!fs.existsSync('./auth.json'))
+		fs.writeFileSync('./auth.json', JSON.stringify({}, null, '\t'))
 
-	fs.writeFileSync('./public/test.json', JSON.stringify(newData))
+	const rawData = fs.readFileSync('./auth.json')
+	const authData = JSON.parse(rawData.toString())
 
-	return newData
+	authData.isBioValidated = !!(parseInt(auth.toString()))
+
+	fs.writeFileSync('./auth.json', JSON.stringify(authData, null, '\t'))
+
+	return authData
 })
