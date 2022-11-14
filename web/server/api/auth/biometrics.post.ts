@@ -1,17 +1,24 @@
-import * as fs from 'fs'
+import { db } from '../lib/firebase'
 
-export default defineEventHandler((event) => {
+export default defineEventHandler(async (event) => {
 	const { auth } = getQuery(event)
 
-	if (!fs.existsSync('./auth.json'))
-		fs.writeFileSync('./auth.json', JSON.stringify({}, null, '\t'))
+	const atmTransactionsSnapshot = await db
+		.collection('atm')
+		.orderBy('timeCreated')
+		.limitToLast(1)
+		.get()
 
-	const rawData = fs.readFileSync('./auth.json')
-	const authData = JSON.parse(rawData.toString())
+	const transactions = atmTransactionsSnapshot.docs.map((doc) => {
+		db.collection('atm').doc(doc.id).update({
+			isBioValidated: !!(parseInt(auth.toString())),
+		})
 
-	authData.isBioValidated = !!(parseInt(auth.toString()))
+		return {
+			uuid: doc.id,
+			...doc.data(),
+		}
+	})
 
-	fs.writeFileSync('./auth.json', JSON.stringify(authData, null, '\t'))
-
-	return authData
+	return transactions
 })

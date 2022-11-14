@@ -1,18 +1,15 @@
 <script setup lang="ts">
-// TODO: Migrate polling to websocket / rtdb
-async function poll() {
-	const { data, refresh } = await useFetch('/api/auth/validate')
+import { collection, doc, limitToLast, onSnapshot, orderBy, query } from 'firebase/firestore'
 
-	if (!data.value.isValidated) {
-		refresh()
-		setTimeout(poll, 1500)
-	}
-	else {
-		navigateTo('/auth/biometrics')
-	}
-}
+const q = query(collection(firestoreDb, 'atm'), orderBy('timeCreated'), limitToLast(1))
 
-poll()
+onSnapshot(q, (snapshot) => {
+	snapshot.forEach((doc) => {
+		const { isValidated } = doc.data()
+		if (isValidated)
+			navigateTo('/auth/biometrics')
+	})
+})
 </script>
 
 <template>
