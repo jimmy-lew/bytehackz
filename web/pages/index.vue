@@ -1,10 +1,9 @@
 <script setup lang="ts">
-const store = useAppStore()
 </script>
 
 <template>
 	<div class="p-12 relative w-full space-y-8">
-		<Header :username="store.name" />
+		<Header username="Jimmy" />
 		<Banner>
 			<Icon size="24" name="maki:caution" />
 			<span>Scam warning banner</span>
