@@ -5,7 +5,7 @@ async function poll() {
 
 	if (!data.value.isValidated) {
 		refresh()
-		setTimeout(poll, 2000)
+		setTimeout(poll, 1500)
 	}
 	else {
 		navigateTo('/auth/biometrics')
@@ -17,7 +17,7 @@ poll()
 
 <template>
 	<div class="p-12 relative w-full space-y-8">
-		<Modal no-close-button force-open>
+		<Modal force-open>
 			<div class="">
 				Please insert your card
 			</div>

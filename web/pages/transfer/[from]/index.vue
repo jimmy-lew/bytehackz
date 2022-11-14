@@ -4,6 +4,16 @@ const keyStore = useKeyInputStore()
 const {
 	input,
 } = toRefs(keyStore)
+
+const accountNo = computed(() => {
+	let accNo = input.value
+
+	if (input.value.length >= 4)
+		accNo = `${accNo.slice(0, 3)}-${accNo.slice(3)}`
+	if (input.value.length > 9)
+		accNo = `${accNo.slice(0, 10)}-${accNo.slice(10)}`
+	return accNo
+})
 </script>
 
 <template>
@@ -11,7 +21,7 @@ const {
 		<template #left>
 			<div class="flex flex-col items-center">
 				<div class="text-4xl">
-					{{ input }}
+					{{ accountNo }}
 				</div>
 			</div>
 		</template>
