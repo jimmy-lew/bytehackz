@@ -1,5 +1,7 @@
 <script setup lang="ts">
 const keyStore = useKeyInputStore()
+const accStore = useAccountStore()
+const { transferFrom, setTransferTo } = accStore
 
 const {
 	input,
@@ -14,15 +16,27 @@ const accountNo = computed(() => {
 		accNo = `${accNo.slice(0, 10)}-${accNo.slice(10)}`
 	return accNo
 })
+
+const handleClick = () => {
+	if (input.value.length < 10)
+		return
+
+	setTransferTo(accountNo.value)
+	navigateTo('/transfer/amount')
+}
 </script>
 
 <template>
 	<NuxtLayout name="transfer">
 		<template #left>
-			<div class="flex flex-col items-center">
-				<div class="text-4xl">
+			<div class="flex flex-col items-center h-full">
+				Enter account you are transferring to
+				<div class="mt-4 text-4xl">
 					{{ accountNo }}
 				</div>
+				<button class="mt-auto btn relative w-1/2 glass-outline rounded-md" @click="handleClick">
+					Confirm
+				</button>
 			</div>
 		</template>
 		<template #right>

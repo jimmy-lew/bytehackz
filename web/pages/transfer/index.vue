@@ -1,9 +1,11 @@
 <script setup lang="ts">
-const router = useRouter()
+const accStore = useAccountStore()
+const { setTransferFrom } = accStore
 
-const handleClick = (accNo: string) => router.push({
-	path: `/transfer/${accNo}`,
-})
+const handleClick = (accNo: string) => {
+	setTransferFrom(accNo)
+	navigateTo('/transfer/to')
+}
 </script>
 
 <template>
