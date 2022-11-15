@@ -13,17 +13,11 @@ struct ContentView: View {
     @StateObject var cameraManager = CameraManager()
     
     var body: some View {
-        Group {
-            if cameraManager.successfullyAuthenticated {
-                Image(systemName: "checkmark")
-                    .font(.system(size: 36))
-            } else {
-                Image(systemName: "xmark")
-                    .font(.system(size: 36))
-                    .onAppear {
-                        cameraManager.run()
-                    }
-            }
+        Color.black
+            .edgesIgnoringSafeArea(.all)
+            .statusBarHidden()
+        .onAppear {
+            cameraManager.run()
         }
         .onChange(of: cameraManager.successfullyAuthenticated) { successfullyAuthenticated in
             if successfullyAuthenticated {

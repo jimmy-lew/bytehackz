@@ -20,12 +20,18 @@ class CameraManager: NSObject, ObservableObject {
         didSet {
             if oldValue != hasCard {
                 if hasCard {
-                    if abs((lastCardStateChange ?? .distantPast).timeIntervalSinceNow) > 3 {
+                    if abs((lastCardStateChange ?? .distantPast).timeIntervalSinceNow) > 1 {
                         sendUserID()
+                    }
+                } else if successfullyAuthenticated {
+                    DispatchQueue.main.async {
+                        self.successfullyAuthenticated = false
                     }
                 }
                 
                 lastCardStateChange = Date()
+                
+                print(hasCard ? "Card in machine" : "Card not in machine")
             }
         }
     }

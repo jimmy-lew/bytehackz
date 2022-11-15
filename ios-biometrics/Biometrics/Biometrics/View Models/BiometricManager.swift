@@ -14,13 +14,35 @@ class BiometricManager: ObservableObject {
         let localAuthenticationContext = LAContext()
         localAuthenticationContext.localizedFallbackTitle = "Try again"
         
-        localAuthenticationContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "No") { (value, error) in
+        localAuthenticationContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "No") { (isAuthenticated, error) in
             
-            if !value && error == nil {
-                self.authenticateUser()
+            if isAuthenticated {
+                self.sendBiometricsResult(isSuccess: true)
+            } else if let error {
+                self.sendBiometricsResult(isSuccess: false)
+                print("❌ Fingerprint Error: \(error.localizedDescription)")
             } else {
-                print("Success")
+                self.authenticateUser()
             }
         }
+    }
+    
+    func sendBiometricsResult(isSuccess: Bool) {
+        print("✅ Fingerprint: \(isSuccess)")
+        
+        var urlRequest = URLRequest(url: getURL(route: "/api/auth/biometrics"))
+        let encodedData = BiometricsResult(auth: isSuccess, isEmergency: false).toJSON()
+        
+        urlRequest.httpMethod = "POST"
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        urlRequest.httpBody = encodedData
+        
+        
+        URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+            if let response = response as? HTTPURLResponse, response.statusCode != 200 {
+                self.sendBiometricsResult(isSuccess: isSuccess)
+            }
+        }.resume()
     }
 }
