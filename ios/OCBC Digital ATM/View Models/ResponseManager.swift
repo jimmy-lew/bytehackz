@@ -31,7 +31,7 @@ class ResponseManager: ObservableObject {
         
         print(String(data: encodedData, encoding: .utf8)!)
         
-        var urlRequest = URLRequest(url: URL(string: "https://bytehackz.vercel.app/api/auth/confirm")!)
+        var urlRequest = URLRequest(url: getURL(route: "/api/auth/confirm"))
         
         urlRequest.httpMethod = "POST"
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
