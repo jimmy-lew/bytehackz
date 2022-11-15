@@ -94,6 +94,14 @@
 			path = "Bluetooth Manager";
 			sourceTree = "<group>";
 		};
+		326A19BE2923614A005748A7 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				326A19B329236063005748A7 /* ATMService.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		32935055291B5B2400D6AB10 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -109,7 +117,6 @@
 			children = (
 				32935053291B584100D6AB10 /* SelectionState.swift */,
 				32935064291B640600D6AB10 /* SentData.swift */,
-				326A19B329236063005748A7 /* ATMService.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -186,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				32FAD17D2919693F007C13DD /* OCBC_Digital_ATMApp.swift */,
+				326A19BE2923614A005748A7 /* Constants */,
 				32935056291B5B4700D6AB10 /* Models */,
 				32935058291B5B6500D6AB10 /* Views */,
 				32935055291B5B2400D6AB10 /* View Models */,
