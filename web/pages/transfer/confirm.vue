@@ -1,19 +1,22 @@
 <script setup lang="ts">
-const accStore = useAccountStore()
-const { transferTo, transactionAmount } = accStore
+const transactionStore = useTransactionStore()
+const { transactionTo, transactionFrom, transactionAmount } = transactionStore
 
-const amount = 25001
-const account: Account = {
-	name: 'John Test',
-	accountNumber: '123-000000-000',
-	bank: 'CITI-SG',
-	balance: 2000,
-}
 const mode = 'Non-immediate transfer'
-
-const { name, accountNumber, bank, balance } = account
+const name = 'Recipient'
+const bank = 'CITI-SG'
 
 const handleClick = () => {
+	const transaction = {
+		to: transactionTo,
+		from: transactionFrom,
+		amount: transactionAmount,
+	}
+
+	useFetch('/api/transaction/transfer', {
+		method: 'POST',
+		body: transaction,
+	})
 	navigateTo('/')
 }
 </script>
@@ -44,7 +47,7 @@ const handleClick = () => {
 						{{ name.toUpperCase() }}
 					</h2>
 					<p class="font-semibold text-sm whitespace-pre-line">
-						{{ transferTo }}
+						{{ transactionTo }}
 						{{ bank }}
 					</p>
 				</div>
@@ -60,7 +63,7 @@ const handleClick = () => {
 				</div>
 			</div>
 		</div>
-		<button class="btn relative glass-outline rounded-md">
+		<button class="btn relative glass-outline rounded-md" @click="handleClick">
 			Confirm
 		</button>
 	</div>
