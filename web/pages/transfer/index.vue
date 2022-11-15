@@ -40,9 +40,9 @@ userAccounts.forEach(async (accountID) => {
 				</div>
 				<BaseCard v-for="{ id } in accounts" v-else :key="id" round="lg" size="8" class="font-medium" @click="() => handleClick(id)">
 					<div class="flex flex-col items-center justify-center text-xl">
-						<Icon v-if="id.length > 10" size="48" name="fluent:savings-16-regular" />
+						<Icon v-if="id.toString().replace(/\-/g, '').length > 10" size="48" name="fluent:savings-16-regular" />
 						<Icon v-else size="48" name="fluent:vault-16-regular" />
-						<p v-if="id.length > 10">
+						<p v-if="id.toString().replace(/\-/g, '').length > 10">
 							Savings Account
 						</p>
 						<p v-else>

@@ -1,10 +1,10 @@
 <script setup lang="ts">
+import { doc, getDoc } from 'firebase/firestore'
+
 const transactionStore = useTransactionStore()
 const { transactionID, transactionTo, transactionFrom, transactionAmount } = transactionStore
 
 const mode = 'Non-immediate transfer'
-const name = 'Recipient'
-const bank = 'CITI-SG'
 
 const handleClick = async () => {
 	const transaction: Transaction = {
@@ -20,6 +20,18 @@ const handleClick = async () => {
 	})
 	await navigateTo('/')
 }
+
+const recipient = ref<Nullable<any>>(null)
+
+recipient.value = await getDoc(doc(firestoreDb, 'accounts', transactionTo)).then(async (docSnap) => {
+	if (!docSnap.exists())
+		return null
+	const { uuid } = docSnap.data()
+	const userSnap = await getDoc(doc(firestoreDb, 'users', uuid))
+	if (!userSnap.exists())
+		return null
+	return userSnap.data()
+})
 </script>
 
 <template>
@@ -45,11 +57,12 @@ const handleClick = async () => {
 						To
 					</p>
 					<h2 class="font-semibold text-xl whitespace-nowrap mb-1">
-						{{ name.toUpperCase() }}
+						{{ recipient.name.toUpperCase() }}
 					</h2>
-					<p class="font-semibold text-sm whitespace-pre-line">
+					<p class="font-semibold text-sm whitespace-nowrap">
 						{{ transactionTo }}
-						{{ bank }}
+						<br>
+						{{ recipient.bank }}
 					</p>
 				</div>
 			</div>
