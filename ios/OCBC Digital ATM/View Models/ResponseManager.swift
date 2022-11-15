@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import CryptoKit
 
 class ResponseManager: ObservableObject {
     @Published var purposeOfTransaction: String = ""
@@ -15,17 +16,31 @@ class ResponseManager: ObservableObject {
     @Published var isEmergency = false
     
     @Published var score: Double?
+    @Published var isCompleted = false
     
     func calculateScore() {
+        isCompleted = false
         var score = 0.0
         
         let dataToSend = SentData(isFailure: wasUserPressured == .selectedYes || isEmergency,
                                   isEmergency: isEmergency,
-                                  score: score)
+                                  appScore: score)
         
         let encoder = JSONEncoder()
         let encodedData = try! encoder.encode(dataToSend)
-        let stringJSON = String(data: encodedData, encoding: .utf8)
+        
+        var urlRequest = URLRequest(url: URL(string: "https://bytehackz.vercel.app/api/auth/confirm")!)
+        urlRequest.httpMethod = "POST"
+        urlRequest.httpBody = encodedData
+        
+        URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+            if let error {
+                print("error:", error.localizedDescription)
+            } else {
+                self.isCompleted = true
+            }
+            
+        }.resume()
         
         withAnimation {
             self.score = score

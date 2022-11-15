@@ -10,5 +10,5 @@ import Foundation
 struct SentData: Codable {
     var isFailure: Bool
     var isEmergency: Bool
-    var score: Double
+    var appScore: Double
 }

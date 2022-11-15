@@ -41,9 +41,12 @@ struct ATMView: View {
                 EmergencyHelpButton(isEmergency: $responseManager.isEmergency)
             }
             .interactiveDismissDisabled(true)
-        } else {
+        } else if responseManager.isCompleted {
             ATMSuccessView()
                 .interactiveDismissDisabled(false)
+        } else {
+            LoadingView()
+                .interactiveDismissDisabled()
         }
     }
 }
