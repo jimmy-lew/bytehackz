@@ -1,0 +1,13 @@
+Reason why sending this money,Suspiciousness (0-1)
+I am sending money to my family,0.1
+I am sending money to a friend,0.2
+I am buying gift cards,0.7
+I am sending money to someone to receive my gift that I won,1
+I am sending money to a local bank account ,0.4
+I am sending money to an overseas bank account,0.6
+I am sending money to an unknown bank accout,0.9
+I am sending money to a government organisation,1
+I am sending money to a stockbroker,0.7
+I am paying for my utility bills,0
+I am paying for my subscriptions,0.3
+I am paying for my monthly installments,0.3

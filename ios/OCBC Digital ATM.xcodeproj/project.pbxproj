@@ -14,6 +14,9 @@
 		326A19B429236063005748A7 /* ATMService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326A19B329236063005748A7 /* ATMService.swift */; };
 		326A19B629236079005748A7 /* BluetoothManager+CBPeripheralDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326A19B529236079005748A7 /* BluetoothManager+CBPeripheralDelegate.swift */; };
 		326A19C029236829005748A7 /* ResponseManager+SentenceEmbedding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326A19BF29236829005748A7 /* ResponseManager+SentenceEmbedding.swift */; };
+		326A19C3292383AD005748A7 /* SwiftCSV in Frameworks */ = {isa = PBXBuildFile; productRef = 326A19C2292383AD005748A7 /* SwiftCSV */; };
+		326A19C5292383B7005748A7 /* reason.csv in Resources */ = {isa = PBXBuildFile; fileRef = 326A19C4292383B7005748A7 /* reason.csv */; };
+		326A19C729238DAF005748A7 /* EmbeddingResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326A19C629238DAF005748A7 /* EmbeddingResult.swift */; };
 		32935052291B580B00D6AB10 /* ResponseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32935051291B580B00D6AB10 /* ResponseManager.swift */; };
 		32935054291B584100D6AB10 /* SelectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32935053291B584100D6AB10 /* SelectionState.swift */; };
 		3293505B291B5BB900D6AB10 /* EmergencyHelpActiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3293505A291B5BB900D6AB10 /* EmergencyHelpActiveView.swift */; };
@@ -44,6 +47,8 @@
 		326A19B329236063005748A7 /* ATMService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATMService.swift; sourceTree = "<group>"; };
 		326A19B529236079005748A7 /* BluetoothManager+CBPeripheralDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BluetoothManager+CBPeripheralDelegate.swift"; sourceTree = "<group>"; };
 		326A19BF29236829005748A7 /* ResponseManager+SentenceEmbedding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ResponseManager+SentenceEmbedding.swift"; sourceTree = "<group>"; };
+		326A19C4292383B7005748A7 /* reason.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = reason.csv; sourceTree = "<group>"; };
+		326A19C629238DAF005748A7 /* EmbeddingResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddingResult.swift; sourceTree = "<group>"; };
 		32935051291B580B00D6AB10 /* ResponseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseManager.swift; sourceTree = "<group>"; };
 		32935053291B584100D6AB10 /* SelectionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionState.swift; sourceTree = "<group>"; };
 		3293505A291B5BB900D6AB10 /* EmergencyHelpActiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyHelpActiveView.swift; sourceTree = "<group>"; };
@@ -72,6 +77,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				32935068291B65F800D6AB10 /* RNCryptor in Frameworks */,
+				326A19C3292383AD005748A7 /* SwiftCSV in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +105,7 @@
 		326A19BE2923614A005748A7 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
+				326A19C4292383B7005748A7 /* reason.csv */,
 				326A19B329236063005748A7 /* ATMService.swift */,
 			);
 			path = Constants;
@@ -120,6 +127,7 @@
 			children = (
 				32935053291B584100D6AB10 /* SelectionState.swift */,
 				32935064291B640600D6AB10 /* SentData.swift */,
+				326A19C629238DAF005748A7 /* EmbeddingResult.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -233,6 +241,7 @@
 			name = "OCBC Digital ATM";
 			packageProductDependencies = (
 				32935067291B65F800D6AB10 /* RNCryptor */,
+				326A19C2292383AD005748A7 /* SwiftCSV */,
 			);
 			productName = "OCBC Digital ATM";
 			productReference = 32FAD17A2919693F007C13DD /* OCBC Digital ATM.app */;
@@ -264,6 +273,7 @@
 			mainGroup = 32FAD1712919693F007C13DD;
 			packageReferences = (
 				32935066291B65F800D6AB10 /* XCRemoteSwiftPackageReference "RNCryptor" */,
+				326A19C1292383AD005748A7 /* XCRemoteSwiftPackageReference "SwiftCSV" */,
 			);
 			productRefGroup = 32FAD17B2919693F007C13DD /* Products */;
 			projectDirPath = "";
@@ -279,6 +289,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				326A19C5292383B7005748A7 /* reason.csv in Resources */,
 				326A19852923465D005748A7 /* url.txt in Resources */,
 				32FAD18529196940007C13DD /* Preview Assets.xcassets in Resources */,
 				32FAD18229196940007C13DD /* Assets.xcassets in Resources */,
@@ -298,6 +309,7 @@
 				326A199329235878005748A7 /* BluetoothManager.swift in Sources */,
 				32FAD1802919693F007C13DD /* ContentView.swift in Sources */,
 				3293509A2923253D00D6AB10 /* LoadingView.swift in Sources */,
+				326A19C729238DAF005748A7 /* EmbeddingResult.swift in Sources */,
 				32FAD1AE291A12A6007C13DD /* QuestionView.swift in Sources */,
 				32FAD1B0291A13DD007C13DD /* OpenEndedQuestion.swift in Sources */,
 				326A19B429236063005748A7 /* ATMService.swift in Sources */,
@@ -525,6 +537,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		326A19C1292383AD005748A7 /* XCRemoteSwiftPackageReference "SwiftCSV" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/swiftcsv/SwiftCSV";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.8.1;
+			};
+		};
 		32935066291B65F800D6AB10 /* XCRemoteSwiftPackageReference "RNCryptor" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/RNCryptor/RNCryptor";
@@ -536,6 +556,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		326A19C2292383AD005748A7 /* SwiftCSV */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 326A19C1292383AD005748A7 /* XCRemoteSwiftPackageReference "SwiftCSV" */;
+			productName = SwiftCSV;
+		};
 		32935067291B65F800D6AB10 /* RNCryptor */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 32935066291B65F800D6AB10 /* XCRemoteSwiftPackageReference "RNCryptor" */;
