@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		326A198329234641005748A7 /* GetURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326A198229234641005748A7 /* GetURL.swift */; };
 		326A19852923465D005748A7 /* url.txt in Resources */ = {isa = PBXBuildFile; fileRef = 326A19842923465D005748A7 /* url.txt */; };
+		326A199329235878005748A7 /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326A199229235878005748A7 /* BluetoothManager.swift */; };
+		326A19B229236049005748A7 /* BluetoothManager+CBCentralManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326A19B129236049005748A7 /* BluetoothManager+CBCentralManagerDelegate.swift */; };
+		326A19B429236063005748A7 /* ATMService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326A19B329236063005748A7 /* ATMService.swift */; };
+		326A19B629236079005748A7 /* BluetoothManager+CBPeripheralDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326A19B529236079005748A7 /* BluetoothManager+CBPeripheralDelegate.swift */; };
 		32935052291B580B00D6AB10 /* ResponseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32935051291B580B00D6AB10 /* ResponseManager.swift */; };
 		32935054291B584100D6AB10 /* SelectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32935053291B584100D6AB10 /* SelectionState.swift */; };
 		3293505B291B5BB900D6AB10 /* EmergencyHelpActiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3293505A291B5BB900D6AB10 /* EmergencyHelpActiveView.swift */; };
@@ -34,6 +38,10 @@
 /* Begin PBXFileReference section */
 		326A198229234641005748A7 /* GetURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetURL.swift; sourceTree = "<group>"; };
 		326A19842923465D005748A7 /* url.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = url.txt; path = ../url.txt; sourceTree = "<group>"; };
+		326A199229235878005748A7 /* BluetoothManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
+		326A19B129236049005748A7 /* BluetoothManager+CBCentralManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BluetoothManager+CBCentralManagerDelegate.swift"; sourceTree = "<group>"; };
+		326A19B329236063005748A7 /* ATMService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATMService.swift; sourceTree = "<group>"; };
+		326A19B529236079005748A7 /* BluetoothManager+CBPeripheralDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BluetoothManager+CBPeripheralDelegate.swift"; sourceTree = "<group>"; };
 		32935051291B580B00D6AB10 /* ResponseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseManager.swift; sourceTree = "<group>"; };
 		32935053291B584100D6AB10 /* SelectionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionState.swift; sourceTree = "<group>"; };
 		3293505A291B5BB900D6AB10 /* EmergencyHelpActiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyHelpActiveView.swift; sourceTree = "<group>"; };
@@ -76,11 +84,22 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		326A19B029236033005748A7 /* Bluetooth Manager */ = {
+			isa = PBXGroup;
+			children = (
+				326A199229235878005748A7 /* BluetoothManager.swift */,
+				326A19B529236079005748A7 /* BluetoothManager+CBPeripheralDelegate.swift */,
+				326A19B129236049005748A7 /* BluetoothManager+CBCentralManagerDelegate.swift */,
+			);
+			path = "Bluetooth Manager";
+			sourceTree = "<group>";
+		};
 		32935055291B5B2400D6AB10 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
 				32935051291B580B00D6AB10 /* ResponseManager.swift */,
 				32FAD1CB291B4E31007C13DD /* SpeechRecognizer.swift */,
+				326A19B029236033005748A7 /* Bluetooth Manager */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -90,6 +109,7 @@
 			children = (
 				32935053291B584100D6AB10 /* SelectionState.swift */,
 				32935064291B640600D6AB10 /* SentData.swift */,
+				326A19B329236063005748A7 /* ATMService.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -264,16 +284,20 @@
 				32935052291B580B00D6AB10 /* ResponseManager.swift in Sources */,
 				32FAD1AA291A0901007C13DD /* WelcomeView.swift in Sources */,
 				32FAD18E291973B0007C13DD /* ATMView.swift in Sources */,
+				326A199329235878005748A7 /* BluetoothManager.swift in Sources */,
 				32FAD1802919693F007C13DD /* ContentView.swift in Sources */,
 				3293509A2923253D00D6AB10 /* LoadingView.swift in Sources */,
 				32FAD1AE291A12A6007C13DD /* QuestionView.swift in Sources */,
 				32FAD1B0291A13DD007C13DD /* OpenEndedQuestion.swift in Sources */,
+				326A19B429236063005748A7 /* ATMService.swift in Sources */,
 				3293505D291B5BD000D6AB10 /* EmergencyHelpSliderView.swift in Sources */,
+				326A19B629236079005748A7 /* BluetoothManager+CBPeripheralDelegate.swift in Sources */,
 				32FAD1CC291B4E31007C13DD /* SpeechRecognizer.swift in Sources */,
 				3293505B291B5BB900D6AB10 /* EmergencyHelpActiveView.swift in Sources */,
 				326A198329234641005748A7 /* GetURL.swift in Sources */,
 				32935054291B584100D6AB10 /* SelectionState.swift in Sources */,
 				32FAD18C29196E09007C13DD /* HomeViewActionButton.swift in Sources */,
+				326A19B229236049005748A7 /* BluetoothManager+CBCentralManagerDelegate.swift in Sources */,
 				32935060291B5C4000D6AB10 /* CustomPageControl.swift in Sources */,
 				32935063291B606600D6AB10 /* ATMSuccessView.swift in Sources */,
 				32935065291B640600D6AB10 /* SentData.swift in Sources */,
@@ -410,6 +434,7 @@
 				DEVELOPMENT_TEAM = XL5JK4F896;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Connect to ATM";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Verify identity using biometric authentication";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Fraud prevention";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Fraud prevention";
@@ -442,6 +467,7 @@
 				DEVELOPMENT_TEAM = XL5JK4F896;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Connect to ATM";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Verify identity using biometric authentication";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Fraud prevention";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Fraud prevention";

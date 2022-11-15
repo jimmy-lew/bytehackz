@@ -11,6 +11,8 @@ struct ContentView: View {
     
     @State var isSheetPresented = false
     
+    @StateObject var bluetoothManager = BluetoothManager()
+    
     var body: some View {
         ZStack {
             VStack(spacing: 0) {
@@ -107,6 +109,16 @@ struct ContentView: View {
         }
         .sheet(isPresented: $isSheetPresented) {
             ATMView()
+        }
+        .onChange(of: bluetoothManager.isConnected) { isConnected in
+            if isConnected {
+                isSheetPresented = true
+            }
+        }
+        .onChange(of: isSheetPresented) { isSheetPresented in
+            if !isSheetPresented {
+                bluetoothManager.isConnected = false
+            }
         }
     }
 }
