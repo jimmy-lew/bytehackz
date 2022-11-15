@@ -70,6 +70,8 @@ struct OpenEndedQuestion: View {
                             .fontWeight(.bold)
                     }
                 }
+                .disabled(text.isEmpty)
+                .opacity(text.isEmpty ? 0.5 : 1)
                 .frame(height: 56)
             }
         }
