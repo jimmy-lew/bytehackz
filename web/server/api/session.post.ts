@@ -14,9 +14,7 @@ export default defineEventHandler(async (event) => {
 		}
 	}
 
-	// {randomUUID}-{currentTime}
-	const docID = `${randomUUID()}-${new Date().toLocaleTimeString('it-IT').replace(/:/g, '')}`
-	const session = await db.collection(`atm/${atmID}/sessions`).doc(docID).set({
+	const session: Session = {
 		accountNo,
 		isValidated: true,
 		isBioValidated: false,
@@ -26,8 +24,13 @@ export default defineEventHandler(async (event) => {
 		isEmergency: false,
 		appScore: 0,
 		overallScore: 0,
+		transcationType: '',
 		timeCreated: new Date(),
-	})
+	}
+
+	// {randomUUID}-{currentTime}
+	const docID = `${randomUUID()}-${new Date().toLocaleTimeString('it-IT').replace(/:/g, '')}`
+	await db.collection(`atm/${atmID}/sessions`).doc(docID).set(session)
 
 	return session
 })
