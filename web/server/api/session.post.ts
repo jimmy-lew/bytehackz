@@ -24,7 +24,7 @@ export default defineEventHandler(async (event) => {
 		isEmergency: false,
 		appScore: 0,
 		overallScore: 0,
-		transcationType: '',
+		transactionType: '',
 		timeCreated: new Date(),
 	}
 

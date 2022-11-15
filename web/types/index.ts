@@ -22,7 +22,7 @@ declare global {
 		isEmergency: boolean
 		appScore: number
 		overallScore: number
-		transcationType: string
+		transactionType: string
 		timeCreated: Date
 	}
 }
