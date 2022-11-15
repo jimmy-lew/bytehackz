@@ -19,7 +19,7 @@ export default defineEventHandler(async (event) => {
 		isValidated: true,
 		isBioValidated: false,
 		isTampered: false,
-		hasDistress: false,
+		fearScore: 0,
 		isFailure: false,
 		isEmergency: false,
 		appScore: 0,

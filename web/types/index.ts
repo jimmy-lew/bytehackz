@@ -21,9 +21,9 @@ declare global {
 		isValidated: boolean
 		isBioValidated: boolean
 		isTampered: boolean
-		hasDistress: boolean
 		isFailure: boolean
 		isEmergency: boolean
+		fearScore: number
 		appScore: number
 		overallScore: number
 		transactionID: string
