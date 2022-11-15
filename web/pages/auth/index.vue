@@ -3,10 +3,11 @@ import { doc, onSnapshot } from 'firebase/firestore'
 
 const docIdCookie = useCookie('doc_id')
 
-onSnapshot(doc(firestoreDb, 'atms/000001/sessions', docIdCookie.value), (doc) => {
-	const { isValidated } = doc.data()
-	if (isValidated)
-		navigateTo('/auth/biometrics')
+onSnapshot(doc(firestoreDb, 'atms/000001/sessions', docIdCookie.value), async (doc) => {
+	const { isBioValidated } = doc.data() || { isBioValidated: false }
+
+	if (isBioValidated)
+		await navigateTo('/services', { replace: true })
 })
 </script>
 
@@ -14,7 +15,7 @@ onSnapshot(doc(firestoreDb, 'atms/000001/sessions', docIdCookie.value), (doc) =>
 	<div class="p-12 relative w-full space-y-8">
 		<Modal force-open>
 			<div class="">
-				Please insert your card
+				Biometrics
 			</div>
 		</Modal>
 	</div>
