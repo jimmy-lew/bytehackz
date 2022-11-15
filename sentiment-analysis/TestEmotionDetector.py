@@ -28,6 +28,8 @@ while True:
     # detect faces available on camera
     num_faces = face_detector.detectMultiScale(gray_frame, scaleFactor=1.3, minNeighbors=5)
 
+
+
     # take each face available on the camera and Preprocess it
     for (x, y, w, h) in num_faces:
         cv2.rectangle(frame, (x, y-50), (x+w, y+h+10), (0, 255, 0), 4)
@@ -39,11 +41,16 @@ while True:
         maxindex = int(np.argmax(emotion_prediction))
         cv2.putText(frame, emotion_dict[maxindex], (x+5, y-20), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
 
+        if emotion_dict[maxindex] == "Fearful":
+            # to do list: post req
+            print('Success')
+
     cv2.imshow('Emotion Detection', frame)
-    if emotion_dict == "Fearful":
-        print("Fear has been detected")
+            
+    
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
+
 
 cap.release()
 cv2.destroyAllWindows()
