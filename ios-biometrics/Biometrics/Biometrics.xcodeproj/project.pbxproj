@@ -13,6 +13,8 @@
 		329350AF29232D5400D6AB10 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 329350AE29232D5400D6AB10 /* Preview Assets.xcassets */; };
 		329350B629232E3E00D6AB10 /* BiometricManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329350B529232E3E00D6AB10 /* BiometricManager.swift */; };
 		329350B82923315400D6AB10 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329350B72923315400D6AB10 /* CameraManager.swift */; };
+		329350BA2923401E00D6AB10 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329350B92923401E00D6AB10 /* User.swift */; };
+		329350BF2923406000D6AB10 /* User+Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329350BE2923406000D6AB10 /* User+Users.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,8 @@
 		329350AE29232D5400D6AB10 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		329350B529232E3E00D6AB10 /* BiometricManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricManager.swift; sourceTree = "<group>"; };
 		329350B72923315400D6AB10 /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
+		329350B92923401E00D6AB10 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		329350BE2923406000D6AB10 /* User+Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Users.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +40,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		326A19792923443C005748A7 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				329350B529232E3E00D6AB10 /* BiometricManager.swift */,
+				329350B72923315400D6AB10 /* CameraManager.swift */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+		326A197A29234446005748A7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				329350B92923401E00D6AB10 /* User.swift */,
+				329350BE2923406000D6AB10 /* User+Users.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		326A197B2923444B005748A7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				329350A929232D5200D6AB10 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		3293509B29232D5200D6AB10 = {
 			isa = PBXGroup;
 			children = (
@@ -56,9 +86,9 @@
 			isa = PBXGroup;
 			children = (
 				329350A729232D5200D6AB10 /* BiometricsApp.swift */,
-				329350A929232D5200D6AB10 /* ContentView.swift */,
-				329350B529232E3E00D6AB10 /* BiometricManager.swift */,
-				329350B72923315400D6AB10 /* CameraManager.swift */,
+				326A197B2923444B005748A7 /* Views */,
+				326A19792923443C005748A7 /* View Models */,
+				326A197A29234446005748A7 /* Models */,
 				329350AB29232D5400D6AB10 /* Assets.xcassets */,
 				329350AD29232D5400D6AB10 /* Preview Content */,
 			);
@@ -146,6 +176,8 @@
 				329350AA29232D5200D6AB10 /* ContentView.swift in Sources */,
 				329350A829232D5200D6AB10 /* BiometricsApp.swift in Sources */,
 				329350B82923315400D6AB10 /* CameraManager.swift in Sources */,
+				329350BF2923406000D6AB10 /* User+Users.swift in Sources */,
+				329350BA2923401E00D6AB10 /* User.swift in Sources */,
 				329350B629232E3E00D6AB10 /* BiometricManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

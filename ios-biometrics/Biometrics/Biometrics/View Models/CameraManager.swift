@@ -32,12 +32,7 @@ class CameraManager: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
     var frontCamera: AVCaptureDevice?
     var frontCameraInput: AVCaptureInput?
     
-    var userIDs = [
-        "be87fd5e-4349-4083-b419-8e24661bba10",
-        "367c4f10-8613-4eb0-a61b-cad7c67322f1",
-        "f33f888e-4a0f-4645-9ce5-baff42a5c7dc",
-        "3ac345e2-2a54-46f6-b811-ebdf7d321a74"
-    ]
+    var currentUserIndex = 0
     
     func run() {
         do {
@@ -99,17 +94,17 @@ class CameraManager: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
         output.capturePhoto(with: settings, delegate: self)
     }
     
-    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photoSampleBuffer: CMSampleBuffer?, previewPhoto previewPhotoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         if let error = error {
             print(error.localizedDescription)
             return
         }
         
-        if let sampleBuffer = photoSampleBuffer, let previewBuffer = previewPhotoSampleBuffer, let dataImage = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: sampleBuffer, previewPhotoSampleBuffer: previewBuffer) {
-            
+        if let dataImage = photo.fileDataRepresentation() {
             image = UIImage(data: dataImage)
             getImageColor(image: image!)
         }
+
     }
     
     func getImageColor(image: UIImage) {
@@ -137,6 +132,26 @@ class CameraManager: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
     }
     
     func sendUserID() {
+        let user = User.users[currentUserIndex % User.users.count]
         
+        let encodedData = user.toJSON()
+        
+        var urlRequest = URLRequest(url: URL(string: "https://bytehackz.vercel.app/api/session")!)
+        
+        urlRequest.httpMethod = "POST"
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        urlRequest.httpBody = encodedData
+        
+        URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+            if let error {
+                print("error:", error.localizedDescription)
+            } else if let response, let data {
+                let responseData = try? JSONSerialization.jsonObject(with: data)
+                print(responseData)
+            }
+        }.resume()
+        
+        currentUserIndex += 1
     }
 }
