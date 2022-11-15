@@ -4,7 +4,7 @@ import { collection, doc, getDoc, onSnapshot, setDoc } from 'firebase/firestore'
 const transactionStore = useTransactionStore()
 const userStore = useUserStore()
 
-const { setTransactionID } = transactionStore
+const { setTransaction } = transactionStore
 const { setUser } = userStore
 
 let isInitialLoad = true
@@ -19,14 +19,17 @@ onSnapshot(collection(firestoreDb, 'atms/000001/sessions'), (snapshot) => {
 		const docIdCookie = useCookie('doc_id')
 		const { uuid, transactionID } = docChange.doc.data()
 
-		setTransactionID(transactionID)
-
 		const transaction: Transaction = {
 			to: '',
 			from: '',
+			type: '',
+			timeCreated: new Date(),
 			amount: 0,
 			id: transactionID,
+			sessionID: docChange.doc.id,
 		}
+
+		setTransaction(transaction)
 
 		await setDoc(doc(firestoreDb, 'transactions', transactionID), transaction)
 
