@@ -16,7 +16,7 @@ struct LoadingView: View {
             
             Text("Uploading Responses…")
                 .font(.system(size: 32, weight: .bold))
-                .padding(.top)
+                .padding(.vertical)
             Text("Please wait.")
                 .font(.system(size: 16))
             

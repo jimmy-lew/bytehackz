@@ -24,7 +24,7 @@ struct ATMSuccessView: View {
             
             Text("You're all set!")
                 .font(.system(size: 32, weight: .bold))
-                .padding(.top)
+                .padding(.vertical)
             Text("Continue your transaction on the ATM.")
                 .font(.system(size: 16))
             Spacer()

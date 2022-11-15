@@ -26,7 +26,7 @@ struct ATMView: View {
                     QuestionView(selected: $tabSelection, selectionState: $responseManager.wasUserPressured)
                         .tag(1)
                     OpenEndedQuestion(text: $responseManager.purposeOfTransaction) {
-                        responseManager.calculateScore()
+                        responseManager.sendResult()
                     }
                     .tag(2)
                 }

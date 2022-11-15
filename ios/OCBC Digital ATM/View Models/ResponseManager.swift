@@ -18,33 +18,28 @@ class ResponseManager: ObservableObject {
     @Published var score: Double?
     @Published var isCompleted = false
     
-    func calculateScore() {
+    func sendResult() {
         isCompleted = false
-        var score = 0.0
+        
+        let score = calculateScore(with: purposeOfTransaction)
         
         let dataToSend = SentData(isFailure: wasUserPressured == .selectedYes || isEmergency,
                                   isEmergency: isEmergency,
-                                  appScore: score)
+                                  appScore: score).toJSON()
         
-        let encoder = JSONEncoder()
-        let encodedData = try! encoder.encode(dataToSend)
-        
-        print(String(data: encodedData, encoding: .utf8)!)
+        print(String(data: dataToSend, encoding: .utf8)!)
         
         var urlRequest = URLRequest(url: getURL(route: "/api/auth/confirm"))
         
         urlRequest.httpMethod = "POST"
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        urlRequest.httpBody = encodedData
+        urlRequest.httpBody = dataToSend
         
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             if let error {
                 print("error:", error.localizedDescription)
-            } else if let response, let data {
-                let responseData = try? JSONSerialization.jsonObject(with: data)
-                print(responseData)
-                
+            } else if let response  = response as? HTTPURLResponse, response.statusCode == 200 {
                 self.isCompleted = true
             }
             

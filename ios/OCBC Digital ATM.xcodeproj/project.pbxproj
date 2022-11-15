@@ -13,6 +13,7 @@
 		326A19B229236049005748A7 /* BluetoothManager+CBCentralManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326A19B129236049005748A7 /* BluetoothManager+CBCentralManagerDelegate.swift */; };
 		326A19B429236063005748A7 /* ATMService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326A19B329236063005748A7 /* ATMService.swift */; };
 		326A19B629236079005748A7 /* BluetoothManager+CBPeripheralDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326A19B529236079005748A7 /* BluetoothManager+CBPeripheralDelegate.swift */; };
+		326A19C029236829005748A7 /* ResponseManager+SentenceEmbedding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326A19BF29236829005748A7 /* ResponseManager+SentenceEmbedding.swift */; };
 		32935052291B580B00D6AB10 /* ResponseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32935051291B580B00D6AB10 /* ResponseManager.swift */; };
 		32935054291B584100D6AB10 /* SelectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32935053291B584100D6AB10 /* SelectionState.swift */; };
 		3293505B291B5BB900D6AB10 /* EmergencyHelpActiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3293505A291B5BB900D6AB10 /* EmergencyHelpActiveView.swift */; };
@@ -42,6 +43,7 @@
 		326A19B129236049005748A7 /* BluetoothManager+CBCentralManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BluetoothManager+CBCentralManagerDelegate.swift"; sourceTree = "<group>"; };
 		326A19B329236063005748A7 /* ATMService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATMService.swift; sourceTree = "<group>"; };
 		326A19B529236079005748A7 /* BluetoothManager+CBPeripheralDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BluetoothManager+CBPeripheralDelegate.swift"; sourceTree = "<group>"; };
+		326A19BF29236829005748A7 /* ResponseManager+SentenceEmbedding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ResponseManager+SentenceEmbedding.swift"; sourceTree = "<group>"; };
 		32935051291B580B00D6AB10 /* ResponseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseManager.swift; sourceTree = "<group>"; };
 		32935053291B584100D6AB10 /* SelectionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionState.swift; sourceTree = "<group>"; };
 		3293505A291B5BB900D6AB10 /* EmergencyHelpActiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyHelpActiveView.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				32935051291B580B00D6AB10 /* ResponseManager.swift */,
+				326A19BF29236829005748A7 /* ResponseManager+SentenceEmbedding.swift */,
 				32FAD1CB291B4E31007C13DD /* SpeechRecognizer.swift */,
 				326A19B029236033005748A7 /* Bluetooth Manager */,
 			);
@@ -304,6 +307,7 @@
 				3293505B291B5BB900D6AB10 /* EmergencyHelpActiveView.swift in Sources */,
 				326A198329234641005748A7 /* GetURL.swift in Sources */,
 				32935054291B584100D6AB10 /* SelectionState.swift in Sources */,
+				326A19C029236829005748A7 /* ResponseManager+SentenceEmbedding.swift in Sources */,
 				32FAD18C29196E09007C13DD /* HomeViewActionButton.swift in Sources */,
 				326A19B229236049005748A7 /* BluetoothManager+CBCentralManagerDelegate.swift in Sources */,
 				32935060291B5C4000D6AB10 /* CustomPageControl.swift in Sources */,
