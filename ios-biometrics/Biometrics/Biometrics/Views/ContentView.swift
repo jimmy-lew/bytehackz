@@ -13,15 +13,22 @@ struct ContentView: View {
     @StateObject var cameraManager = CameraManager()
     
     var body: some View {
-        if cameraManager.hasCard {
-            Image(systemName: "checkmark")
-                .font(.system(size: 36))
-        } else {
-            Image(systemName: "xmark")
-                .font(.system(size: 36))
-                .onAppear {
-                    cameraManager.run()
-                }
+        Group {
+            if cameraManager.successfullyAuthenticated {
+                Image(systemName: "checkmark")
+                    .font(.system(size: 36))
+            } else {
+                Image(systemName: "xmark")
+                    .font(.system(size: 36))
+                    .onAppear {
+                        cameraManager.run()
+                    }
+            }
+        }
+        .onChange(of: cameraManager.successfullyAuthenticated) { successfullyAuthenticated in
+            if successfullyAuthenticated {
+                biometricManager.authenticateUser()
+            }
         }
     }
 }

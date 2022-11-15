@@ -9,10 +9,26 @@ import Foundation
 import AVFoundation
 import UIKit
 
-class CameraManager: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
+class CameraManager: NSObject, ObservableObject {
     
-    @Published var image: UIImage?
-    @Published var hasCard: Bool = false
+    @Published var successfullyAuthenticated = false
+    
+    var image: UIImage?
+    var lastCardStateChange: Date?
+    
+    var hasCard: Bool = false {
+        didSet {
+            if oldValue != hasCard {
+                if hasCard {
+                    if abs((lastCardStateChange ?? .distantPast).timeIntervalSinceNow) > 3 {
+                        sendUserID()
+                    }
+                }
+                
+                lastCardStateChange = Date()
+            }
+        }
+    }
     
     var cardInsertedCount = 0 {
         didSet {
@@ -82,33 +98,7 @@ class CameraManager: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
         }
     }
     
-    func captureImage() {
-        let settings = AVCapturePhotoSettings()
-        
-        let previewPixelType = settings.availablePreviewPhotoPixelFormatTypes.first!
-        let previewFormat = [kCVPixelBufferPixelFormatTypeKey as String: previewPixelType,
-                             kCVPixelBufferWidthKey as String: 160,
-                             kCVPixelBufferHeightKey as String: 160]
-        settings.previewPhotoFormat = previewFormat
-        
-        output.capturePhoto(with: settings, delegate: self)
-    }
-    
-    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
-        if let error = error {
-            print(error.localizedDescription)
-            return
-        }
-        
-        if let dataImage = photo.fileDataRepresentation() {
-            image = UIImage(data: dataImage)
-            getImageColor(image: image!)
-        }
-
-    }
-    
     func getImageColor(image: UIImage) {
-        
         DispatchQueue.global(qos: .userInitiated).async {
             let pixelData = image.cgImage!.dataProvider!.data
             let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
@@ -146,12 +136,40 @@ class CameraManager: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             if let error {
                 print("error:", error.localizedDescription)
-            } else if let response, let data {
-                let responseData = try? JSONSerialization.jsonObject(with: data)
-                print(responseData)
+            } else if let response = response as? HTTPURLResponse, response.statusCode == 200 {
+                DispatchQueue.main.async {
+                    self.successfullyAuthenticated = true
+                }
             }
         }.resume()
         
         currentUserIndex += 1
+    }
+}
+
+extension CameraManager: AVCapturePhotoCaptureDelegate {
+    func captureImage() {
+        let settings = AVCapturePhotoSettings()
+        
+        let previewPixelType = settings.availablePreviewPhotoPixelFormatTypes.first!
+        let previewFormat = [kCVPixelBufferPixelFormatTypeKey as String: previewPixelType,
+                             kCVPixelBufferWidthKey as String: 160,
+                             kCVPixelBufferHeightKey as String: 160]
+        settings.previewPhotoFormat = previewFormat
+        
+        output.capturePhoto(with: settings, delegate: self)
+    }
+    
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        if let error = error {
+            print(error.localizedDescription)
+            return
+        }
+        
+        if let dataImage = photo.fileDataRepresentation() {
+            image = UIImage(data: dataImage)
+            getImageColor(image: image!)
+        }
+        
     }
 }
