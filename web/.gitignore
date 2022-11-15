@@ -10,5 +10,6 @@ dist
 
 pages/playground
 components/Test
+server/api/test
 
 # auth.json
