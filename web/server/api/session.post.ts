@@ -4,20 +4,18 @@ import { db } from './lib/firebase'
 export default defineEventHandler(async (event) => {
 	const body = await useBody(event)
 
-	const { accountNo } = body
+	const { uuid } = body
 
 	const atmID = '000001'
 
-	if (!accountNo) {
+	if (!uuid) {
 		return {
 			error: 'missing account number',
 		}
 	}
 
-	// {randomUUID}-{currentTime}
-	const docID = `${randomUUID()}-${new Date().toLocaleTimeString('it-IT').replace(/:/g, '')}`
-	const session = await db.collection(`atm/${atmID}/sessions`).doc(docID).set({
-		accountNo,
+	const session: Session = {
+		uuid,
 		isValidated: true,
 		isBioValidated: false,
 		isTampered: false,
@@ -26,8 +24,13 @@ export default defineEventHandler(async (event) => {
 		isEmergency: false,
 		appScore: 0,
 		overallScore: 0,
+		transcationType: '',
 		timeCreated: new Date(),
-	})
+	}
+
+	// {randomUUID}-{currentTime}
+	const docID = `${randomUUID()}-${new Date().toLocaleTimeString('it-IT').replace(/:/g, '')}`
+	await db.collection(`atm/${atmID}/sessions`).doc(docID).set(session)
 
 	return session
 })
