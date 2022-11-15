@@ -136,7 +136,7 @@ class CameraManager: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
         
         let encodedData = user.toJSON()
         
-        var urlRequest = URLRequest(url: URL(string: "https://bytehackz.vercel.app/api/session")!)
+        var urlRequest = URLRequest(url: getURL(route: "/api/session"))
         
         urlRequest.httpMethod = "POST"
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		326A197D29234514005748A7 /* url.txt in Resources */ = {isa = PBXBuildFile; fileRef = 326A197C29234514005748A7 /* url.txt */; };
+		326A1980292345D0005748A7 /* GetURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326A197F292345D0005748A7 /* GetURL.swift */; };
 		329350A829232D5200D6AB10 /* BiometricsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329350A729232D5200D6AB10 /* BiometricsApp.swift */; };
 		329350AA29232D5200D6AB10 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329350A929232D5200D6AB10 /* ContentView.swift */; };
 		329350AC29232D5400D6AB10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 329350AB29232D5400D6AB10 /* Assets.xcassets */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		326A197C29234514005748A7 /* url.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = url.txt; path = ../../url.txt; sourceTree = "<group>"; };
+		326A197F292345D0005748A7 /* GetURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetURL.swift; sourceTree = "<group>"; };
 		329350A429232D5200D6AB10 /* Biometrics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Biometrics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		329350A729232D5200D6AB10 /* BiometricsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricsApp.swift; sourceTree = "<group>"; };
 		329350A929232D5200D6AB10 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -66,9 +70,18 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		326A197E292345C9005748A7 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				326A197F292345D0005748A7 /* GetURL.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		3293509B29232D5200D6AB10 = {
 			isa = PBXGroup;
 			children = (
+				326A197C29234514005748A7 /* url.txt */,
 				329350A629232D5200D6AB10 /* Biometrics */,
 				329350A529232D5200D6AB10 /* Products */,
 			);
@@ -90,6 +103,7 @@
 				326A19792923443C005748A7 /* View Models */,
 				326A197A29234446005748A7 /* Models */,
 				329350AB29232D5400D6AB10 /* Assets.xcassets */,
+				326A197E292345C9005748A7 /* Utils */,
 				329350AD29232D5400D6AB10 /* Preview Content */,
 			);
 			path = Biometrics;
@@ -161,6 +175,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				326A197D29234514005748A7 /* url.txt in Resources */,
 				329350AF29232D5400D6AB10 /* Preview Assets.xcassets in Resources */,
 				329350AC29232D5400D6AB10 /* Assets.xcassets in Resources */,
 			);
@@ -178,6 +193,7 @@
 				329350B82923315400D6AB10 /* CameraManager.swift in Sources */,
 				329350BF2923406000D6AB10 /* User+Users.swift in Sources */,
 				329350BA2923401E00D6AB10 /* User.swift in Sources */,
+				326A1980292345D0005748A7 /* GetURL.swift in Sources */,
 				329350B629232E3E00D6AB10 /* BiometricManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
