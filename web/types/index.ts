@@ -34,6 +34,9 @@ declare global {
 		id: string
 		to: string
 		from: string
+		type: string
+		sessionID: string
+		timeCreated: Date
 		amount: number
 	}
 

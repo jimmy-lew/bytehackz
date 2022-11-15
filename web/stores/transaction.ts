@@ -1,22 +1,22 @@
 import { defineStore } from 'pinia'
 
 export const useTransactionStore = defineStore('transaction', () => {
-	const transactionID = ref('')
+	const transaction = ref<Transaction>(null)
 	const transactionTo = ref('')
 	const transactionFrom = ref('')
 	const transactionAmount = ref(0)
 
-	const setTransactionID = (id: string) => transactionID.value = id
-	const setTransactionTo = (accNo: string) => transactionTo.value = accNo
-	const setTransactionFrom = (accNo: string) => transactionFrom.value = accNo
-	const setTransactionAmount = (amount: number) => transactionAmount.value = amount
+	const setTransaction = (currentTransaction: any) => transaction.value = currentTransaction
+	const setTransactionTo = (accNo: string) => transaction.value.to = accNo
+	const setTransactionFrom = (accNo: string) => transaction.value.from = accNo
+	const setTransactionAmount = (amount: number) => transaction.value.amount = amount
 
 	return {
-		transactionID,
+		transaction,
 		transactionTo,
 		transactionFrom,
 		transactionAmount,
-		setTransactionID,
+		setTransaction,
 		setTransactionFrom,
 		setTransactionTo,
 		setTransactionAmount,

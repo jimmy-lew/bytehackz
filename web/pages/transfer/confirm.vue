@@ -2,18 +2,12 @@
 import { doc, getDoc } from 'firebase/firestore'
 
 const transactionStore = useTransactionStore()
-const { transactionID, transactionTo, transactionFrom, transactionAmount } = transactionStore
+const { transaction } = transactionStore
+const { amount, to } = transaction
 
 const mode = 'Non-immediate transfer'
 
 const handleClick = async () => {
-	const transaction: Transaction = {
-		id: transactionID,
-		to: transactionTo,
-		from: transactionFrom,
-		amount: transactionAmount,
-	}
-
 	await useFetch('/api/transaction/transfer', {
 		method: 'POST',
 		body: transaction,
@@ -23,7 +17,7 @@ const handleClick = async () => {
 
 const recipient = ref<Nullable<any>>(null)
 
-recipient.value = await getDoc(doc(firestoreDb, 'accounts', transactionTo)).then(async (docSnap) => {
+recipient.value = await getDoc(doc(firestoreDb, 'accounts', to)).then(async (docSnap) => {
 	if (!docSnap.exists())
 		return null
 	const { uuid } = docSnap.data()
@@ -46,7 +40,7 @@ recipient.value = await getDoc(doc(firestoreDb, 'accounts', transactionTo)).then
 						Amount
 					</p>
 					<h2 class="font-semibold text-xl whitespace-nowrap">
-						S$ {{ transactionAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") }}
+						S$ {{ amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") }}
 					</h2>
 				</div>
 				<div class="inline-flex items-center">
@@ -60,7 +54,7 @@ recipient.value = await getDoc(doc(firestoreDb, 'accounts', transactionTo)).then
 						{{ recipient.name.toUpperCase() }}
 					</h2>
 					<p class="font-semibold text-sm whitespace-nowrap">
-						{{ transactionTo }}
+						{{ to }}
 						<br>
 						{{ recipient.bank }}
 					</p>
