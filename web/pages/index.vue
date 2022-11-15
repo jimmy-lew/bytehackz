@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import { collection, onSnapshot } from 'firebase/firestore'
 
+const transactionStore = useTransactionStore()
+
+const { setTransactionID } = transactionStore
+
 let isInitialLoad = true
 
-onSnapshot(collection(firestoreDb, 'atm/000001/sessions'), (snapshot) => {
+onSnapshot(collection(firestoreDb, 'atms/000001/sessions'), (snapshot) => {
 	if (isInitialLoad) {
 		isInitialLoad = false
 		return
@@ -12,6 +16,10 @@ onSnapshot(collection(firestoreDb, 'atm/000001/sessions'), (snapshot) => {
 	snapshot.docChanges().forEach((docChange) => {
 		const { doc } = docChange
 		const docIdCookie = useCookie('doc_id')
+		const { uuid, transactionID } = doc.data()
+
+		setTransactionID(transactionID)
+
 		docIdCookie.value = doc.id
 		navigateTo('/auth')
 	})

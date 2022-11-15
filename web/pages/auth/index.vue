@@ -3,7 +3,7 @@ import { doc, onSnapshot } from 'firebase/firestore'
 
 const docIdCookie = useCookie('doc_id')
 
-onSnapshot(doc(firestoreDb, 'atm/000001/sessions', docIdCookie.value), (doc) => {
+onSnapshot(doc(firestoreDb, 'atms/000001/sessions', docIdCookie.value), (doc) => {
 	const { isValidated } = doc.data()
 	if (isValidated)
 		navigateTo('/auth/biometrics')

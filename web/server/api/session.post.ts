@@ -30,7 +30,7 @@ export default defineEventHandler(async (event) => {
 
 	// {randomUUID}-{currentTime}
 	const docID = `${randomUUID()}-${new Date().toLocaleTimeString('it-IT').replace(/:/g, '')}`
-	await db.collection(`atm/${atmID}/sessions`).doc(docID).set(session)
+	await db.collection(`atms/${atmID}/sessions`).doc(docID).set(session)
 
 	return session
 })
