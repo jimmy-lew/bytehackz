@@ -20,8 +20,6 @@
 					<Icon size="36" name="heroicons:arrows-right-left-20-solid" />
 				</LinkCard>
 			</ul>
-			<!-- <div class="flex w-1/2 gap-8">
-			</div> -->
 			<TheCashRadialMenu />
 			<div class="ml-auto">
 				<LinkCard title="More" href="/services/more" class="h-2/3">
