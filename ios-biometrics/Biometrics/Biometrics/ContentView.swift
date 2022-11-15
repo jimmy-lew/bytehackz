@@ -10,14 +10,19 @@ import SwiftUI
 struct ContentView: View {
     
     @StateObject var biometricManager = BiometricManager()
+    @StateObject var cameraManager = CameraManager()
     
     var body: some View {
-        Color.black
-            .edgesIgnoringSafeArea(.all)
-            .statusBarHidden()
-            .onAppear {
-                biometricManager.authenticateUser()
-            }
+        if cameraManager.hasCard {
+            Image(systemName: "checkmark")
+                .font(.system(size: 36))
+        } else {
+            Image(systemName: "xmark")
+                .font(.system(size: 36))
+                .onAppear {
+                    cameraManager.run()
+                }
+        }
     }
 }
 

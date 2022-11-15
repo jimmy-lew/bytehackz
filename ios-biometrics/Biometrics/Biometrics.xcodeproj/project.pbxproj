@@ -12,6 +12,7 @@
 		329350AC29232D5400D6AB10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 329350AB29232D5400D6AB10 /* Assets.xcassets */; };
 		329350AF29232D5400D6AB10 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 329350AE29232D5400D6AB10 /* Preview Assets.xcassets */; };
 		329350B629232E3E00D6AB10 /* BiometricManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329350B529232E3E00D6AB10 /* BiometricManager.swift */; };
+		329350B82923315400D6AB10 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329350B72923315400D6AB10 /* CameraManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		329350AB29232D5400D6AB10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		329350AE29232D5400D6AB10 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		329350B529232E3E00D6AB10 /* BiometricManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricManager.swift; sourceTree = "<group>"; };
+		329350B72923315400D6AB10 /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 				329350A729232D5200D6AB10 /* BiometricsApp.swift */,
 				329350A929232D5200D6AB10 /* ContentView.swift */,
 				329350B529232E3E00D6AB10 /* BiometricManager.swift */,
+				329350B72923315400D6AB10 /* CameraManager.swift */,
 				329350AB29232D5400D6AB10 /* Assets.xcassets */,
 				329350AD29232D5400D6AB10 /* Preview Content */,
 			);
@@ -142,6 +145,7 @@
 			files = (
 				329350AA29232D5200D6AB10 /* ContentView.swift in Sources */,
 				329350A829232D5200D6AB10 /* BiometricsApp.swift in Sources */,
+				329350B82923315400D6AB10 /* CameraManager.swift in Sources */,
 				329350B629232E3E00D6AB10 /* BiometricManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -274,12 +278,14 @@
 				DEVELOPMENT_TEAM = XL5JK4F896;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "to scan cards";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = auth;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -304,12 +310,14 @@
 				DEVELOPMENT_TEAM = XL5JK4F896;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "to scan cards";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = auth;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
