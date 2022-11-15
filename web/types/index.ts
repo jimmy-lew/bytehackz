@@ -22,11 +22,12 @@ declare global {
 		isEmergency: boolean
 		appScore: number
 		overallScore: number
-		transactionType: string
+		transactionID: string
 		timeCreated: Date
 	}
 
 	interface Transaction {
+		id: string
 		to: string
 		from: string
 		amount: number
