@@ -25,4 +25,10 @@ declare global {
 		transactionType: string
 		timeCreated: Date
 	}
+
+	interface Transaction {
+		to: string
+		from: string
+		amount: number
+	}
 }
