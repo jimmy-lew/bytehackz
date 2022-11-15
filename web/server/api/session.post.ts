@@ -24,13 +24,13 @@ export default defineEventHandler(async (event) => {
 		isEmergency: false,
 		appScore: 0,
 		overallScore: 0,
-		transcationType: '',
+		transactionID: randomUUID(),
 		timeCreated: new Date(),
 	}
 
 	// {randomUUID}-{currentTime}
 	const docID = `${randomUUID()}-${new Date().toLocaleTimeString('it-IT').replace(/:/g, '')}`
-	await db.collection(`atm/${atmID}/sessions`).doc(docID).set(session)
+	await db.collection(`atms/${atmID}/sessions`).doc(docID).set(session)
 
 	return session
 })

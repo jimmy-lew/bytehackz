@@ -6,7 +6,7 @@ export default defineEventHandler(async (event) => {
 	const { isFailure, isEmergency, appScore } = body
 
 	const atmID = '000001'
-	const collection = `atm/${atmID}/sessions`
+	const collection = `atms/${atmID}/sessions`
 
 	const atmSessionsSnapshot = await db
 		.collection(collection)

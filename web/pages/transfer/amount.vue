@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const keyStore = useKeyInputStore()
-const accStore = useAccountStore()
-const { setTransactionAmount } = accStore
+const transactionStore = useTransactionStore()
+const { setTransactionAmount } = transactionStore
 
 const {
 	input,

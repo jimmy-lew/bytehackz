@@ -2,14 +2,18 @@ export { }
 
 declare global {
 	interface Account {
+		uuid: string
+		balance: number
+	}
+
+	interface User {
 		name: string
-		accountNo?: string
-		guardianAccountNo: string
+		accounts: string[]
+		guardianUUID: string
 		dateOfBirth: Date
 		occupation: string
 		bank: string
 		monthlyIncome: number
-		balance: number
 	}
 
 	interface Session {
@@ -22,7 +26,14 @@ declare global {
 		isEmergency: boolean
 		appScore: number
 		overallScore: number
-		transcationType: string
+		transactionID: string
 		timeCreated: Date
+	}
+
+	interface Transaction {
+		id: string
+		to: string
+		from: string
+		amount: number
 	}
 }

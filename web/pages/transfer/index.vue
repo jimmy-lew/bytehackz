@@ -1,9 +1,9 @@
 <script setup lang="ts">
-const accStore = useAccountStore()
-const { setTransferFrom } = accStore
+const transactionStore = useTransactionStore()
+const { setTransactionFrom } = transactionStore
 
 const handleClick = (accNo: string) => {
-	setTransferFrom(accNo)
+	setTransactionFrom(accNo)
 	navigateTo('/transfer/to')
 }
 </script>

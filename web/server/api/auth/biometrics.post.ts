@@ -1,17 +1,18 @@
 import { db } from '../lib/firebase'
 
 export default defineEventHandler(async (event) => {
-	const { auth } = getQuery(event)
+	const { auth, isEmergency } = getQuery(event)
 
 	const atmTransactionsSnapshot = await db
-		.collection('atm')
+		.collection('atms')
 		.orderBy('timeCreated')
 		.limitToLast(1)
 		.get()
 
 	const transactions = atmTransactionsSnapshot.docs.map((doc) => {
-		db.collection('atm').doc(doc.id).update({
+		db.collection('atms').doc(doc.id).update({
 			isBioValidated: !!(parseInt(auth.toString())),
+			isEmergency,
 		})
 
 		return {
