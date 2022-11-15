@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { collection, onSnapshot } from 'firebase/firestore'
+import { collection, doc, getDoc, onSnapshot, setDoc } from 'firebase/firestore'
 
 const transactionStore = useTransactionStore()
+const userStore = useUserStore()
 
 const { setTransactionID } = transactionStore
+const { setUser } = userStore
 
 let isInitialLoad = true
 
@@ -13,22 +15,34 @@ onSnapshot(collection(firestoreDb, 'atms/000001/sessions'), (snapshot) => {
 		return
 	}
 
-	snapshot.docChanges().forEach((docChange) => {
-		const { doc } = docChange
+	snapshot.docChanges().forEach(async (docChange) => {
 		const docIdCookie = useCookie('doc_id')
-		const { uuid, transactionID } = doc.data()
+		const { uuid, transactionID } = docChange.doc.data()
 
 		setTransactionID(transactionID)
 
-		docIdCookie.value = doc.id
-		navigateTo('/auth')
+		const transaction: Transaction = {
+			to: '',
+			from: '',
+			amount: 0,
+			id: transactionID,
+		}
+
+		await setDoc(doc(firestoreDb, 'transactions', transactionID), transaction)
+
+		const user = await getDoc(doc(firestoreDb, 'users', uuid))
+
+		setUser(user.data())
+
+		docIdCookie.value = docChange.doc.id
+		navigateTo('/auth/')
 	})
 })
 </script>
 
 <template>
 	<div class="p-12 relative w-full space-y-8">
-		<Header username="Jimmy" />
+		<!-- <Header username="Jimmy" />
 		<Banner>
 			<Icon size="24" name="maki:caution" />
 			<span>Scam warning banner</span>
@@ -45,8 +59,6 @@ onSnapshot(collection(firestoreDb, 'atms/000001/sessions'), (snapshot) => {
 					<Icon size="36" name="heroicons:arrows-right-left-20-solid" />
 				</LinkCard>
 			</ul>
-			<!-- <div class="flex w-1/2 gap-8">
-			</div> -->
 			<TheCashRadialMenu />
 			<div class="ml-auto">
 				<LinkCard title="More" href="/services" class="h-2/3">
@@ -56,6 +68,6 @@ onSnapshot(collection(firestoreDb, 'atms/000001/sessions'), (snapshot) => {
 		</div>
 		<Modal>
 			Sample Scam Warning Modal
-		</Modal>
+		</Modal> -->
 	</div>
 </template>
