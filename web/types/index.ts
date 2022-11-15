@@ -36,4 +36,6 @@ declare global {
 		from: string
 		amount: number
 	}
+
+	type Nullable<T> = T | null
 }
