@@ -13,7 +13,7 @@ declare global {
 	}
 
 	interface Session {
-		accountNo: string
+		uuid: string
 		isValidated: boolean
 		isBioValidated: boolean
 		isTampered: boolean

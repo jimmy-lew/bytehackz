@@ -4,18 +4,18 @@ import { db } from './lib/firebase'
 export default defineEventHandler(async (event) => {
 	const body = await useBody(event)
 
-	const { accountNo } = body
+	const { uuid } = body
 
 	const atmID = '000001'
 
-	if (!accountNo) {
+	if (!uuid) {
 		return {
 			error: 'missing account number',
 		}
 	}
 
 	const session: Session = {
-		accountNo,
+		uuid,
 		isValidated: true,
 		isBioValidated: false,
 		isTampered: false,
