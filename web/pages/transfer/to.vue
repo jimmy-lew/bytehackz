@@ -7,6 +7,7 @@ const {
 	input,
 } = toRefs(keyStore)
 
+const { clearInput } = keyStore
 const accountNo = computed(() => {
 	let accNo = input.value
 
@@ -18,11 +19,12 @@ const accountNo = computed(() => {
 })
 
 const handleClick = () => {
-	if (input.value.length < 10)
+	if (input.value.length < 10 || input.value.length === 11)
 		return
 
 	setTransferTo(accountNo.value)
-	navigateTo('/transfer/confirm')
+	clearInput()
+	navigateTo('/transfer/amount')
 }
 </script>
 
