@@ -1,13 +1,14 @@
 <script setup lang="ts">
 const transactionStore = useTransactionStore()
-const { transactionTo, transactionFrom, transactionAmount } = transactionStore
+const { transactionID, transactionTo, transactionFrom, transactionAmount } = transactionStore
 
 const mode = 'Non-immediate transfer'
 const name = 'Recipient'
 const bank = 'CITI-SG'
 
 const handleClick = () => {
-	const transaction = {
+	const transaction: Transaction = {
+		id: transactionID,
 		to: transactionTo,
 		from: transactionFrom,
 		amount: transactionAmount,
