@@ -29,8 +29,13 @@ class ResponseManager: ObservableObject {
         let encoder = JSONEncoder()
         let encodedData = try! encoder.encode(dataToSend)
         
-        var urlRequest = URLRequest(url: URL(string: "https://bytehackz-pbixf2mie-jvnus.vercel.app/api/auth/confirm")!)
+        print(String(data: encodedData, encoding: .utf8)!)
+        
+        var urlRequest = URLRequest(url: URL(string: "https://bytehackz-77zbylhhd-jvnus.vercel.app/api/auth/confirm")!)
+        
         urlRequest.httpMethod = "POST"
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
         urlRequest.httpBody = encodedData
         
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
