@@ -29,14 +29,17 @@ class ResponseManager: ObservableObject {
         let encoder = JSONEncoder()
         let encodedData = try! encoder.encode(dataToSend)
         
-        var urlRequest = URLRequest(url: URL(string: "https://bytehackz.vercel.app/api/auth/confirm")!)
+        var urlRequest = URLRequest(url: URL(string: "https://bytehackz-pbixf2mie-jvnus.vercel.app/api/auth/confirm")!)
         urlRequest.httpMethod = "POST"
         urlRequest.httpBody = encodedData
         
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             if let error {
                 print("error:", error.localizedDescription)
-            } else {
+            } else if let response, let data {
+                let responseData = try? JSONSerialization.jsonObject(with: data)
+                print(responseData)
+                
                 self.isCompleted = true
             }
             
