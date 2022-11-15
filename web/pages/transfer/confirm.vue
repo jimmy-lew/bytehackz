@@ -6,7 +6,7 @@ const mode = 'Non-immediate transfer'
 const name = 'Recipient'
 const bank = 'CITI-SG'
 
-const handleClick = () => {
+const handleClick = async () => {
 	const transaction: Transaction = {
 		id: transactionID,
 		to: transactionTo,
@@ -14,11 +14,11 @@ const handleClick = () => {
 		amount: transactionAmount,
 	}
 
-	useFetch('/api/transaction/transfer', {
+	await useFetch('/api/transaction/transfer', {
 		method: 'POST',
 		body: transaction,
 	})
-	navigateTo('/')
+	await navigateTo('/')
 }
 </script>
 
