@@ -1,15 +1,38 @@
 <script setup lang="ts">
+const keyStore = useKeyInputStore()
 const accStore = useAccountStore()
-const { transferFrom, transferTo } = accStore
+const { setTransactionAmount } = accStore
+
+const {
+	input,
+} = toRefs(keyStore)
+
+const { clearInput } = keyStore
+
+const handleClick = () => {
+	setTransactionAmount(parseInt(input.value))
+	clearInput()
+	navigateTo('/transfer/confirm')
+}
 </script>
 
 <template>
-	<div>
-		{{ transferFrom }}
-		{{ transferTo }}
-	</div>
+	<NuxtLayout name="transfer">
+		<template #left>
+			<div class="flex flex-col items-center h-full">
+				Enter amount
+				<div class="mt-4 text-4xl">
+					{{ input }}
+				</div>
+				<button class="mt-auto btn relative w-1/2 glass-outline rounded-md" @click="handleClick">
+					Confirm
+				</button>
+			</div>
+		</template>
+		<template #right>
+			<div class="flex items-center justify-center w-full">
+				<TheVirtualKeyBoard />
+			</div>
+		</template>
+	</NuxtLayout>
 </template>
-
-<style scoped>
-
-</style>

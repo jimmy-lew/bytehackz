@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const accStore = useAccountStore()
-const { transferTo } = accStore
+const { transferTo, transactionAmount } = accStore
 
 const amount = 25001
 const account: Account = {
@@ -12,6 +12,10 @@ const account: Account = {
 const mode = 'Non-immediate transfer'
 
 const { name, accountNumber, bank, balance } = account
+
+const handleClick = () => {
+	navigateTo('/')
+}
 </script>
 
 <template>
@@ -26,7 +30,7 @@ const { name, accountNumber, bank, balance } = account
 						Amount
 					</p>
 					<h2 class="font-semibold text-xl whitespace-nowrap">
-						S$ {{ amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") }}
+						S$ {{ transactionAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") }}
 					</h2>
 				</div>
 				<div class="inline-flex items-center">
