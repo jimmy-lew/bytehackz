@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @StateObject var biometricManager = BiometricManager()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
+        Color.black
+            .edgesIgnoringSafeArea(.all)
+            .statusBarHidden()
+            .onAppear {
+                biometricManager.authenticateUser()
+            }
     }
 }
 
