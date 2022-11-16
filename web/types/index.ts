@@ -13,6 +13,7 @@ declare global {
 		dateOfBirth: Date
 		occupation: string
 		bank: string
+		accountCreationDate: Date
 		monthlyIncome: number
 	}
 
@@ -34,7 +35,7 @@ declare global {
 		id: string
 		to: string
 		from: string
-		type: string
+		type?: string
 		sessionID: string
 		timeCreated: Date
 		amount: number
