@@ -2,11 +2,10 @@
 </script>
 
 <template>
-	<div class="p-12 relative w-full space-y-8">
+	<div class="p-12 relative w-full space-y-6">
 		<Header username="Jimmy" />
 		<Banner>
-			<Icon size="24" name="maki:caution" />
-			<span>Scam warning banner</span>
+			<img src="/Banner.svg" alt="" class="h-[4.5rem] rounded object-fill w-full">
 		</Banner>
 		<div class="flex gap-8">
 			<LinkCard title="Withdrawal" href="/withdraw">
@@ -28,7 +27,7 @@
 			</div>
 		</div>
 		<Modal>
-			Sample Scam Warning Modal
+			<img src="/Modal.svg" alt="">
 		</Modal>
 	</div>
 </template>
