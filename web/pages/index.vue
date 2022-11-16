@@ -49,7 +49,5 @@ onSnapshot(collection(firestoreDb, 'atms/000001/sessions'), (snapshot) => {
 </script>
 
 <template>
-	<div class="p-12 relative w-full space-y-8">
-		Home
-	</div>
+	<img src="/Screensaver1.svg" alt="">
 </template>
