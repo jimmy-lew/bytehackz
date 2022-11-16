@@ -458,6 +458,7 @@
 				DEVELOPMENT_TEAM = XL5JK4F896;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "OCBC Digital";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Connect to ATM";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Verify identity using biometric authentication";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Fraud prevention";
@@ -491,6 +492,7 @@
 				DEVELOPMENT_TEAM = XL5JK4F896;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "OCBC Digital";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Connect to ATM";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Verify identity using biometric authentication";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Fraud prevention";
