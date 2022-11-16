@@ -15,6 +15,9 @@ const handleClick = async () => {
 
 	const validationScore = data.value || 1
 
+	const scs = useCookie('SCS')
+	scs.value = validationScore.toString()
+
 	if (validationScore > 0.7) {
 		await navigateTo('/auth/scam')
 		return
@@ -47,7 +50,7 @@ recipient.value = await getDoc(doc(firestoreDb, 'accounts', to)).then(async (doc
 			Transfer Confirmation
 		</h1>
 		<div class="mx-12">
-			<div class="card card-compact bg-base-100 relative glass-outline rounded-md shadow mb-4 p-6 flex-row w-96">
+			<div class="card card-compact bg-base-100 relative glass-outline rounded-md shadow mb-4 p-6 flex-row w-[420px]">
 				<div class="flex w-1/2 justify-end">
 					<div class="flex flex-col content-end mr-auto">
 						<p class="text-sm mb-2 h-5">
