@@ -54,14 +54,12 @@ while True:
         cv2.putText(frame, emotion_dict[maxindex], (x+5, y-20), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
 
         # fearful emotion detected
-        if emotion_dict[maxindex] == "Fearful":
-            
-            if last_request_date == None or (dt.datetime.now() - last_request_date).total_seconds() > 5:
-                last_request_date = dt.datetime.now()
+        if last_request_date == None or (dt.datetime.now() - last_request_date).total_seconds() > 10:
+            last_request_date = dt.datetime.now()
 
-                fearful_confidence = float(emotion_prediction[0][2])
-                
-                asyncio.run(send_request(fearful_confidence)) 
+            fearful_confidence = float(emotion_prediction[0][2])
+            
+            asyncio.run(send_request(fearful_confidence)) 
     cv2.imshow('Emotion Detection', frame)
     
     if cv2.waitKey(1) & 0xFF == ord('q'):
