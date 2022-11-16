@@ -8,6 +8,7 @@ const { setTransaction } = transactionStore
 const { setUser } = userStore
 
 let isInitialLoad = true
+let isCreated = false
 
 onSnapshot(collection(firestoreDb, 'atms/000001/sessions'), (snapshot) => {
 	if (isInitialLoad) {
@@ -31,7 +32,10 @@ onSnapshot(collection(firestoreDb, 'atms/000001/sessions'), (snapshot) => {
 
 		setTransaction(transaction)
 
-		await setDoc(doc(firestoreDb, 'transactions', transactionID), transaction)
+		if (!isCreated) {
+			await setDoc(doc(firestoreDb, 'transactions', transactionID), transaction)
+			isCreated = true
+		}
 
 		// TODO: Create converter
 		const user = await getDoc(doc(firestoreDb, 'users', uuid))
