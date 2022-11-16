@@ -1,8 +1,29 @@
 <script setup lang="ts">
-const router = useRouter()
+import { doc, getDoc } from 'firebase/firestore'
 
-const handleClick = (accNo: string) => router.push({
-	path: `/transfer/${accNo}`,
+const transactionStore = useTransactionStore()
+const { setTransactionFrom } = transactionStore
+
+const userStore = useUserStore()
+const { user } = userStore
+const { accounts: userAccounts } = user
+
+const handleClick = async (accNo: string) => {
+	setTransactionFrom(accNo)
+	await navigateTo('/transfer/to', { replace: true })
+}
+
+const accounts = ref<any[]>([])
+
+userAccounts.forEach(async (accountID) => {
+	const ref = doc(firestoreDb, 'accounts', accountID)
+	const docSnap = await getDoc(ref)
+	if (!docSnap.exists())
+		return
+	accounts.value.push({
+		id: docSnap.id,
+		...docSnap.data(),
+	})
 })
 </script>
 
@@ -14,19 +35,28 @@ const handleClick = (accNo: string) => router.push({
 				Please select an account to access
 			</h1>
 			<div class="flex justify-evenly items-center w-full">
-				<BaseCard round="lg" size="8" class="font-medium" @click="() => handleClick('100-000000-0')">
+				<div v-if="accounts.length <= 0" class="">
+					Loading
+				</div>
+				<BaseCard v-for="{ id } in accounts" v-else :key="id" round="lg" size="8" class="font-medium" @click="() => handleClick(id)">
 					<div class="flex flex-col items-center justify-center text-xl">
-						<Icon size="48" name="fluent:vault-16-regular" />
-						Current Account
+						<Icon v-if="id.toString().replace(/\-/g, '').length > 10" size="48" name="fluent:savings-16-regular" />
+						<Icon v-else size="48" name="fluent:vault-16-regular" />
+						<p v-if="id.toString().replace(/\-/g, '').length > 10">
+							Savings Account
+						</p>
+						<p v-else>
+							Current Account
+						</p>
 						<div class="flex flex-col items-center justify-center text-xs mt-2">
-							100-000000-0
+							{{ id }}
 							<span class="text-gray-400">
 								Singapore Dollar
 							</span>
 						</div>
 					</div>
 				</BaseCard>
-				<BaseCard round="lg" size="8" class="font-medium" @click="() => handleClick('200-000000-0')">
+				<!-- <BaseCard round="lg" size="8" class="font-medium" @click="() => handleClick('200-000000-0')">
 					<div class="flex flex-col items-center justify-center text-xl">
 						<Icon size="48" name="fluent:savings-16-regular" />
 						Savings Account
@@ -37,7 +67,7 @@ const handleClick = (accNo: string) => router.push({
 							</span>
 						</div>
 					</div>
-				</BaseCard>
+				</BaseCard> -->
 			</div>
 		</div>
 	</div>

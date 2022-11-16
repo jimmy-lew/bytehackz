@@ -1,23 +1,31 @@
 <script setup lang="ts">
 import { vOnClickOutside } from '@vueuse/components'
 
-const { hasCloseButton } = withDefaults(defineProps<{
-	hasCloseButton?: boolean
+const { noCloseButton, forceOpen } = withDefaults(defineProps<{
+	noCloseButton?: boolean
+	forceOpen?: boolean
 }>(), {
-	hasCloseButton: true,
+	noCloseButton: false,
+	forceOpen: false,
 })
 
 const isOpen = ref(true)
 
 const close = () => {
+	if (forceOpen)
+		return
 	isOpen.value = false
 }
+
+onKeyStroke('Escape', (e) => {
+	close()
+})
 </script>
 
 <template>
 	<div v-if="isOpen" class="modal modal-open">
-		<div v-on-click-outside="close" class="modal-box rounded-md relative">
-			<button v-if="hasCloseButton" class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" @click="close">
+		<div v-on-click-outside="close" class="modal-box rounded-md relative bg-white w-fit">
+			<button v-if="!noCloseButton && !forceOpen" class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" @click="close">
 				✕
 			</button>
 			<slot />

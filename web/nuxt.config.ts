@@ -15,10 +15,13 @@ export default defineNuxtConfig({
 	},
 	imports: {
 		autoImport: true,
-		dirs: ['stores'],
+		dirs: ['stores', 'lib'],
 	},
 	runtimeConfig: {
 		testSecret: '',
+		firebaseProjectId: '',
+		firebaseClientEmail: '',
+		firebasePrivateKey: '',
 	},
 },
 )
