@@ -8,11 +8,25 @@ const { amount, to } = transaction
 const mode = 'Non-immediate transfer'
 
 const handleClick = async () => {
-	await useFetch('/api/transaction/transfer', {
+	const { data } = await useFetch('/api/auth/validate', {
 		method: 'POST',
 		body: transaction,
 	})
-	await navigateTo('/')
+
+	const validationScore = data.value
+
+	if (validationScore == null || !(validationScore < 0.7)) {
+		if (validationScore > 0.7) 
+
+		return
+	}
+
+	const finalTransaction = await useFetch('/api/transaction/transfer', {
+		method: 'POST',
+		body: transaction,
+	})
+
+	navigateTo('/')
 }
 
 const recipient = ref<Nullable<any>>(null)

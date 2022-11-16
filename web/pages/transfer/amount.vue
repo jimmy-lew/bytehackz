@@ -12,7 +12,7 @@ const { clearInput } = keyStore
 const handleClick = async () => {
 	setTransactionAmount(parseInt(input.value))
 	clearInput()
-	await navigateTo('/transfer/confirm')
+	await navigateTo('/transfer/confirm', { replace: true })
 }
 </script>
 
