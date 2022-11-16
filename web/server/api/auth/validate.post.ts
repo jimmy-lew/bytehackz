@@ -60,7 +60,8 @@ const getRecipientConfidenceScore = (accountAgeScore: number, transactionHistory
 const getTransactionConfidenceScore = (averageTransactionAmount: number, currentTransactionAmount: number) => {
 	if (currentTransactionAmount < averageTransactionAmount)
 		return 0
-	return 1 - (1 / ((currentTransactionAmount - averageTransactionAmount) * 0.3))
+	const transactionDelta = currentTransactionAmount / averageTransactionAmount
+	return 1 - (1 / transactionDelta)
 }
 // #endregion
 
