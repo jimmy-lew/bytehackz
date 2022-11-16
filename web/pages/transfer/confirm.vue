@@ -1,14 +1,47 @@
 <script setup lang="ts">
-const amount = 25001
-const account: Account = {
-	name: 'John Test',
-	accountNumber: '123-000000-000',
-	bank: 'CITI-SG',
-	balance: 2000,
-}
+import { doc, getDoc } from 'firebase/firestore'
+
+const transactionStore = useTransactionStore()
+const { transaction } = transactionStore
+const { amount, to } = transaction
+
 const mode = 'Non-immediate transfer'
 
-const { name, accountNumber, bank, balance } = account
+const handleClick = async () => {
+	const { data } = await useFetch('/api/auth/validate', {
+		method: 'POST',
+		body: transaction,
+	})
+
+	const validationScore = data.value || 1
+
+	const scs = useCookie('SCS')
+	scs.value = validationScore.toString()
+
+	if (validationScore > 0.7) {
+		await navigateTo('/auth/scam')
+		return
+	}
+
+	const finalTransaction = await useFetch('/api/transaction/transfer', {
+		method: 'POST',
+		body: transaction,
+	})
+
+	await navigateTo('/')
+}
+
+const recipient = ref<Nullable<any>>(null)
+
+recipient.value = await getDoc(doc(firestoreDb, 'accounts', to)).then(async (docSnap) => {
+	if (!docSnap.exists())
+		return null
+	const { uuid } = docSnap.data()
+	const userSnap = await getDoc(doc(firestoreDb, 'users', uuid))
+	if (!userSnap.exists())
+		return null
+	return userSnap.data()
+})
 </script>
 
 <template>
@@ -17,28 +50,31 @@ const { name, accountNumber, bank, balance } = account
 			Transfer Confirmation
 		</h1>
 		<div class="mx-12">
-			<div class="card card-compact bg-base-100 relative glass-outline rounded-md shadow mb-4 p-6 flex-row">
-				<div class="flex flex-col w-1/2 content-end mr-16">
-					<p class="text-sm mb-2 h-5">
-						Amount
-					</p>
-					<h2 class="font-semibold text-xl whitespace-nowrap">
-						S$ {{ amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") }}
-					</h2>
+			<div class="card card-compact bg-base-100 relative glass-outline rounded-md shadow mb-4 p-6 flex-row w-[420px]">
+				<div class="flex w-1/2 justify-end">
+					<div class="flex flex-col content-end mr-auto">
+						<p class="text-sm mb-2 h-5">
+							Amount
+						</p>
+						<h2 class="font-semibold text-xl whitespace-nowrap">
+							S$ {{ amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") }}
+						</h2>
+					</div>
+					<div class="inline-flex items-center justify-end relative left-4">
+						<Icon size="32" name="heroicons:arrow-right-circle" class="stroke-gray-300" />
+					</div>
 				</div>
-				<div class="inline-flex items-center">
-					<Icon size="32" name="heroicons:arrow-right-circle" class="stroke-gray-300" />
-				</div>
-				<div class="flex flex-col w-1/2 content-end text-end ml-16">
+				<div class="flex flex-col w-1/2 content-end text-end">
 					<p class="text-sm mb-2">
 						To
 					</p>
 					<h2 class="font-semibold text-xl whitespace-nowrap mb-1">
-						{{ name.toUpperCase() }}
+						{{ recipient.name.toUpperCase() }}
 					</h2>
-					<p class="font-semibold text-sm whitespace-pre-line">
-						{{ accountNumber }}
-						{{ bank }}
+					<p class="font-semibold text-sm whitespace-nowrap">
+						{{ to }}
+						<br>
+						{{ recipient.bank }}
 					</p>
 				</div>
 			</div>
@@ -53,7 +89,7 @@ const { name, accountNumber, bank, balance } = account
 				</div>
 			</div>
 		</div>
-		<button class="btn relative glass-outline rounded-md">
+		<button class="btn relative glass-outline rounded-md" @click="handleClick">
 			Confirm
 		</button>
 	</div>

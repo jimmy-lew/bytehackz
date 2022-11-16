@@ -7,3 +7,9 @@ node_modules
 .env
 dist
 .idea
+
+pages/playground
+components/Test
+server/api/test
+
+# auth.json

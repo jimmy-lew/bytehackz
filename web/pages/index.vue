@@ -1,37 +1,53 @@
 <script setup lang="ts">
-const store = useAppStore()
+import { collection, doc, getDoc, onSnapshot, setDoc } from 'firebase/firestore'
+
+const transactionStore = useTransactionStore()
+const userStore = useUserStore()
+
+const { setTransaction } = transactionStore
+const { setUser } = userStore
+
+let isInitialLoad = true
+let isCreated = false
+
+onSnapshot(collection(firestoreDb, 'atms/000001/sessions'), (snapshot) => {
+	if (isInitialLoad) {
+		isInitialLoad = false
+		return
+	}
+
+	snapshot.docChanges().forEach(async (docChange) => {
+		const docIdCookie = useCookie('doc_id')
+		const { uuid, transactionID } = docChange.doc.data()
+
+		const transaction: Transaction = {
+			to: '',
+			from: '',
+			type: '',
+			timeCreated: new Date(),
+			amount: 0,
+			id: transactionID,
+			sessionID: docChange.doc.id,
+		}
+
+		setTransaction(transaction)
+
+		if (!isCreated) {
+			await setDoc(doc(firestoreDb, 'transactions', transactionID), transaction)
+			isCreated = true
+		}
+
+		// TODO: Create converter
+		const user = await getDoc(doc(firestoreDb, 'users', uuid))
+
+		setUser(user.data())
+
+		docIdCookie.value = docChange.doc.id
+		await navigateTo('/auth', { replace: true })
+	})
+})
 </script>
 
 <template>
-	<div class="p-12 relative w-full space-y-8">
-		<Header :username="store.name" />
-		<Banner>
-			<Icon size="24" name="maki:caution" />
-			<span>Scam warning banner</span>
-		</Banner>
-		<div class="flex gap-8">
-			<LinkCard title="Withdrawal" href="/withdraw">
-				<Icon size="36" name="fluent:money-hand-24-regular" class="" />
-			</LinkCard>
-			<ul class="flex flex-col gap-8">
-				<LinkCard title="Payment" href="/">
-					<Icon size="36" name="fa6-solid:file-signature" class="" />
-				</LinkCard>
-				<LinkCard title="Transfer" href="/transfer">
-					<Icon size="36" name="heroicons:arrows-right-left-20-solid" />
-				</LinkCard>
-			</ul>
-			<!-- <div class="flex w-1/2 gap-8">
-			</div> -->
-			<TheCashRadialMenu />
-			<div class="ml-auto">
-				<LinkCard title="More" href="/services" class="h-2/3">
-					<Icon size="32" name="heroicons-solid:dots-horizontal" class="" />
-				</LinkCard>
-			</div>
-		</div>
-		<Modal>
-			Sample Scam Warning Modal
-		</Modal>
-	</div>
+	<img src="/Screensaver1.svg" alt="">
 </template>
