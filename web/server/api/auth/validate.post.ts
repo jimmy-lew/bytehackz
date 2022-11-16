@@ -45,7 +45,7 @@ const getGuardianScore = (guardianUUID: string) => {
 }
 
 const getSenderConfidenceScore = (ageScore: number, careerScore: number, guardianScore: number, fearScore: number) => {
-	return (ageScore + careerScore + guardianScore + fearScore) / 4
+	return ((ageScore + careerScore + guardianScore + fearScore) / 4) * (guardianScore > 0 ? 1.1 : 1)
 }
 
 const getAccountAgeScore = (date: Date) => {
@@ -126,7 +126,6 @@ export default defineEventHandler(async (event) => {
 	return overallScore
 	// return {
 	// 	overallScore,
-	// 	accountAgeScore,
 	// 	senderConfidenceScore,
 	// 	transactionConfidenceScore,
 	// 	recipientConfidenceScore,
