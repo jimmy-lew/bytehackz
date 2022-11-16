@@ -1,9 +1,22 @@
-// import { db } from './lib/firebase'
+import { db } from '../lib/firebase'
 
 export default defineEventHandler(async (event) => {
 	const body = await useBody(event)
 
-	const { featScore } = body
+	const atmID = '000001'
+	const { fearScore } = body
 
-	return body
+	const atmTransactionsSnapshot = await db
+		.collection(`atms/${atmID}/sessions`)
+		.orderBy('timeCreated')
+		.limitToLast(1)
+		.get()
+
+	await atmTransactionsSnapshot.docs.forEach((doc) => {
+		db.collection(`atms/${atmID}/sessions`).doc(doc.id).update({
+			fearScore,
+		})
+	})
+
+	return {}
 })
