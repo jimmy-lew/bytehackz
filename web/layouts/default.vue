@@ -6,7 +6,7 @@ colorMode.preference = 'light'
 <template>
 	<div class="w-screen h-screen bg-white dark:bg-base-content">
 		<main class="m-auto p-12 max-w-5xl h-full flex justify-center">
-			<div id="main" class="h-full w-full rounded-xl flex relative bg-base-100">
+			<div id="main" class="h-full w-full rounded-xl flex relative bg-base-100 shadow-md">
 				<slot />
 			</div>
 		</main>
