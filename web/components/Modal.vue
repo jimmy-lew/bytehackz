@@ -24,7 +24,7 @@ onKeyStroke('Escape', (e) => {
 
 <template>
 	<div v-if="isOpen" class="modal modal-open">
-		<div v-on-click-outside="close" class="modal-box rounded-md relative">
+		<div v-on-click-outside="close" class="modal-box rounded-md relative bg-white w-fit">
 			<button v-if="!noCloseButton && !forceOpen" class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" @click="close">
 				✕
 			</button>
