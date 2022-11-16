@@ -45,21 +45,23 @@ const getGuardianScore = (guardianUUID: string) => {
 }
 
 const getSenderConfidenceScore = (ageScore: number, careerScore: number, guardianScore: number, fearScore: number) => {
-	return (ageScore + careerScore + guardianScore + fearScore) / 4
+	return ((ageScore + careerScore + guardianScore + fearScore) / 4) * (guardianScore > 0 ? 1.1 : 1)
 }
 
 const getAccountAgeScore = (date: Date) => {
-	return 1 - (1 / Math.ceil((new Date().getTime() - date.getTime()) / (1000 * 3600 * 24)))
+	// @ts-expect-error Dates can be used for maths operations
+	return (1 / Math.round((new Date() - date) / (24 * 60 * 60 * 1000))) * 30
 }
 
 const getRecipientConfidenceScore = (accountAgeScore: number, transactionHistoryScore: number) => {
-	return (accountAgeScore + transactionHistoryScore) / 2
+	return (transactionHistoryScore + accountAgeScore) / 2
 }
 
 const getTransactionConfidenceScore = (averageTransactionAmount: number, currentTransactionAmount: number) => {
 	if (currentTransactionAmount < averageTransactionAmount)
 		return 0
-	return 1 - (1 / (currentTransactionAmount - averageTransactionAmount))
+	const transactionDelta = currentTransactionAmount / averageTransactionAmount
+	return 1 - (1 / transactionDelta)
 }
 // #endregion
 
@@ -97,6 +99,7 @@ export default defineEventHandler(async (event) => {
 	const senderConfidenceScore = getSenderConfidenceScore(ageScore, careerScore, guardianScore, fearScore)
 	const transactionConfidenceScore = getTransactionConfidenceScore(averageTransactionAmount, amount)
 	let recipientConfidenceScore = 0
+	let accountAgeScore = 0
 
 	if (to) {
 		const recipientAccount = await accountRef.doc(to).get()
@@ -114,11 +117,17 @@ export default defineEventHandler(async (event) => {
 			return
 
 		const { accountCreationDate, averageTransactionScore } = recipientData
-		const accountAgeScore = getAccountAgeScore(accountCreationDate.toDate())
+		accountAgeScore = getAccountAgeScore(accountCreationDate.toDate())
 		recipientConfidenceScore = getRecipientConfidenceScore(accountAgeScore, averageTransactionScore)
 	}
 
 	const overallScore = (senderConfidenceScore + recipientConfidenceScore + transactionConfidenceScore) / (recipientConfidenceScore === 0 ? 2 : 3)
 
 	return overallScore
+	// return {
+	// 	overallScore,
+	// 	senderConfidenceScore,
+	// 	transactionConfidenceScore,
+	// 	recipientConfidenceScore,
+	// }
 })
