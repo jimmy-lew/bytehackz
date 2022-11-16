@@ -10,7 +10,7 @@ const { accounts: userAccounts } = user
 
 const handleClick = async (accNo: string) => {
 	setTransactionFrom(accNo)
-	await navigateTo('/transfer/to')
+	await navigateTo('/transfer/to', { replace: true })
 }
 
 const accounts = ref<any[]>([])

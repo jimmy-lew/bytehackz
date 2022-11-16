@@ -18,13 +18,13 @@ const accountNo = computed(() => {
 	return accNo
 })
 
-const handleClick = () => {
+const handleClick = async () => {
 	if (input.value.length < 10 || input.value.length === 11)
 		return
 
 	setTransactionTo(accountNo.value)
 	clearInput()
-	navigateTo('/transfer/amount')
+	await navigateTo('/transfer/amount', { replace: true })
 }
 </script>
 
