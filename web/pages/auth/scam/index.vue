@@ -10,7 +10,7 @@
 					</g>
 				</svg>
 				<p class="text-center font-bold">
-                    Scam
+					Scam
 				</p>
 			</div>
 		</Modal>
