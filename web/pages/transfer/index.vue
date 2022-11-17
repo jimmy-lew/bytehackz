@@ -50,9 +50,6 @@ userAccounts.forEach(async (accountID) => {
 						</p>
 						<div class="flex flex-col items-center justify-center text-xs mt-2">
 							{{ id }}
-							<span class="text-gray-400">
-								Singapore Dollar
-							</span>
 						</div>
 					</div>
 				</BaseCard>
