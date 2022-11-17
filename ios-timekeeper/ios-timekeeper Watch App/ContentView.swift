@@ -28,7 +28,14 @@ struct ContentView: View {
                 .tint(.green)
                 .padding()
             } else {
-                Text("\(Double(time) / 10)s")
+                HStack {
+                    let seconds = Double(time) / 10
+                    let minutes = Int(seconds) / 60
+                    
+                    Text("\(minutes)m")
+                    Text("\(Int(seconds - Double(minutes) * 60))s")
+                }
+                .font(.system(size: 40))
             }
         }
         .onAppear {
