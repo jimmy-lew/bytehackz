@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { doc, onSnapshot, updateDoc } from 'firebase/firestore'
 
-onSnapshot(doc(firestoreDb, 'atms/000001/sessions', useCookie('doc_id').value), async (doc) => {
+const docID = useCookie('doc_id').value
+
+onSnapshot(doc(firestoreDb, 'atms/000001/sessions', docID), async (doc) => {
 	if (!doc.exists())
 		return
 	const { appScore } = doc.data()
 	if (appScore > 0) {
-		const scs = parseInt(useCookie('scs').value)
+		const scs = parseFloat(useCookie('SCS').value)
 		const overallScore = (scs + appScore) / 2
 
 		await updateDoc(doc.ref, {
@@ -14,7 +16,7 @@ onSnapshot(doc(firestoreDb, 'atms/000001/sessions', useCookie('doc_id').value), 
 		})
 
 		if (overallScore > 0.7) {
-			await navigateTo('/scam/detected')
+			await navigateTo('/auth/scam/detected')
 			return
 		}
 
@@ -27,12 +29,15 @@ onSnapshot(doc(firestoreDb, 'atms/000001/sessions', useCookie('doc_id').value), 
 	<div class="p-12 relative w-full space-y-8">
 		<Modal force-open>
 			<div class="flex flex-col items-center gap-4">
-				<p class="text-center font-bold">
+				<img src="/tapphone.gif" alt="" class="w-16 h-16">
+				<p class="text-center font-semibold">
 					Please tap your phone to proceed
 					<br>
-					OR
+					<span class="font-bold">OR</span>
 					<br>
-					Contact customer service @ 1800 363 3333
+					Contact customer service
+					<br>
+					@ 1800 363 3333
 				</p>
 			</div>
 		</Modal>
