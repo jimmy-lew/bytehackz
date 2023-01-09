@@ -26,7 +26,7 @@ extension BluetoothManager: CBCentralManagerDelegate {
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         peripheral.delegate = self
         
-        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { timer in
+        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
             peripheral.readRSSI()
         }
     }

@@ -6,6 +6,9 @@ const {
 	backspace,
 	clearInput,
 } = toRefs(keyStore)
+
+onKeyStroke(['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'], e => appendInput.value(e.key))
+onKeyStroke('Backspace', () => backspace.value())
 </script>
 
 <template>

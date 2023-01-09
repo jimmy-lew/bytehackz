@@ -18,6 +18,8 @@ const handleClick = async () => {
 	const scs = useCookie('SCS')
 	scs.value = validationScore.toString()
 
+	console.log(validationScore)
+
 	if (validationScore > 0.7) {
 		await navigateTo('/auth/scam')
 		return

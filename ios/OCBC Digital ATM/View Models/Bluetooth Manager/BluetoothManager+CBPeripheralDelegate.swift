@@ -12,7 +12,7 @@ extension BluetoothManager: CBPeripheralDelegate {
     func peripheral(_ peripheral: CBPeripheral, didReadRSSI RSSI: NSNumber, error: Error?) {
         print("RSSI: \(RSSI.intValue)")
         
-        if RSSI.intValue >= -40 && !isConnected {
+        if RSSI.intValue >= -47 && !isConnected {
             isConnected = true
         }
     }
