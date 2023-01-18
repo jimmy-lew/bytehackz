@@ -4,6 +4,7 @@ from keras.models import model_from_json
 import requests
 import datetime as dt
 import asyncio
+from deepface import DeepFace
 
 url = "https://bytehackz.vercel.app/api/auth/fearscore"
 
@@ -22,6 +23,7 @@ emotion_model.load_weights("model/emotion_model.h5")
 
 # start the webcam feed
 cap = cv2.VideoCapture(0)
+DeepFace.stream(db_path = 'model/emotion_model.json')
 
 async def send_request(fearful_confidence):
     response = requests.post(url=url,json={"fearScore": fearful_confidence})
