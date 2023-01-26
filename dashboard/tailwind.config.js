@@ -1,7 +1,8 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	content: [
-		'./assets/**/*.css',
 		'./components/*.{vue,js}',
 		'./components/**/*.{vue,js}',
 		'./layouts/**/*.{vue,js}',
@@ -14,7 +15,25 @@ module.exports = {
 	],
 	darkMode: 'class',
 	theme: {
-		extend: {},
+		extend: {
+			fontFamily: {
+				sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+			},
+			content: {
+				default: '""',
+			},
+			keyframes: {
+				expand: {
+					'0%': { transform: 'scale(1)' },
+					'100%': { transform: 'scale(1.05)' },
+				},
+			},
+			animation: {
+				expand: 'expand 0.5s ease-in-out',
+			},
+			colors: {
+				error: '#fa5152',
+			},
+		},
 	},
-	plugins: [require('daisyui')],
 }
