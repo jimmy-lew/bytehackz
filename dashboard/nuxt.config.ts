@@ -7,7 +7,7 @@ export default defineNuxtConfig({
 		'@vueuse/nuxt',
 	],
 	colorMode: {
-		preference: 'system', // default theme
+		preference: 'dark', // default theme
 		dataValue: 'theme', // activate data-theme in <html> tag
 		fallback: 'dark',
 		classSuffix: '',
@@ -24,6 +24,9 @@ export default defineNuxtConfig({
 				{ rel: 'icon', type: 'image/x-icon', href: '/favicon.svg' },
 				{ rel: 'stylesheet', href: 'https://rsms.me/inter/inter.css' },
 			],
+			bodyAttrs: {
+				class: 'dark:bg-[#0c0c0c]',
+			},
 		},
 	},
 })

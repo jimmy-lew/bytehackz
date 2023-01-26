@@ -18,8 +18,8 @@ const emits = defineEmits<{
 }>()
 
 const {
-	db: select_db,
-	data: select_data,
+	db: selects_db,
+	data: selects,
 	handler,
 	isMultiselect,
 } = toRefs(props)
@@ -32,7 +32,7 @@ const options = ref<HTMLDivElement | null>(null)
 const trigger = ref<HTMLDivElement | null>(null)
 const input = ref<HTMLInputElement | null>(null)
 
-const searchResults = ref<any[]>([])
+const searchHits = ref<any[]>([])
 // #endregion
 
 // #region Handlers
@@ -60,7 +60,7 @@ const handleSelect = (selection: string) => {
 // #endregion
 
 // #region Search
-const handleRepopulate = (newResults: Record<string, any[]>) => searchResults.value = newResults.select
+const handleRepopulate = (hits: any[]) => searchHits.value = hits
 // #endregion
 
 // #region Interactivity
@@ -90,9 +90,9 @@ onBeforeUnmount(unmount)
 		</span>
 		<div v-if="isOptionsActive" class="absolute top-0 z-20 w-full rounded bg-[#0a0a06] border-[0.5px] border-white/20 scale-105 animate-expand">
 			<div class="flex items-center px-4 py-2 border-b-[0.5px] border-white/20">
-				<Search :dbs="{ select_db }" :data="{ select_data }" @repopulate="handleRepopulate" />
+				<Search :dbs="{ selects_db }" :data="{ selects }" @repopulate="({ selects }) => handleRepopulate(selects)" />
 			</div>
-			<ul v-if="searchResults.length <= 0" class="p-1 text-sm">
+			<ul v-if="searchHits.length <= 0" class="p-1 text-sm">
 				<FormSelectOption
 					v-for="option in transformer(data)"
 					:key="option"
@@ -104,7 +104,7 @@ onBeforeUnmount(unmount)
 			</ul>
 			<ul v-else class="p-1 text-sm">
 				<FormSelectOption
-					v-for="searchOption in transformer(searchResults)"
+					v-for="searchOption in transformer(searchHits)"
 					:key="searchOption"
 					:value="searchOption"
 					:is-option-selected="currentSelection.includes(searchOption)"
