@@ -72,6 +72,7 @@
         "outerIIFEBody": 1
       }
     ],
-    "antfu/generic-spacing": "off"
+    "antfu/generic-spacing": "off",
+    "antfu/if-newline": "off"
   }
 }
