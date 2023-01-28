@@ -12,8 +12,18 @@ const config = {
 	appId: '1:493470788103:web:dbfa233a978a3ca525d8a2',
 }
 
-export const app = initializeApp(config)
+export default () => {
+	return useState('firebase-client', () => {
+		const app = initializeApp(config)
 
-export const auth = getAuth(app)
+		const auth = getAuth(app)
 
-export const firestoreDb = getFirestore(app)
+		const db = getFirestore(app)
+
+		return {
+			app,
+			auth,
+			db,
+		}
+	})
+}

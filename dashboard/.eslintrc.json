@@ -73,6 +73,7 @@
       }
     ],
     "antfu/generic-spacing": "off",
-    "antfu/if-newline": "off"
+    "antfu/if-newline": "off",
+    "no-console": "off"
   }
 }

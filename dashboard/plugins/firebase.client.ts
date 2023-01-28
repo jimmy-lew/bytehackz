@@ -9,6 +9,7 @@ const setServerSession = (token: string) => {
 
 export default defineNuxtPlugin((nuxtApp) => {
 	const currUser = useCurrentUser()
+	const { auth, app } = useFirebaseClient().value
 
 	nuxtApp.hooks.hook('app:mounted', () => {
 		auth.onIdTokenChanged(async (user) => {

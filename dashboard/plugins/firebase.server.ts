@@ -1,4 +1,5 @@
-/* eslint-disable no-console */
+import { auth } from 'firebase-admin'
+
 interface Error {
 	code: string
 	message: string
@@ -8,11 +9,12 @@ export default defineNuxtPlugin(async () => {
 	const fbToken = useCookie('fb-token')
 	const currUser = useCurrentUser()
 	const tokenExpired = useTokenExpiryStatus()
+	useFirebaseAdmin()
 
 	if (!fbToken.value) return
 
 	try {
-		const foundUser = await adminAuth.verifyIdToken(fbToken.value)
+		const foundUser = await auth().verifyIdToken(fbToken.value)
 		currUser.value = {
 			...foundUser,
 		}
