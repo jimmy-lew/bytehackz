@@ -29,4 +29,10 @@ export default defineNuxtConfig({
 			},
 		},
 	},
+	runtimeConfig: {
+		testSecret: '',
+		firebaseProjectId: '',
+		firebaseClientEmail: '',
+		firebasePrivateKey: '',
+	},
 })
