@@ -6,7 +6,7 @@ const path = usePath()
 const user = useCurrentUser()
 const isAuthenticated = computed(() => !!user.value)
 
-const dropdownItems = isAuthenticated.value
+const dropdownItems = computed(() => isAuthenticated.value
 	? [
 		{
 			label: 'Profile',
@@ -16,15 +16,11 @@ const dropdownItems = isAuthenticated.value
 		},
 		{
 			label: 'Settings',
-			action: () => {
-				navigateTo('/profile/settings')
-			},
+			action: () => navigateTo('/profile/settings'),
 		},
 		{
 			label: 'Logout',
-			action: () => {
-				console.log('logout')
-			},
+			action: logout,
 			hasTopBorder: true,
 		},
 	]
@@ -33,7 +29,7 @@ const dropdownItems = isAuthenticated.value
 			label: 'Login',
 			action: login,
 		},
-	]
+	])
 
 const pathSegments = computed(() => getPathSegments(path.value))
 const pathsJoint = computed(() => getJointPaths(pathSegments.value))
@@ -47,9 +43,6 @@ const pathsJoint = computed(() => getJointPaths(pathSegments.value))
 					<img src="/favicon.svg" alt="">
 				</div>
 				<Breadcrumbs class="pl-2">
-					<BreadcrumbsItem link="/">
-						Home
-					</BreadcrumbsItem>
 					<BreadcrumbsItem v-for="(link, index) in pathsJoint" :key="link" :link="`/${link}`">
 						{{ startingWithCapital(pathSegments[index]) }}
 					</BreadcrumbsItem>
@@ -58,7 +51,10 @@ const pathsJoint = computed(() => getJointPaths(pathSegments.value))
 			<div class="inline-flex w-1/2 justify-end">
 				<Dropdown :items="dropdownItems">
 					<template #trigger>
-						<div class="w-8 h-8 rounded-full relative bg-gray-300" />
+						<div class="w-8 h-8 border-2 border-[#e5e7eb] dark:border-[#3d3d3d] rounded-full flex items-center justify-center">
+							<img v-if="user?.photoURL" :src="user?.photoURL" alt="" class="aspect-square w-8 rounded-full">
+							<div v-else class="aspect-square w-8 rounded-full bg-gray-300" />
+						</div>
 					</template>
 					<template #items>
 						<li class="flex items-center p-1 border-t border-[#e5e7eb] dark:border-[#3d3d3d]">
@@ -72,9 +68,6 @@ const pathsJoint = computed(() => getJointPaths(pathSegments.value))
 			</div>
 		</div>
 		<Tabs class="-mb-px max-w-7xl">
-			<TabsItem link="/">
-				Home
-			</TabsItem>
 			<TabsItem link="/dashboard">
 				Dashboard
 			</TabsItem>
