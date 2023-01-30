@@ -71,6 +71,9 @@ const pathsJoint = computed(() => getJointPaths(pathSegments.value))
 			<TabsItem link="/dashboard">
 				Dashboard
 			</TabsItem>
+			<TabsItem link="/dashboard/test">
+				Test
+			</TabsItem>
 		</Tabs>
 	</nav>
 </template>

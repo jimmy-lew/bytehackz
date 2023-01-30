@@ -11,7 +11,7 @@ withDefaults(defineProps<{
 </script>
 
 <template>
-	<NuxtLink :to="to" class="link" :class="{ animated }">
+	<NuxtLink :to="to" class="link focus:outline-0 hover:scale-105 focus:scale-105 transition-all duration-200 ease-in-out" :class="{ animated }">
 		<slot />
 	</NuxtLink>
 </template>

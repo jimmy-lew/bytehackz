@@ -27,4 +27,8 @@
 html[data-theme="light"] .glow::before {
     background: radial-gradient(var(--radius) circle at var(--x) var(--y),rgba(214, 49, 49, 0),transparent 40%);
 }
+
+.apexcharts-tooltip {
+    @apply text-black dark:text-white dark:!bg-[#18181b] !rounded-md !border-0 !shadow-md
+}
 </style>

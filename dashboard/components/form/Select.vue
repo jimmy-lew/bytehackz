@@ -3,7 +3,7 @@ import type { Lyra } from '@lyrasearch/lyra'
 
 // #region Props & Emits
 const props = defineProps<{
-	transformer: (...args: any[]) => any[]
+	transformer: (...args: any[]) => any
 	handler: (...args: any[]) => void
 	db: Lyra<Schema>
 	data: any[]
@@ -54,7 +54,7 @@ const handleEscape = () => {
 	emits('optionsToggled', false)
 }
 
-const handleSelect = (selection: string) => {
+const handleSelect = (selection: any) => {
 	handler.value(selection)
 	if (!isMultiselect?.value) handleEscape()
 }
@@ -81,31 +81,33 @@ onBeforeUnmount(unmount)
 
 <template>
 	<div ref="options" class="relative w-full">
-		<div ref="trigger" tabindex="0" class="text-gray-400 w-full rounded focus:bg-[#18181b] hover:bg-[#18181b] pl-0 sm:pl-1 p-1" :class="error ? 'error' : ''">
+		<div ref="trigger" tabindex="0" class="text-gray-400 w-full rounded focus:bg-[#e5e7eb] dark:focus:bg-[#18181b] hover:bg-[#e5e7eb] dark:hover:bg-[#18181b] pl-0 sm:pl-1 p-1" :class="error ? 'error' : ''">
 			<slot />
 		</div>
 		<span v-if="error" class="absolute top-1/2 right-0 -translate-y-1/2 text-xs px-1 text-error">
 			{{ error }}
 		</span>
-		<div v-if="isOptionsActive" class="absolute top-0 z-20 w-full rounded bg-[#0a0a06] border-[0.5px] border-white/20 scale-105 animate-expand">
+		<div v-if="isOptionsActive" class="absolute top-0 z-20 min-w-max w-full rounded bg-white dark:bg-[#0a0a06] border-[0.5px] border-[#e5e7eb] dark:border-white/20 scale-105 animate-expand">
 			<div v-if="hasSearch" class="flex items-center px-4 py-2 border-b-[0.5px] border-white/20">
 				<Search :dbs="{ selects_db }" :data="{ selects }" @repopulate="({ selects }) => handleRepopulate(selects)" />
 			</div>
-			<ul v-if="searchHits.length <= 0" class="p-1 text-sm">
+			<ul v-if="searchHits.length <= 0" class="py-1.5 px-2 text-sm">
 				<FormSelectOption
-					v-for="option in transformer(data)"
-					:key="option"
-					:value="option"
+					v-for="option in data"
+					:key="transformer(option)"
+					:value="transformer(option)"
+					:data-value="option"
 					:is-option-selected="currentSelection.includes(option)"
 					:is-multiselect="isMultiselect"
 					@option-selected="handleSelect"
 				/>
 			</ul>
-			<ul v-else class="p-1 text-sm">
+			<ul v-else class="py-1.5 px-2 text-sm">
 				<FormSelectOption
-					v-for="searchOption in transformer(searchHits)"
-					:key="searchOption"
-					:value="searchOption"
+					v-for="searchOption in searchHits"
+					:key="transformer(searchOption)"
+					:value="transformer(searchOption)"
+					:data-value="searchOption"
 					:is-option-selected="currentSelection.includes(searchOption)"
 					:is-multiselect="isMultiselect"
 					@option-selected="handleSelect"

@@ -7,13 +7,14 @@ const props = defineProps<{
 	data: any[]
 	error?: string
 	placeholder?: string
+	hasSearch?: boolean
 }>()
 
 const emits = defineEmits(['optionsToggled', 'optionSelected'])
 
-const currentSelection = ref<string[]>([])
+const currentSelection = ref<any[]>([])
 
-const handleSelect = (selection: string) => {
+const handleSelect = (selection: any) => {
 	if (currentSelection.value.includes(selection)) {
 		currentSelection.value.splice(currentSelection.value.indexOf(selection), 1)
 		return
@@ -31,6 +32,7 @@ const handleSelect = (selection: string) => {
 		v-bind="props"
 		:current-selection="currentSelection"
 		:handler="handleSelect"
+		:has-search="hasSearch"
 		is-multiselect
 		@options-toggled="(isToggled) => emits('optionsToggled', isToggled)"
 		@option-selected="(selectionValue) => emits('optionSelected', selectionValue)"
@@ -40,7 +42,7 @@ const handleSelect = (selection: string) => {
 				{{ placeholder ? placeholder : 'Empty' }}
 			</li>
 			<li v-for="selection in currentSelection" v-else :key="selection" class="p-1 bg-[#141418] text-white rounded w-fit text-xs border-[0.5px] border-white/20">
-				{{ selection }}
+				{{ transformer(selection) }}
 			</li>
 		</ul>
 	</FormSelect>

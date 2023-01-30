@@ -12,4 +12,10 @@ declare global {
     interface Schema extends PropertiesSchema {
     	_id: 'number'
     }
+
+    interface DateRangeItem {
+    	_id: number
+    	date: string
+    	value: string
+    }
 }
