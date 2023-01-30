@@ -1,6 +1,6 @@
 import { create, insert } from '@lyrasearch/lyra'
 
-export const createLyraDB = async <T extends Schema>(schemaObj: T, data: any[]) => {
+export const lyraCreate = async <T extends Schema>(schemaObj: T, data: any[]) => {
 	const db = await create({
 		schema: schemaObj,
 	})
