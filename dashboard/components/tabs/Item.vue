@@ -5,9 +5,9 @@ const props = withDefaults(defineProps<{
 	link: '/',
 })
 
-const { path } = useRoute()
+const path = usePath()
 
-const isActiveRoute = computed(() => path === props.link)
+const isActiveRoute = computed(() => path.value === props.link)
 </script>
 
 <template>

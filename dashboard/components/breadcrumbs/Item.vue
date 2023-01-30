@@ -5,7 +5,7 @@ defineProps<{
 </script>
 
 <template>
-	<li class="breadcrumb flex items-center mr-1 font-medium">
+	<li class="breadcrumb flex items-center mr-1">
 		<NuxtLink :to="link">
 			<slot />
 		</NuxtLink>

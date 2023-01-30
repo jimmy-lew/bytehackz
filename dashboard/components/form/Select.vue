@@ -10,6 +10,7 @@ const props = defineProps<{
 	currentSelection: string[]
 	error?: string
 	isMultiselect?: boolean
+	hasSearch?: boolean
 }>()
 
 const emits = defineEmits<{
@@ -72,9 +73,7 @@ watch(triggerFocused, handleTriggerFocus)
 whenever(escape, handleEscape)
 onClickOutside(options, handleEscape)
 
-const unmount = useEventListener('focusin', () => {
-	if (!options.value?.contains(document.activeElement)) return handleEscape()
-})
+const unmount = useEventListener('focusin', () => !options.value?.contains(document.activeElement) && handleEscape())
 
 onBeforeUnmount(unmount)
 // #endregion
@@ -89,7 +88,7 @@ onBeforeUnmount(unmount)
 			{{ error }}
 		</span>
 		<div v-if="isOptionsActive" class="absolute top-0 z-20 w-full rounded bg-[#0a0a06] border-[0.5px] border-white/20 scale-105 animate-expand">
-			<div class="flex items-center px-4 py-2 border-b-[0.5px] border-white/20">
+			<div v-if="hasSearch" class="flex items-center px-4 py-2 border-b-[0.5px] border-white/20">
 				<Search :dbs="{ selects_db }" :data="{ selects }" @repopulate="({ selects }) => handleRepopulate(selects)" />
 			</div>
 			<ul v-if="searchHits.length <= 0" class="p-1 text-sm">
