@@ -1,4 +1,4 @@
-import { auth } from 'firebase-admin'
+import admin from 'firebase-admin'
 
 interface Error {
 	code: string
@@ -14,9 +14,11 @@ export default defineNuxtPlugin(async () => {
 	if (!fbToken.value) return
 
 	try {
-		const foundUser = await auth().verifyIdToken(fbToken.value)
+		const foundUser = await admin.auth().verifyIdToken(fbToken.value)
+		const user = await admin.auth().getUser(foundUser.uid)
 		currUser.value = {
 			...foundUser,
+			...user,
 		}
 	}
 	catch (e) {

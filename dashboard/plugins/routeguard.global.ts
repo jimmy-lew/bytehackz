@@ -6,7 +6,7 @@ export default defineNuxtPlugin(() => {
 		({ path }) => {
 			const unprotectedRoutes = ['/login', '/tokenexpired', '/']
 
-			if (path === '/tokenexpired' && user.value) return navigateTo('/dashboard')
+			if (path === '/' && user.value) return navigateTo('/dashboard')
 			if (path === '/login' && user.value) return navigateTo('/')
 			if (!unprotectedRoutes.includes(path) && !user.value) return navigateTo('/')
 		},

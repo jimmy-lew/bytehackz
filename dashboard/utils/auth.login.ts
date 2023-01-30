@@ -1,7 +1,8 @@
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 
-export const login = () => {
+export const login = async () => {
 	const { auth } = useFirebaseClient().value
 	if (!auth) return
-	signInWithPopup(auth, new GoogleAuthProvider())
+	await signInWithPopup(auth, new GoogleAuthProvider())
+	navigateTo('/dashboard')
 }
