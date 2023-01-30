@@ -7,9 +7,9 @@ export default defineNuxtConfig({
 		'@vueuse/nuxt',
 	],
 	colorMode: {
-		preference: 'dark', // default theme
+		preference: 'light', // default theme
 		dataValue: 'theme', // activate data-theme in <html> tag
-		fallback: 'dark',
+		fallback: 'light',
 		classSuffix: '',
 	},
 	app: {
