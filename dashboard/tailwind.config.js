@@ -32,7 +32,11 @@ module.exports = {
 				expand: 'expand 0.5s ease-in-out',
 			},
 			colors: {
-				error: '#fa5152',
+				'error': '#fa5152',
+				'base': '#0c0c0c',
+				'base-200': '#18181b',
+				'base-400': '#424242',
+				'base-600': '#626262',
 			},
 		},
 	},

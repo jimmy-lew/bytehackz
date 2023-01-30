@@ -16,7 +16,7 @@
 			</p>
 		</div>
 		<div class="w-full lg:w-1/3">
-			<h2 class="mb-2 text-base font-semibold">
+			<h2 class="mb-2 font-semibold">
 				<!-- Subsection 2 -->
 			</h2>
 		</div>

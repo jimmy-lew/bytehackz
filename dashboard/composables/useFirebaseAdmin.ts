@@ -1,5 +1,5 @@
-import { initializeApp } from 'firebase-admin'
-import { cert, getApps } from 'firebase-admin/app'
+import admin from 'firebase-admin'
+import { getApps } from 'firebase-admin/app'
 
 export default () => {
 	const { firebaseProjectId, firebaseClientEmail, firebasePrivateKey } = useRuntimeConfig()
@@ -8,8 +8,8 @@ export default () => {
 
 	if (hasApps) return
 
-	initializeApp({
-		credential: cert({
+	admin.initializeApp({
+		credential: admin.credential.cert({
 			projectId: firebaseProjectId,
 			clientEmail: firebaseClientEmail,
 			privateKey: firebasePrivateKey?.replace(/\\n/g, '\n'),
