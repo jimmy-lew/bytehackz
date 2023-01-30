@@ -37,7 +37,7 @@ whenever(enter, () => focused.value && toggleMenu())
 <style scoped>
 .v-enter-active,
 .v-leave-active {
-  transition: opacity 0.5s ease-in;
+  transition: opacity 0.4s ease-in;
 }
 
 .v-enter-from,
