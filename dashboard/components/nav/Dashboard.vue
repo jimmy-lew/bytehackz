@@ -1,33 +1,47 @@
+<!-- eslint-disable @typescript-eslint/indent -->
 <script setup lang="ts">
-const dropdownItems = [
-	{
-		label: 'Profile',
-		link: '/profile',
-	},
-	{
-		label: 'Settings',
-		link: '/settings',
-	},
-	{
-		label: 'Logout',
-		link: '/logout',
-		hasTopBorder: true,
-	},
-]
+const theme = useColorMode()
+const path = usePath()
 
-const { path } = useRoute()
-const pathsUnjoint = computed(() => path
-	.split('/')
-	.filter(p => p !== ''),
-)
-const pathsJoint = computed(() => pathsUnjoint.value
-	.reduce((arr: string[], path: string, index: number) => index === 0 ? [path] : [...arr, `${arr[index - 1]}/${path}`], []),
-)
+const user = useCurrentUser()
+const isAuthenticated = computed(() => !!user.value)
+
+const dropdownItems = isAuthenticated.value
+	? [
+		{
+			label: 'Profile',
+			action: () => {
+				// navigateTo('/profile')
+			},
+		},
+		{
+			label: 'Settings',
+			action: () => {
+				navigateTo('/profile/settings')
+			},
+		},
+		{
+			label: 'Logout',
+			action: () => {
+				console.log('logout')
+			},
+			hasTopBorder: true,
+		},
+	]
+	: [
+		{
+			label: 'Login',
+			action: login,
+		},
+	]
+
+const pathSegments = computed(() => getPathSegments(path.value))
+const pathsJoint = computed(() => getJointPaths(pathSegments.value))
 </script>
 
 <template>
-	<nav class="px-6 sm:px-12 lg:px-16 border-b border-gray-200">
-		<div class="flex items-center min-h-[4rem] max-w-7xl w-full mx-auto pt-6 pb-4 px-2">
+	<nav class="px-6 sm:px-12 lg:px-16 border-b dark:border-white/20">
+		<div class="flex items-center min-h-[4rem] max-w-7xl w-full mx-auto pt-6 pb-4">
 			<div class="inline-flex w-1/2 justify-start items-center">
 				<div class="w-8 h-8 rounded-full relative mr-2 aspect-square">
 					<img src="/favicon.svg" alt="">
@@ -37,7 +51,7 @@ const pathsJoint = computed(() => pathsUnjoint.value
 						Home
 					</BreadcrumbsItem>
 					<BreadcrumbsItem v-for="(link, index) in pathsJoint" :key="link" :link="`/${link}`">
-						{{ `${pathsUnjoint[index].charAt(0).toUpperCase()}${pathsUnjoint[index].slice(1)}` }}
+						{{ startingWithCapital(pathSegments[index]) }}
 					</BreadcrumbsItem>
 				</Breadcrumbs>
 			</div>
@@ -47,14 +61,10 @@ const pathsJoint = computed(() => pathsUnjoint.value
 						<div class="w-8 h-8 rounded-full relative bg-gray-300" />
 					</template>
 					<template #items>
-						<LazyDropdownItem
-							v-for="item in dropdownItems"
-							:key="item.label"
-							v-bind="item"
-						/>
-						<li class="flex items-center p-1 border-t">
-							<div class="py-2 px-4 text-sm">
-								Theme Switch
+						<li class="flex items-center p-1 border-t border-[#e5e7eb] dark:border-[#3d3d3d]">
+							<div class="flex items-center justify-between w-full px-4 py-0.5 text-sm">
+								{{ startingWithCapital(theme.value) }}
+								<MiscTheThemeToggle />
 							</div>
 						</li>
 					</template>
