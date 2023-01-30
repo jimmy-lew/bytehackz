@@ -14,6 +14,9 @@ const date_db = ref(await lyraCreate({
 	_id: 'number',
 	name: 'string',
 }, data.value))
+
+const chartBox = ref<Nullable<HTMLElement>>(null)
+const { width } = useElementSize(chartBox)
 </script>
 
 <template>
@@ -51,8 +54,8 @@ const date_db = ref(await lyraCreate({
 					</div>
 				</div>
 				<div class="px-2 pt-1 pb-2 text-gray-400 sm:px-3">
-					<div class="flex flex-row space-x-4 p-1 overflow-x-auto">
-						Graphs
+					<div ref="chartBox" class="flex flex-row space-x-4 p-1">
+						<Chart :width="width" />
 					</div>
 				</div>
 			</div>
