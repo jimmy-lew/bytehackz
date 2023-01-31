@@ -2,7 +2,7 @@
 </script>
 
 <template>
-	<div class="dark:bg-[#0c0c0c] dark:text-white">
+	<div class="bg-white text-black dark:bg-[#0c0c0c] dark:text-white">
 		<slot />
 	</div>
 </template>

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { collection } from 'firebase/firestore'
+
 // #region Select stuff
 const dateRange_data = ref<DateRangeItem[]>([
 	{
@@ -22,6 +24,17 @@ const handleDateRangeSelection = async ([{ date, value }]: DateRangeItem[]) => {
 	console.log(date, value)
 }
 // #endregion
+
+const { $firebaseStore: db } = useNuxtApp()
+
+const transactions = computed(() => useFirestore(collection(db, 'transactions')))
+const atms = computed(() => useFirestore(collection(db, 'atms')))
+const sessions = computed(() => {
+	transactions.value.value?.forEach(({ sessionID }) => {
+		const session = useFirestore(collection(db, 'sessions', sessionID))
+		console.log(session.value)
+	})
+})
 
 // #region Chart stuff
 const chartBox = ref<Nullable<HTMLElement>>(null)

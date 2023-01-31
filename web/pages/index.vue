@@ -11,14 +11,13 @@ let isInitialLoad = true
 let isCreated = false
 
 onSnapshot(collection(firestoreDb, 'atms/000001/sessions'), (snapshot) => {
-	if (isInitialLoad) {
-		isInitialLoad = false
-		return
-	}
+	if (isInitialLoad) return isInitialLoad = false
 
 	snapshot.docChanges().forEach(async (docChange) => {
 		const docIdCookie = useCookie('doc_id')
 		const { uuid, transactionID } = docChange.doc.data()
+
+		const atmID = '000001'
 
 		const transaction: Transaction = {
 			to: '',
@@ -27,6 +26,7 @@ onSnapshot(collection(firestoreDb, 'atms/000001/sessions'), (snapshot) => {
 			timeCreated: new Date(),
 			amount: 0,
 			id: transactionID,
+			atmID,
 			sessionID: docChange.doc.id,
 		}
 

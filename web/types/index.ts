@@ -33,6 +33,7 @@ declare global {
 
 	interface Transaction {
 		id: string
+		atmID: string
 		to: string
 		from: string
 		type?: string
