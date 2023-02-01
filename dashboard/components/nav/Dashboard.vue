@@ -37,7 +37,7 @@ const pathsJoint = computed(() => getJointPaths(pathSegments.value))
 
 <template>
 	<nav class="px-6 sm:px-12 lg:px-16 border-b dark:border-white/20">
-		<div class="flex items-center min-h-[4rem] max-w-7xl w-full mx-auto pt-6 pb-4">
+		<div class="flex items-center min-h-[4rem] max-w-7xl w-full mx-auto py-3">
 			<div class="inline-flex w-1/2 justify-start items-center">
 				<div class="w-8 h-8 rounded-full relative mr-2 aspect-square">
 					<img src="/favicon.svg" alt="">
@@ -71,8 +71,8 @@ const pathsJoint = computed(() => getJointPaths(pathSegments.value))
 			<TabsItem link="/dashboard">
 				Dashboard
 			</TabsItem>
-			<TabsItem link="/dashboard/test">
-				Test
+			<TabsItem link="/dashboard/transactions">
+				Transactions
 			</TabsItem>
 		</Tabs>
 	</nav>

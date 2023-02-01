@@ -8,7 +8,7 @@
 
 <style>
 ul > .breadcrumb:not(:first-child)::before {
-    @apply content-['/'] mx-3 text-gray-300
+    @apply content-['/'] mx-3 text-gray-300 dark:text-gray-500
 }
 
 ul > .breadcrumb:last-child {
