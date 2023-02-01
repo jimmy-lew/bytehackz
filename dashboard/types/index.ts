@@ -20,6 +20,11 @@ declare global {
     	value: string
     }
 
+    interface ChartData {
+    	total: number
+    	flagged: number
+    }
+
     interface Account {
     	uuid: string
     	balance: number

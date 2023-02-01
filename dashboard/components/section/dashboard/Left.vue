@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { QuerySnapshot, Timestamp, Unsubscribe } from 'firebase/firestore'
-import { collection, doc, getDoc, getDocs, onSnapshot, query } from 'firebase/firestore'
+import type { Unsubscribe } from 'firebase/firestore'
+import { collection, onSnapshot, query } from 'firebase/firestore'
 
 // #region Select stuff
 const currentRange = ref(7)
@@ -35,11 +35,11 @@ let unsub: Unsubscribe
 const getTransactionsPerDay = async () => {
 	// TODO: Filter based on currentRange
 	const transactionQuery = query(collection(db, 'transactions'))
-	const transactions = await getDocs(transactionQuery) as QuerySnapshot<Transaction>
+	const transactions = await getFirebaseCollection<Transaction>(transactionQuery)
 
 	const getDateKey = (date: Date) => `${date.getDate()}/${date.getUTCMonth() + 1}`
 
-	const data: Record<string, { total: number; flagged: number }> = {}
+	const data: Record<string, ChartData> = {}
 	const date = new Date()
 
 	for (let i = 0; i < currentRange.value; i++) {
@@ -47,8 +47,7 @@ const getTransactionsPerDay = async () => {
 		data[getDateKey(date)] = { total: 0, flagged: 0 }
 	}
 
-	for (const transactionDoc of transactions.docs) {
-		const { timeCreated, sessionID, atmID } = transactionDoc.data()
+	for (const { timeCreated, sessionID, atmID } of transactions) {
 		const key = getDateKey(timeCreated.toDate())
 		const { isFlagged } = await getATMSession(atmID, sessionID)
 		data[key].total++
@@ -67,7 +66,8 @@ const getTransactionsPerDay = async () => {
 }
 
 onMounted(async () => {
-	unsub = onSnapshot(collection(db, 'transactions'), async (docs) => {
+	unsub = onSnapshot(collection(db, 'transactions'), async () => {
+		console.log('Transactions updated...')
 		await getTransactionsPerDay()
 	})
 })
