@@ -1,5 +1,6 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
 import type { PropertiesSchema } from '@lyrasearch/lyra'
+import type { Timestamp } from 'firebase/firestore'
 
 export { }
 
@@ -56,7 +57,7 @@ declare global {
     	from: string
     	type?: string
     	sessionID: string
-    	timeCreated: Date
+    	timeCreated: Timestamp
     	amount: number
     }
 }
