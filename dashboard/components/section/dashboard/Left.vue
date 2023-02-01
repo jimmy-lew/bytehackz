@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { QuerySnapshot } from 'firebase/firestore'
-import { collection, doc, getDoc, getDocs, query } from 'firebase/firestore'
+import type { QuerySnapshot, Timestamp, Unsubscribe } from 'firebase/firestore'
+import { collection, doc, getDoc, getDocs, onSnapshot, query } from 'firebase/firestore'
 
 // #region Select stuff
 const currentRange = ref(7)
@@ -30,29 +30,28 @@ const { $firebaseStore: db } = useNuxtApp()
 
 const transactionsPerDay = ref<number[][]>([[], []])
 
+let unsub: Unsubscribe
+
 const getTransactionsPerDay = async () => {
 	// TODO: Filter based on currentRange
 	const transactionQuery = query(collection(db, 'transactions'))
 	const transactions = await getDocs(transactionQuery) as QuerySnapshot<Transaction>
 
+	const getDateKey = (date: Date) => `${date.getDate()}/${date.getUTCMonth() + 1}`
+
 	const data: Record<string, { total: number; flagged: number }> = {}
+	const date = new Date()
 
 	for (let i = 0; i < currentRange.value; i++) {
-		const date = new Date()
 		date.setDate(date.getDate() - i)
-		const key = `${date.getDate()}/${date.getUTCMonth() + 1}`
-		data[key] = { total: 0, flagged: 0 }
+		data[getDateKey(date)] = { total: 0, flagged: 0 }
 	}
 
 	for (const transactionDoc of transactions.docs) {
 		const { timeCreated, sessionID, atmID } = transactionDoc.data()
-		const date = timeCreated.toDate()
-		const key = `${date.getDate()}/${date.getUTCMonth() + 1}`
-		if (!data[key]) data[key] = { total: 0, flagged: 0 }
+		const key = getDateKey(timeCreated.toDate())
+		const { isFlagged } = await getATMSession(atmID, sessionID)
 		data[key].total++
-		const sessionDoc = await getDoc(doc(db, 'atms', atmID, 'sessions', sessionID))
-		const session = sessionDoc.data() as Session
-		const { isFlagged } = validateSession(session)
 		if (isFlagged) data[key].flagged++
 	}
 
@@ -68,7 +67,13 @@ const getTransactionsPerDay = async () => {
 }
 
 onMounted(async () => {
-	await getTransactionsPerDay()
+	unsub = onSnapshot(collection(db, 'transactions'), async (docs) => {
+		await getTransactionsPerDay()
+	})
+})
+
+onUnmounted(() => {
+	unsub()
 })
 
 // #region Chart stuff
