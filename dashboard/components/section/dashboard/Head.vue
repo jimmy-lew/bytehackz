@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const user = useCurrentUser()
+const lastUpdate = useDataUpdate()
 </script>
 
 <template>
@@ -13,7 +14,7 @@ const user = useCurrentUser()
 			<div class="flex flex-none flex-col lg:flex-row lg:items-center">
 				<div class="lg:mr-2 text-sm">
 					Transactions last updated
-					<time>today</time>
+					<time :datetime="lastUpdate.toLocaleDateString()">{{ lastUpdate.toLocaleTimeString('en-US') }}</time>
 				</div>
 			</div>
 		</div>

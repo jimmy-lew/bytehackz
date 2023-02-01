@@ -27,6 +27,8 @@ const handleDateRangeSelection = async ([{ value }]: DateRangeItem[]) => current
 // #endregion
 
 const { $firebaseStore: db } = useNuxtApp()
+const lastUpdate = useDataUpdate()
+const transactions = useTransactions()
 
 const transactionsPerDay = ref<number[][]>([[], []])
 
@@ -35,7 +37,8 @@ let unsub: Unsubscribe
 const getTransactionsPerDay = async () => {
 	// TODO: Filter based on currentRange
 	const transactionQuery = query(collection(db, 'transactions'))
-	const transactions = await getFirebaseCollection<Transaction>(transactionQuery)
+	const newTransactions = await getFirebaseCollection<Transaction>(transactionQuery)
+	transactions.value.transactions = newTransactions
 
 	const getDateKey = (date: Date) => `${date.getDate()}/${date.getUTCMonth() + 1}`
 
@@ -47,7 +50,7 @@ const getTransactionsPerDay = async () => {
 		data[getDateKey(date)] = { total: 0, flagged: 0 }
 	}
 
-	for (const { timeCreated, sessionID, atmID } of transactions) {
+	for (const { timeCreated, sessionID, atmID } of newTransactions) {
 		const key = getDateKey(timeCreated.toDate())
 		const { isFlagged } = await getATMSession(atmID, sessionID)
 		data[key].total++
@@ -56,10 +59,10 @@ const getTransactionsPerDay = async () => {
 
 	const values = Object.values(data)
 
-	const dataArray = values.reduce((prev, { total, flagged }) => {
-		prev[0].push(total)
-		prev[1].push(flagged)
-		return prev
+	const dataArray = values.reduce(([totalArray, flaggedArray], { total, flagged }) => {
+		totalArray.push(total)
+		flaggedArray.push(flagged)
+		return [totalArray, flaggedArray]
 	}, [[], []] as number[][])
 
 	transactionsPerDay.value = dataArray
@@ -69,6 +72,7 @@ onMounted(async () => {
 	unsub = onSnapshot(collection(db, 'transactions'), async () => {
 		console.log('Transactions updated...')
 		await getTransactionsPerDay()
+		lastUpdate.value = new Date()
 	})
 })
 
@@ -80,8 +84,16 @@ onUnmounted(() => {
 const chartBox = ref<Nullable<HTMLElement>>(null)
 const { width } = useElementSize(chartBox)
 
-const total = computed(() => transactionsPerDay.value[0].reduce((prev, curr) => prev + curr, 0))
-const flagged = computed(() => transactionsPerDay.value[1].reduce((prev, curr) => prev + curr, 0))
+const total = computed(() => {
+	const total = transactionsPerDay.value[0].reduce((prev, curr) => prev + curr, 0)
+	transactions.value.total = total
+	return total
+})
+const flagged = computed(() => {
+	const flagged = transactionsPerDay.value[1].reduce((prev, curr) => prev + curr, 0)
+	transactions.value.flagged = flagged
+	return flagged
+})
 // #endregion
 </script>
 
