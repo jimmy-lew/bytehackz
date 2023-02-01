@@ -77,11 +77,20 @@ const unmount = useEventListener('focusin', () => !options.value?.contains(docum
 
 onBeforeUnmount(unmount)
 // #endregion
+
+// #region Styling
+const classes = computed(() => ({
+	'error': props.error,
+	'cursor-pointer': !props.hasSearch,
+	'cursor-text': props.hasSearch,
+}))
+// #endregion
 </script>
 
 <template>
 	<div ref="options" class="relative w-full">
-		<div ref="trigger" tabindex="0" class="text-gray-400 w-full rounded focus:bg-[#e5e7eb] dark:focus:bg-[#18181b] hover:bg-[#e5e7eb] dark:hover:bg-[#18181b] pl-0 sm:pl-1 p-1" :class="error ? 'error' : ''">
+		<div ref="trigger" tabindex="0" class="text-gray-400 flex items-center w-full rounded focus:bg-[#e5e7eb] dark:focus:bg-[#18181b] hover:bg-[#e5e7eb] dark:hover:bg-[#18181b] pl-0 sm:pl-1 p-1" :class="classes">
+			<Icon v-if="hasSearch" name="line-md:search" class="-scale-x-100 ml-1 -mr-0.5" />
 			<slot />
 		</div>
 		<span v-if="error" class="absolute top-1/2 right-0 -translate-y-1/2 text-xs px-1 text-error">

@@ -30,4 +30,8 @@ withDefaults(defineProps<{
 .link.animated:hover:after {
     @apply scale-100 origin-bottom-left
 }
+
+.link.animated:focus:after {
+    @apply scale-100 origin-bottom-left
+}
 </style>
