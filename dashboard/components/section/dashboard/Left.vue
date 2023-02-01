@@ -37,6 +37,13 @@ const getTransactionsPerDay = async () => {
 
 	const data: Record<string, { total: number; flagged: number }> = {}
 
+	for (let i = 0; i < currentRange.value; i++) {
+		const date = new Date()
+		date.setDate(date.getDate() - i)
+		const key = `${date.getDate()}/${date.getUTCMonth() + 1}`
+		data[key] = { total: 0, flagged: 0 }
+	}
+
 	for (const transactionDoc of transactions.docs) {
 		const { timeCreated, sessionID, atmID } = transactionDoc.data()
 		const date = timeCreated.toDate()
@@ -57,13 +64,7 @@ const getTransactionsPerDay = async () => {
 		return prev
 	}, [[], []] as number[][])
 
-	const meetsRange = dataArray[0].length >= currentRange.value
-	const totalPadded = !meetsRange ? dataArray[0].concat(Array((currentRange.value + 1) - dataArray.length).fill(0)) : dataArray[0]
-	const flaggedPadded = !meetsRange ? dataArray[1].concat(Array((currentRange.value + 1) - dataArray.length).fill(0)) : dataArray[1]
-
-	const finalArray = [totalPadded, flaggedPadded]
-
-	transactionsPerDay.value = finalArray
+	transactionsPerDay.value = dataArray
 }
 
 onMounted(async () => {
