@@ -47,7 +47,7 @@ onMounted(() => {
 <template>
 	<LogItem v-bind="props" :action="expand" :duration="duration" :completed-at="timeCompleted?.toDate()" :status="status" :title="`${atmID}`" :subtitle="`$ ${amount}`">
 		<div v-if="type === 'Transfer'" class="flex gap-4 items-center relative h-full">
-			<Icon size="18" name="mingcute:transfer-2-fill" class="" />
+			<Icon size="18" name="mingcute:transfer-2-fill" class="rotate-90" />
 			<div class="relative flex flex-col h-full">
 				<span>
 					<span class="font-bold">To:</span> {{ to }}
