@@ -40,15 +40,17 @@ const getTransactionsPerDay = async () => {
 	const newTransactions = await getFirebaseCollection<Transaction>(transactionQuery)
 	transactions.value.transactions = newTransactions
 
-	const getDateKey = (date: Date) => `${date.getDate()}/${date.getUTCMonth() + 1}`
+	const getDateKey = (date: Date) => `${date.getUTCDate()}/${date.getUTCMonth() + 1}`
 
 	const data: Record<string, ChartData> = {}
-	const date = new Date()
 
 	for (let i = 0; i < currentRange.value; i++) {
-		date.setDate(date.getDate() - i)
+		const date = new Date()
+		date.setDate(date.getUTCDate() - i)
 		data[getDateKey(date)] = { total: 0, flagged: 0 }
 	}
+
+	console.log(data)
 
 	for (const { timeCreated, sessionID, atmID } of newTransactions) {
 		const key = getDateKey(timeCreated.toDate())
