@@ -5,7 +5,7 @@ export const lyraCreate = async <T extends Schema>(schemaObj: T, data: any[]) =>
 		schema: schemaObj,
 	})
 
-	for (const item of data) await insert(db, item)
+	data.map(async (item, _id) => await insert(db, { ...item, _id }))
 
 	return db
 }

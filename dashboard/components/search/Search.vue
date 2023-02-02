@@ -31,6 +31,8 @@ const handleInput = (e: KeyboardEvent) => {
 }
 
 watch(search, (term) => {
+	if (term === '') return emits('repopulate', data.value)
+
 	Object.entries(dbs.value).forEach(async ([dirtyKey, db]) => {
 		const [key] = dirtyKey.split('_')
 
@@ -52,7 +54,7 @@ useFocus(input, { initialValue: true })
 		class="relative w-[calc(100%-24px)] bg-transparent focus:outline-0 flex flex-wrap gap-2"
 		contenteditable="true"
 		placeholder="Type to search..."
-		@keydown="handleInput"
+		@keyup="handleInput"
 	>
 		<slot name="input" />
 	</div>
