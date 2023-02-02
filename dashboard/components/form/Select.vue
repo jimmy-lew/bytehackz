@@ -10,6 +10,7 @@ const props = defineProps<{
 	currentSelection: string[]
 	error?: string
 	isMultiselect?: boolean
+	checked?: boolean
 	hasSearch?: boolean
 }>()
 
@@ -96,7 +97,7 @@ const classes = computed(() => ({
 		<span v-if="error" class="absolute top-1/2 right-0 -translate-y-1/2 text-xs px-1 text-error">
 			{{ error }}
 		</span>
-		<div v-if="isOptionsActive" class="absolute top-0 z-20 min-w-max w-full rounded bg-white dark:bg-[#0a0a06] border-[0.5px] border-[#e5e7eb] dark:border-white/20 scale-105 animate-expand">
+		<div v-if="isOptionsActive" class="absolute top-0 z-20 -left-px min-w-max w-full rounded bg-white dark:bg-[#0a0a06] border-[0.5px] border-[#e5e7eb] dark:border-white/20 scale-105 animate-expand">
 			<div v-if="hasSearch" class="flex items-center px-4 py-2 border-b-[0.5px] border-white/20">
 				<Search :dbs="{ selects_db }" :data="{ selects }" @repopulate="({ selects }) => handleRepopulate(selects)" />
 			</div>
@@ -109,6 +110,7 @@ const classes = computed(() => ({
 					:data-icon="option.icon"
 					:is-option-selected="currentSelection.includes(option)"
 					:is-multiselect="isMultiselect"
+					:checked="checked"
 					@option-selected="handleSelect"
 				/>
 			</ul>
@@ -121,6 +123,7 @@ const classes = computed(() => ({
 					:data-icon="searchOption.icon"
 					:is-option-selected="currentSelection.includes(searchOption)"
 					:is-multiselect="isMultiselect"
+					:checked="checked"
 					@option-selected="handleSelect"
 				/>
 			</ul>

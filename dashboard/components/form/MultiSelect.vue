@@ -24,7 +24,6 @@ const currentSelection = ref<any[]>(props.initialAllSelected ? [...props.data] :
 const handleSelect = (selection: any) => {
 	if (currentSelection.value.includes(selection)) {
 		currentSelection.value.splice(currentSelection.value.indexOf(selection), 1)
-		return
 	}
 	else {
 		currentSelection.value.push(selection)
@@ -56,7 +55,7 @@ const handleSelect = (selection: any) => {
 				</div>
 			</li>
 		</ul>
-		<div v-else class="flex items-center justify-end w-full gap-2">
+		<div v-else class="flex items-center justify-end w-full gap-2 ml-3">
 			{{ title }}
 			<div class="rounded-full border-[0.5px] border-white/20 px-3">
 				{{ currentSelection.length }} / {{ data.length }}
