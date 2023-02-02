@@ -28,12 +28,12 @@ whenever(enter, () => {
 	<li ref="option" class="rounded focus:scale-105 focus:bg-[#e5e7eb] dark:focus:bg-[#18181b] transition-all ease-in-out duration-300" tabindex="0" @click="toggleOptionSelection">
 		<div class="flex items-center gap-2 py-2 px-4">
 			<Icon v-if="isMultiselect && !checked" size="16" :name="isOptionSelected ? 'material-symbols:check-box' : 'material-symbols:check-box-outline-blank'" />
-			<div class="inline-flex items-center gap-1">
+			<div class="inline-flex items-center gap-1 min-w-max">
 				<Icon v-if="!isColor && dataIcon" size="16" :name="dataIcon" />
 				<span v-if="isColor && dataIcon" class="w-2.5 h-2.5 rounded-full" :class="`bg-${dataIcon.split('_')[1]}`" />
 				{{ value }}
 			</div>
-			<div class="inline-flex justify-end w-full">
+			<div class="inline-flex justify-end min-w-max">
 				<Icon v-if="isMultiselect && checked" size="18" :name="isOptionSelected ? 'bi:check' : ''" />
 			</div>
 		</div>

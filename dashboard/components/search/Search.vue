@@ -44,7 +44,9 @@ watch(search, (term) => {
 	emits('repopulate', searchResults.value)
 })
 
-useFocus(input, { initialValue: true })
+onMounted(() => {
+	setTimeout(() => input.value?.focus(), 250)
+})
 </script>
 
 <template>

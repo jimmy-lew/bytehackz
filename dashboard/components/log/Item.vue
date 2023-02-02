@@ -65,7 +65,7 @@ onMounted(() => {
 </script>
 
 <template>
-	<Transition appear>
+	<Transition name="fade" appear>
 		<li tabindex="0" class="outline-none hover:scale-105 focus-within:scale-105 transition-all duration-300 ease-in-out" @click="action">
 			<Card :error="status === 'Failed' || status === 'Flagged'" :radius="16">
 				<div class="pl-4 pr-1.5 py-3 w-full grid grid-cols-12 text-sm">
@@ -110,13 +110,4 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.v-enter-active,
-.v-leave-active {
-  transition: opacity 0.4s ease-out;
-}
-
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
-}
 </style>
