@@ -62,7 +62,7 @@ whenever(enter, async () => {
 <!-- eslint-disable vue/no-use-v-if-with-v-for -->
 <template>
 	<ModalBase @close="() => emits('close')">
-		<div class="flex items-center rounded-t py-4 px-6 border-b-[0.5px] border-white/20">
+		<div class="flex items-center rounded-t py-4 px-6 border-b-[0.5px] border-[#e5e7eb] dark:border-white/20">
 			<Search :dbs="dbs" :data="data" @repopulate="handleRepopulate">
 				<template #input>
 					<CommandInput v-for="{ key, value: { focus } } in commandInputs" v-if="commandInputs.length > 0" :key="key" :label="key" :has-focus="focus" @change="(change: any) => handleInputChange(key, change)" />
@@ -70,7 +70,7 @@ whenever(enter, async () => {
 			</Search>
 		</div>
 		<div class="pt-2">
-			<div class="flex flex-col items-center pt-0 max-h-96 overflow-y-auto border-b-[0.5px] border-white/20">
+			<div class="flex flex-col items-center pt-0 max-h-96 overflow-y-auto border-b-[0.5px] border-[#e5e7eb] dark:border-white/20">
 				<SearchSection
 					v-for="[key, value] in Object.entries(searchResults)"
 					v-if="Object.values(searchResults).some(dataHit => dataHit.length > 0)"
@@ -92,25 +92,18 @@ whenever(enter, async () => {
 					No Results...
 				</div>
 			</div>
-			<div class="flex items-center gap-1 p-2 text-xs">
-				<Card class="transition-all duration-500 ease-in scale-75">
-					<div class="flex items-center justify-center px-1 text-sm">
-						Tab
-					</div>
-				</Card>
+			<div class="flex items-center gap-2 p-2 text-xs">
+				<kbd class="flex items-center justify-center w-6 h-6 text-sm text-[#18181b] dark:text-white rounded bg-[#eaeaea] dark:bg-[#18181b]">
+					<Icon name="material-symbols:keyboard-tab-rounded" />
+				</kbd>
 				&
-				<div class="flex items-center">
-					<Card class="transition-all duration-500 ease-in scale-75">
-						<div class="flex items-center justify-center px-1 text-sm">
-							Shift
-						</div>
-					</Card>
-					+
-					<Card class="transition-all duration-500 ease-in scale-75">
-						<div class="flex items-center justify-center px-1 text-sm">
-							Tab
-						</div>
-					</Card>
+				<div class="flex items-center gap-1">
+					<kbd class="flex items-center justify-center w-6 h-6 text-sm text-[#18181b] dark:text-white rounded bg-[#eaeaea] dark:bg-[#18181b]">
+						<Icon name="material-symbols:shift-lock-rounded" />
+					</kbd>
+					<kbd class="flex items-center justify-center w-6 h-6 text-sm text-[#18181b] dark:text-white rounded bg-[#eaeaea] dark:bg-[#18181b]">
+						<Icon name="material-symbols:keyboard-tab-rounded" />
+					</kbd>
 				</div>
 				for navigation
 			</div>

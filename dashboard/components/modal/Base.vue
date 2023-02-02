@@ -11,7 +11,7 @@ onClickOutside(modal, () => emits('close'))
         w-screen h-screen
         pt-[20%]
         px-4
-        bg-white/70 dark:bg-black/70
+        bg-[#f0f0f0]/90 dark:bg-black/70
         z-[2000]
         backdrop-blur-sm
         flex justify-center"
@@ -20,10 +20,11 @@ onClickOutside(modal, () => emits('close'))
 			<div
 				ref="modal"
 				class="
+                modal
                 relative
                 flex flex-col
-                rounded-lg shadow-lg
-                backdrop-blur-sm bg-transparent
+                rounded-lg
+                backdrop-blur-sm bg-white dark:bg-[#0c0c0c]
                 border-[0.5px] border-white/20"
 			>
 				<slot />
@@ -33,4 +34,7 @@ onClickOutside(modal, () => emits('close'))
 </template>
 
 <style scoped>
+.modal {
+    box-shadow: 0 16px 70px rgb(0 0 0 / 20%);
+}
 </style>
