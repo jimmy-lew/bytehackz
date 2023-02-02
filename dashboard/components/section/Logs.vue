@@ -1,76 +1,49 @@
 <script setup lang="ts">
 withDefaults(defineProps<{
 	title: string
+	tabs: string[]
 }>(), {
 	title: 'Logs',
+	tabs: () => [],
 })
 
-const dateRange_data = ref<DateRangeItem[]>([
-	{
-		_id: 0,
-		date: 'This Week',
-		value: '7d',
-	},
-	{
-		_id: 1,
-		date: 'This Month',
-		value: '30d',
-	},
-])
-
-const dateRange_db = ref(await lyraCreate({
-	_id: 'number',
-	date: 'string',
-}, dateRange_data.value))
+const hasFilters = computed(() => !!useSlots().filters)
 </script>
 
 <template>
-	<div class="w-full border-b dark:border-white/20">
-		<div class="max-w-7xl mx-auto">
-			<h1 class="text-3xl font-bold my-4">
+	<div class="sticky -top-20 z-30 w-full border-b dark:border-white/20 bg-white dark:bg-[#0c0c0c]">
+		<div class="max-w-7xl mx-auto -mb-px px-6 sm:px-12 lg:px-16 xl:px-0">
+			<h1 class="text-3xl font-bold" :class="hasFilters || tabs.length > 0 ? 'py-6' : 'py-12'">
 				{{ title }}
 			</h1>
-			<div class="flex gap-x-4 my-4">
-				<FormSingleSelect
-					class="border dark:border-white/20 rounded p-1"
-					placeholder="This Week"
-					has-search
-					:db="dateRange_db"
-					:data="dateRange_data"
-					:transformer="({ date }) => date"
-				/>
-				<FormSingleSelect
-					class="border dark:border-white/20 rounded p-1"
-					placeholder="This Week"
-					has-search
-					:db="dateRange_db"
-					:data="dateRange_data"
-					:transformer="({ date }) => date"
-				/>
-				<FormSingleSelect
-					class="border dark:border-white/20 rounded p-1"
-					placeholder="This Week"
-					has-search
-					:db="dateRange_db"
-					:data="dateRange_data"
-					:transformer="({ date }) => date"
-				/>
+			<div v-if="hasFilters" class="flex gap-x-4 mt-2 mb-4">
+				<slot name="filters" />
 			</div>
-			<Tabs>
-				<TabsItem link="/dashboard" is-bordered>
-					Dashboard
-				</TabsItem>
-				<TabsItem link="/dashboard/transactions" is-bordered>
-					Transactions
-				</TabsItem>
-				<TabsItem is-bordered class="w-full text-transparent">
-					.
-				</TabsItem>
+			<Tabs v-if="tabs.length > 0">
+				<TabsItem v-for="link in tabs" :key="link" :link="link" is-bordered />
+				<TabsItem is-bordered is-filler />
 			</Tabs>
 		</div>
 	</div>
+	<MiscGlowWrapper class="w-full min-h-[calc(100vh-305px)] bg-[#f8f8f8] dark:bg-[#121212]">
+		<div class="mx-auto max-w-7xl h-full">
+			<div class="py-12">
+				<Transition>
+					<slot />
+				</Transition>
+			</div>
+		</div>
+	</MiscGlowWrapper>
 </template>
 
 <style scoped>
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.4s ease-out;
+}
 
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
 </style>
