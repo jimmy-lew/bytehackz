@@ -12,12 +12,12 @@ export default defineEventHandler(async (event) => {
 		.limitToLast(1)
 		.get()
 
-	await atmTransactionsSnapshot.docs.forEach((doc) => {
-		db.collection(`atms/${atmID}/sessions`).doc(doc.id).update({
+	const res = atmTransactionsSnapshot.docs.map(async (doc) => {
+		return await db.collection(`atms/${atmID}/sessions`).doc(doc.id).update({
 			isBioValidated: !!(parseInt(auth.toString())),
 			isEmergency: !!(parseInt(isEmergency.toString())),
 		})
 	})
 
-	return {}
+	return res
 })

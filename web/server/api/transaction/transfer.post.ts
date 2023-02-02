@@ -9,7 +9,8 @@ export default defineEventHandler(async (event) => {
 		to,
 		from,
 		amount,
-		type: 'TRANSFER',
+		timeCompleted: new Date(),
+		type: 'Transfer',
 	})
 
 	return body
