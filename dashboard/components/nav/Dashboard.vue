@@ -58,8 +58,7 @@ const pathsJoint = computed(() => getJointPaths(pathSegments.value))
 					</template>
 					<template #items>
 						<li class="flex items-center p-1 border-t border-[#e5e7eb] dark:border-[#3d3d3d]">
-							<div class="flex items-center justify-between w-full px-4 py-0.5 text-sm">
-								{{ startingWithCapital(theme.value) }}
+							<div class="w-full text-sm">
 								<MiscTheThemeToggle />
 							</div>
 						</li>
@@ -68,11 +67,9 @@ const pathsJoint = computed(() => getJointPaths(pathSegments.value))
 			</div>
 		</div>
 		<Tabs class="-mb-px max-w-7xl">
-			<TabsItem link="/dashboard">
-				Dashboard
-			</TabsItem>
-			<TabsItem link="/dashboard/transactions">
-				Transactions
+			<TabsItem link="/dashboard" />
+			<TabsItem link="/dashboard/logs/transactions">
+				Logs
 			</TabsItem>
 		</Tabs>
 	</nav>

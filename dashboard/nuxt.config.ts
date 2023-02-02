@@ -35,4 +35,9 @@ export default defineNuxtConfig({
 		firebaseClientEmail: '',
 		firebasePrivateKey: '',
 	},
+	imports: {
+		dirs: [
+			'commands',
+		],
+	},
 })

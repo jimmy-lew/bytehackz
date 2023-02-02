@@ -52,7 +52,8 @@ declare global {
     	appScore: number
     	overallScore: number
     	transactionID: string
-    	timeCreated: Date
+    	timeCreated: Timestamp
+    	timeCompleted: Timestamp
     }
 
     interface Transaction {
@@ -60,9 +61,24 @@ declare global {
     	atmID: string
     	to: string
     	from: string
-    	type?: string
+    	type?: 'Transfer' | 'Withdrawal' | 'Deposit'
     	sessionID: string
     	timeCreated: Timestamp
+    	timeCompleted?: Timestamp
     	amount: number
     }
+
+	type StatusTypes = 'Completed' | 'Failed' | 'Pending' | 'Flagged' | 'Unknown' | 'Cancelled'
+
+	type LogItem<T extends {}> = T & {
+		status: StatusTypes
+	}
+
+	interface ISearchable {
+		searchOptions: {
+			type: 'command' | 'redirect'
+		}
+	}
+
+	interface InputOption<T> { focus: boolean; data: T; required?: boolean }
 }
