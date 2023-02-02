@@ -5,6 +5,7 @@ const props = defineProps<{
 	transformer: (...args: any[]) => any[]
 	db: Lyra<Schema>
 	data: any[]
+	initialSelection?: string[]
 	error?: string
 	placeholder?: string
 	hasSearch?: boolean
@@ -12,7 +13,7 @@ const props = defineProps<{
 
 const emits = defineEmits(['optionsToggled', 'optionSelected'])
 
-const currentSelection = ref<string[]>([])
+const currentSelection = ref<string[]>(props.initialSelection ?? [])
 
 const handleSelect = (selection: any) => {
 	currentSelection.value[0] = selection
