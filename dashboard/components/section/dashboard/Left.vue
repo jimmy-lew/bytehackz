@@ -1,5 +1,10 @@
 <script setup lang="ts">
+import type { Unsubscribe } from 'firebase/firestore'
+import { collection, onSnapshot, query } from 'firebase/firestore'
+
 // #region Select stuff
+const currentRange = ref(7)
+
 const dateRange_data = ref<DateRangeItem[]>([
 	{
 		_id: 0,
@@ -18,22 +23,79 @@ const dateRange_db = ref(await lyraCreate({
 	date: 'string',
 }, dateRange_data.value))
 
-const handleDateRangeSelection = async ([{ date, value }]: DateRangeItem[]) => {
-	console.log(date, value)
-}
+const handleDateRangeSelection = async ([{ value }]: DateRangeItem[]) => currentRange.value = parseInt(value.slice(0, -1))
 // #endregion
+
+const { $firebaseStore: db } = useNuxtApp()
+const lastUpdate = useDataUpdate()
+const transactions = useTransactions()
+
+const transactionsPerDay = ref<number[][]>([[], []])
+
+let unsub: Unsubscribe
+
+const getTransactionsPerDay = async () => {
+	// TODO: Filter based on currentRange
+	const transactionQuery = query(collection(db, 'transactions'))
+	const newTransactions = await getFirebaseCollection<Transaction>(transactionQuery)
+	transactions.value.transactions = newTransactions
+
+	const getDateKey = (date: Date) => `${date.getUTCDate()}/${date.getUTCMonth() + 1}`
+
+	const data: Record<string, ChartData> = {}
+
+	for (let i = 0; i < currentRange.value; i++) {
+		const date = new Date()
+		date.setDate(date.getUTCDate() - i)
+		data[getDateKey(date)] = { total: 0, flagged: 0 }
+	}
+
+	console.log(data)
+
+	for (const { timeCreated, sessionID, atmID } of newTransactions) {
+		const key = getDateKey(timeCreated.toDate())
+		const { isFlagged } = await getATMSession(atmID, sessionID)
+		data[key].total++
+		if (isFlagged) data[key].flagged++
+	}
+
+	const values = Object.values(data)
+
+	const dataArray = values.reduce(([totalArray, flaggedArray], { total, flagged }) => {
+		totalArray.push(total)
+		flaggedArray.push(flagged)
+		return [totalArray, flaggedArray]
+	}, [[], []] as number[][])
+
+	transactionsPerDay.value = dataArray
+}
+
+onMounted(async () => {
+	unsub = onSnapshot(collection(db, 'transactions'), async () => {
+		console.log('Transactions updated...')
+		await getTransactionsPerDay()
+		lastUpdate.value = new Date()
+	})
+})
+
+onUnmounted(() => {
+	unsub()
+})
 
 // #region Chart stuff
 const chartBox = ref<Nullable<HTMLElement>>(null)
 const { width } = useElementSize(chartBox)
 
-const data = ref([
-	[10, 10, 12, 11, 10, 13, 12],
-	[2, 3, 2, 1, 2, 0, 0],
-])
-
-const total = computed(() => data.value[0].reduce((prev, curr) => prev + curr, 0))
-const flagged = computed(() => data.value[1].reduce((prev, curr) => prev + curr, 0))
+const total = computed(() => {
+	const total = transactionsPerDay.value[0].reduce((prev, curr) => prev + curr, 0)
+	transactions.value.total = total
+	return total
+})
+const flagged = computed(() => {
+	const flagged = transactionsPerDay.value[1].reduce((prev, curr) => prev + curr, 0)
+	transactions.value.flagged = flagged
+	return flagged
+})
 // #endregion
 </script>
 
@@ -74,7 +136,7 @@ const flagged = computed(() => data.value[1].reduce((prev, curr) => prev + curr,
 				</div>
 				<div class="px-2 pt-1 pb-2 text-gray-400 sm:px-3">
 					<div ref="chartBox" class="flex flex-row space-x-4 p-1">
-						<Chart :width="width" :data="data" />
+						<Chart :width="width" :data="transactionsPerDay" />
 					</div>
 				</div>
 			</div>

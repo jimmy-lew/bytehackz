@@ -26,7 +26,7 @@ whenever(enter, () => focused.value && toggleMenu())
 			<slot name="trigger" />
 		</div>
 		<Transition>
-			<ul v-if="isMenuActive" ref="menu" class="absolute right-0 flex flex-col mt-5 rounded-md bg-white dark:bg-[#0c0c0c] shadow-lg origin-top-right ring-1 ring-[#e5e7eb] dark:ring-white/20 min-w-[12rem]">
+			<ul v-if="isMenuActive" ref="menu" class="absolute z-40 right-0 flex flex-col mt-5 rounded-md bg-white dark:bg-[#0c0c0c] shadow-lg origin-top-right ring-1 ring-[#e5e7eb] dark:ring-white/20 min-w-[12rem]">
 				<LazyDropdownItem v-for="item in items" :key="item.label" v-bind="item" @action="toggleMenu" />
 				<slot name="items" />
 			</ul>

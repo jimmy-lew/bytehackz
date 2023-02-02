@@ -71,6 +71,7 @@
         "VariableDeclarator": 1,
         "outerIIFEBody": 1
       }
-    ]
+    ],
+    "antfu/if-newline": "off"
   }
 }

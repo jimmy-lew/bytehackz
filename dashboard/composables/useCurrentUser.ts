@@ -1,8 +1,8 @@
 export default () => {
 	return useState<Nullable<{
 		uid: string
-		displayName?: string
-		photoURL?: string
-		email?: string
+		displayName?: Nullable<string>
+		photoURL?: Nullable<string>
+		email?: Nullable<string>
 	}>>('curr-user', () => null)
 }

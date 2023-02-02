@@ -8,9 +8,9 @@ export default defineNuxtConfig({
 		'nuxt-icon',
 	],
 	colorMode: {
-		preference: 'system', // default theme
+		preference: 'light', // default theme
 		dataValue: 'theme', // activate data-theme in <html> tag
-		fallback: 'dark',
+		fallback: 'light',
 		classSuffix: '',
 	},
 	imports: {

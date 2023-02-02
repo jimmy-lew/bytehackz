@@ -15,8 +15,11 @@ const change = () => theme.preference = theme.preference === 'light' ? 'dark' : 
 </script>
 
 <template>
-	<button class="flex justify-center items-center rounded-md hover:bg-[#e5e7eb] dark:hover:bg-[#18181b] p-2" name="Theme toggle" @click="change">
-		<Icon size="16" :name="icon" />
+	<button class="flex items-center justify-between w-full rounded-md hover:bg-[#e5e7eb] dark:hover:bg-[#18181b] px-4 py-2" name="Theme toggle" @click="change">
+		{{ startingWithCapital(theme.value) }}
+		<div class="flex justify-center items-center">
+			<Icon size="16" :name="icon" />
+		</div>
 	</button>
 </template>
 

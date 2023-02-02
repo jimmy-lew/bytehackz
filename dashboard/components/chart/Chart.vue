@@ -89,7 +89,7 @@ const options = computed<ApexOptions>(() => {
 			},
 			padding: {
 				left: 16,
-				right: 0,
+				right: 16,
 			},
 		},
 		tooltip: {

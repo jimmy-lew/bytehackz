@@ -4,17 +4,21 @@ const props = withDefaults(defineProps<{
 	padding?: number
 	round?: RoundTypes
 	noGlow?: boolean
+	noBorder?: boolean
 	transparent?: boolean
+	error?: boolean
 }>(), {
 	radius: 6,
 	padding: 2,
 	round: 'md',
 	noGlow: false,
+	noBorder: false,
 	transparent: false,
+	error: false,
 })
 
 const parentClass = computed(() => {
-	const classes = ['card', `rounded-${props.round}`, `${props.noGlow ? '' : 'glow'}`]
+	const classes = ['card', `rounded-${props.round}`, `${props.noGlow || props.error ? '' : 'glow'}`, `${props.noBorder ? 'bg-white dark:bg-base' : 'bg-[#e5e7eb] dark:bg-white/20'}`, `${props.error ? '!bg-error' : ''}`]
 	return classes.join(' ')
 })
 
@@ -38,8 +42,7 @@ const glowRadius = computed(() => `${props.radius}rem`)
 .card {
     @apply
     relative
-    flex flex-col justify-center items-center
-    bg-[#e5e7eb] dark:bg-white/20;
+    flex flex-col justify-center items-center;
     --radius: v-bind(glowRadius);
 }
 
