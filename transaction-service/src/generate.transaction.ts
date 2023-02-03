@@ -1,5 +1,5 @@
 import { randomUUID } from "crypto"
-import { Timestamp, setDoc, doc, updateDoc, Firestore } from "firebase/firestore"
+import { Timestamp, setDoc, doc, updateDoc, Firestore, writeBatch } from "firebase/firestore"
 import { TransactionType, Session, Transaction } from "./types"
 import { faker } from '@faker-js/faker'
 
@@ -45,21 +45,30 @@ export const generateTransaction = async (db: Firestore, creationDate: Date, tra
         timeCreated,
     }
 
-    const sessionRes = await setDoc(doc(db, 'atms', atmID, 'sessions', sessionID), session)
-    const transactionRes = await setDoc(doc(db, 'transactions', transactionID), transaction)
+    const batchOne = writeBatch(db)
+
+    batchOne.set(doc(db, 'atms', atmID, 'sessions', sessionID), session)
+    batchOne.set(doc(db, 'transactions', transactionID), transaction)
+
+    await batchOne.commit()
 
     console.info(`⚡️ [server]: Transaction ${trackerID} created at ${timeCreated.toDate().toLocaleTimeString()}`);
 
     const delay = faker.datatype.number({min: 32000, max: 246000})
 
     setTimeout(async () => {
+        const batchTwo = writeBatch(db)
         const timeCompleted = Timestamp.fromDate(new Date(timeCreated.toDate().getTime() + delay))
         console.info(`⚡️ [server]: Transaction ${trackerID} completed at ${timeCompleted.toDate().toLocaleTimeString()}`);
-        await updateDoc(doc(db, 'transactions', transactionID), {
+        
+        batchTwo.update(doc(db, 'atms', atmID, 'sessions', sessionID), {
             timeCompleted,
         })
-        await updateDoc(doc(db, 'atms', atmID, 'sessions', sessionID), {
+
+        batchTwo.update(doc(db, 'transactions', transactionID), {
             timeCompleted,
         })
+
+        await batchTwo.commit()
     }, delay)
 }

@@ -21,17 +21,18 @@ const db = getFirestore(firebaseApp)
 const app = express()
     , server = createServer(app)
 
+let count = 0
+
 server.listen(port, async () => {
     console.info(`⚡️ [server]: Server is running at http://localhost:${port}`)
+	await generateTransaction(db, new Date(), count)
     // await generateBackdatedTransactionsLoop()
 });
-
-let count = 0
 
 const transactionLoop = setInterval(async () => {
     count++
     await generateTransaction(db, new Date(), count)
-}, 90000);
+}, 30000);
 
 // const generateBackdatedTransactionsLoop = async () => {
 //     for (let i = 0; i < 500; i++) {
