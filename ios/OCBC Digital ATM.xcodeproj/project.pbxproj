@@ -26,6 +26,11 @@
 		32935065291B640600D6AB10 /* SentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32935064291B640600D6AB10 /* SentData.swift */; };
 		32935068291B65F800D6AB10 /* RNCryptor in Frameworks */ = {isa = PBXBuildFile; productRef = 32935067291B65F800D6AB10 /* RNCryptor */; };
 		3293509A2923253D00D6AB10 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329350992923253D00D6AB10 /* LoadingView.swift */; };
+		32DFD775298A10D1006CDB6C /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 32DFD774298A10D1006CDB6C /* FirebaseDatabase */; };
+		32DFD777298A10D1006CDB6C /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 32DFD776298A10D1006CDB6C /* FirebaseDatabaseSwift */; };
+		32DFD779298A10D1006CDB6C /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 32DFD778298A10D1006CDB6C /* FirebaseStorage */; };
+		32DFD77B298A10D1006CDB6C /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 32DFD77A298A10D1006CDB6C /* FirebaseStorageCombine-Community */; };
+		32E3B2F22980E4AA00890A54 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 32E3B2F12980E4AA00890A54 /* GoogleService-Info.plist */; };
 		32FAD17E2919693F007C13DD /* OCBC_Digital_ATMApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FAD17D2919693F007C13DD /* OCBC_Digital_ATMApp.swift */; };
 		32FAD1802919693F007C13DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FAD17F2919693F007C13DD /* ContentView.swift */; };
 		32FAD18229196940007C13DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32FAD18129196940007C13DD /* Assets.xcassets */; };
@@ -57,6 +62,7 @@
 		32935062291B606600D6AB10 /* ATMSuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATMSuccessView.swift; sourceTree = "<group>"; };
 		32935064291B640600D6AB10 /* SentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentData.swift; sourceTree = "<group>"; };
 		329350992923253D00D6AB10 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		32E3B2F12980E4AA00890A54 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		32FAD17A2919693F007C13DD /* OCBC Digital ATM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OCBC Digital ATM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		32FAD17D2919693F007C13DD /* OCBC_Digital_ATMApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCBC_Digital_ATMApp.swift; sourceTree = "<group>"; };
 		32FAD17F2919693F007C13DD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -76,6 +82,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32DFD777298A10D1006CDB6C /* FirebaseDatabaseSwift in Frameworks */,
+				32DFD775298A10D1006CDB6C /* FirebaseDatabase in Frameworks */,
+				32935068291B65F800D6AB10 /* RNCryptor in Frameworks */,
+				32DFD779298A10D1006CDB6C /* FirebaseStorage in Frameworks */,
+				32DFD77B298A10D1006CDB6C /* FirebaseStorageCombine-Community in Frameworks */,
 				32935068291B65F800D6AB10 /* RNCryptor in Frameworks */,
 				326A19C3292383AD005748A7 /* SwiftCSV in Frameworks */,
 			);
@@ -87,6 +98,7 @@
 		326A19812923463A005748A7 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				32E3B2F12980E4AA00890A54 /* GoogleService-Info.plist */,
 				326A198229234641005748A7 /* GetURL.swift */,
 			);
 			path = Utils;
@@ -242,6 +254,10 @@
 			packageProductDependencies = (
 				32935067291B65F800D6AB10 /* RNCryptor */,
 				326A19C2292383AD005748A7 /* SwiftCSV */,
+				32DFD774298A10D1006CDB6C /* FirebaseDatabase */,
+				32DFD776298A10D1006CDB6C /* FirebaseDatabaseSwift */,
+				32DFD778298A10D1006CDB6C /* FirebaseStorage */,
+				32DFD77A298A10D1006CDB6C /* FirebaseStorageCombine-Community */,
 			);
 			productName = "OCBC Digital ATM";
 			productReference = 32FAD17A2919693F007C13DD /* OCBC Digital ATM.app */;
@@ -274,6 +290,7 @@
 			packageReferences = (
 				32935066291B65F800D6AB10 /* XCRemoteSwiftPackageReference "RNCryptor" */,
 				326A19C1292383AD005748A7 /* XCRemoteSwiftPackageReference "SwiftCSV" */,
+				32DFD773298A10D1006CDB6C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 32FAD17B2919693F007C13DD /* Products */;
 			projectDirPath = "";
@@ -293,6 +310,7 @@
 				326A19852923465D005748A7 /* url.txt in Resources */,
 				32FAD18529196940007C13DD /* Preview Assets.xcassets in Resources */,
 				32FAD18229196940007C13DD /* Assets.xcassets in Resources */,
+				32E3B2F22980E4AA00890A54 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,6 +479,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "OCBC Digital";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Connect to ATM";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Verify identity using biometric authentication";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "To track scams";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Fraud prevention";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Fraud prevention";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -495,6 +514,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "OCBC Digital";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Connect to ATM";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Verify identity using biometric authentication";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "To track scams";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Fraud prevention";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Fraud prevention";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -555,6 +575,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		32DFD773298A10D1006CDB6C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -567,6 +595,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 32935066291B65F800D6AB10 /* XCRemoteSwiftPackageReference "RNCryptor" */;
 			productName = RNCryptor;
+		};
+		32DFD774298A10D1006CDB6C /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 32DFD773298A10D1006CDB6C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		32DFD776298A10D1006CDB6C /* FirebaseDatabaseSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 32DFD773298A10D1006CDB6C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabaseSwift;
+		};
+		32DFD778298A10D1006CDB6C /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 32DFD773298A10D1006CDB6C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		32DFD77A298A10D1006CDB6C /* FirebaseStorageCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 32DFD773298A10D1006CDB6C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseStorageCombine-Community";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
