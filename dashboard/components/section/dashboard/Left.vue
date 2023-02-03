@@ -32,7 +32,12 @@ const transactionsPerDay = ref<number[][]>([[], []])
 
 const getTransactionsPerDay = async () => {
 	// TODO: Filter based on currentRange
+    const sevendaysago = Date.now() - (7 * 24 * 60 * 60 * 1000);
+    const thirtydaysago = Date.now() - (30 * 24 * 60 * 60 * 1000);
 	const transactionQuery = query(collection(db, 'transactions'))
+		.orderBy(currentRange)
+		.startAt(String(sevendaysago))
+		.startAt(String(thirtydaysago));
 	const transactions = await getDocs(transactionQuery) as QuerySnapshot<Transaction>
 
 	const data: Record<string, { total: number; flagged: number }> = {}
