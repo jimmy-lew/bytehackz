@@ -71,6 +71,9 @@
         "VariableDeclarator": 1,
         "outerIIFEBody": 1
       }
-    ]
+    ],
+    "antfu/generic-spacing": "off",
+    "antfu/if-newline": "off",
+    "no-console": "off"
   }
 }

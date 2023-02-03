@@ -1,9 +1,10 @@
 <script setup lang="ts">
-
 </script>
 
 <template>
-	<div />
+	<div class="mx-auto max-w-7xl">
+		<!-- {{ isAuthenticated }} -->
+	</div>
 </template>
 
 <style scoped>

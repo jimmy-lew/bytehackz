@@ -22,8 +22,7 @@ struct OCBC_Digital_ATMApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var body: some Scene {
         WindowGroup {
-            
-            ContentView()
+             ContentView()
         }
     }
 }

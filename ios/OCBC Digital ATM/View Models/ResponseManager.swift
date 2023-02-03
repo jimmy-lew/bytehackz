@@ -106,6 +106,8 @@ class ResponseManager: ObservableObject {
             }
         }.resume()
     }
+
+    @Published var isEmergency = false
     
     @Published var score: Double?
     @Published var isCompleted = false

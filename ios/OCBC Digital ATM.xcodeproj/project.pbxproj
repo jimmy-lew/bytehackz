@@ -87,6 +87,7 @@
 				32935068291B65F800D6AB10 /* RNCryptor in Frameworks */,
 				32DFD779298A10D1006CDB6C /* FirebaseStorage in Frameworks */,
 				32DFD77B298A10D1006CDB6C /* FirebaseStorageCombine-Community in Frameworks */,
+				32935068291B65F800D6AB10 /* RNCryptor in Frameworks */,
 				326A19C3292383AD005748A7 /* SwiftCSV in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
