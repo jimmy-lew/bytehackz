@@ -1,0 +1,621 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		326A198329234641005748A7 /* GetURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326A198229234641005748A7 /* GetURL.swift */; };
+		326A19852923465D005748A7 /* url.txt in Resources */ = {isa = PBXBuildFile; fileRef = 326A19842923465D005748A7 /* url.txt */; };
+		326A199329235878005748A7 /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326A199229235878005748A7 /* BluetoothManager.swift */; };
+		326A19B229236049005748A7 /* BluetoothManager+CBCentralManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326A19B129236049005748A7 /* BluetoothManager+CBCentralManagerDelegate.swift */; };
+		326A19B429236063005748A7 /* ATMService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326A19B329236063005748A7 /* ATMService.swift */; };
+		326A19B629236079005748A7 /* BluetoothManager+CBPeripheralDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326A19B529236079005748A7 /* BluetoothManager+CBPeripheralDelegate.swift */; };
+		326A19C029236829005748A7 /* ResponseManager+SentenceEmbedding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326A19BF29236829005748A7 /* ResponseManager+SentenceEmbedding.swift */; };
+		326A19C3292383AD005748A7 /* SwiftCSV in Frameworks */ = {isa = PBXBuildFile; productRef = 326A19C2292383AD005748A7 /* SwiftCSV */; };
+		326A19C5292383B7005748A7 /* reason.csv in Resources */ = {isa = PBXBuildFile; fileRef = 326A19C4292383B7005748A7 /* reason.csv */; };
+		326A19C729238DAF005748A7 /* EmbeddingResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326A19C629238DAF005748A7 /* EmbeddingResult.swift */; };
+		32935052291B580B00D6AB10 /* ResponseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32935051291B580B00D6AB10 /* ResponseManager.swift */; };
+		32935054291B584100D6AB10 /* SelectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32935053291B584100D6AB10 /* SelectionState.swift */; };
+		3293505B291B5BB900D6AB10 /* EmergencyHelpActiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3293505A291B5BB900D6AB10 /* EmergencyHelpActiveView.swift */; };
+		3293505D291B5BD000D6AB10 /* EmergencyHelpSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3293505C291B5BD000D6AB10 /* EmergencyHelpSliderView.swift */; };
+		32935060291B5C4000D6AB10 /* CustomPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3293505F291B5C4000D6AB10 /* CustomPageControl.swift */; };
+		32935063291B606600D6AB10 /* ATMSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32935062291B606600D6AB10 /* ATMSuccessView.swift */; };
+		32935065291B640600D6AB10 /* SentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32935064291B640600D6AB10 /* SentData.swift */; };
+		32935068291B65F800D6AB10 /* RNCryptor in Frameworks */ = {isa = PBXBuildFile; productRef = 32935067291B65F800D6AB10 /* RNCryptor */; };
+		3293509A2923253D00D6AB10 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329350992923253D00D6AB10 /* LoadingView.swift */; };
+		32DFD775298A10D1006CDB6C /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 32DFD774298A10D1006CDB6C /* FirebaseDatabase */; };
+		32DFD777298A10D1006CDB6C /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 32DFD776298A10D1006CDB6C /* FirebaseDatabaseSwift */; };
+		32DFD779298A10D1006CDB6C /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 32DFD778298A10D1006CDB6C /* FirebaseStorage */; };
+		32DFD77B298A10D1006CDB6C /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 32DFD77A298A10D1006CDB6C /* FirebaseStorageCombine-Community */; };
+		32E3B2F22980E4AA00890A54 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 32E3B2F12980E4AA00890A54 /* GoogleService-Info.plist */; };
+		32FAD17E2919693F007C13DD /* OCBC_Digital_ATMApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FAD17D2919693F007C13DD /* OCBC_Digital_ATMApp.swift */; };
+		32FAD1802919693F007C13DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FAD17F2919693F007C13DD /* ContentView.swift */; };
+		32FAD18229196940007C13DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32FAD18129196940007C13DD /* Assets.xcassets */; };
+		32FAD18529196940007C13DD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32FAD18429196940007C13DD /* Preview Assets.xcassets */; };
+		32FAD18C29196E09007C13DD /* HomeViewActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FAD18B29196E09007C13DD /* HomeViewActionButton.swift */; };
+		32FAD18E291973B0007C13DD /* ATMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FAD18D291973B0007C13DD /* ATMView.swift */; };
+		32FAD1AA291A0901007C13DD /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FAD1A9291A0901007C13DD /* WelcomeView.swift */; };
+		32FAD1AC291A0B1C007C13DD /* EmergencyHelpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FAD1AB291A0B1C007C13DD /* EmergencyHelpButton.swift */; };
+		32FAD1AE291A12A6007C13DD /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FAD1AD291A12A6007C13DD /* QuestionView.swift */; };
+		32FAD1B0291A13DD007C13DD /* OpenEndedQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FAD1AF291A13DD007C13DD /* OpenEndedQuestion.swift */; };
+		32FAD1CC291B4E31007C13DD /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FAD1CB291B4E31007C13DD /* SpeechRecognizer.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		326A198229234641005748A7 /* GetURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetURL.swift; sourceTree = "<group>"; };
+		326A19842923465D005748A7 /* url.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = url.txt; path = ../url.txt; sourceTree = "<group>"; };
+		326A199229235878005748A7 /* BluetoothManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
+		326A19B129236049005748A7 /* BluetoothManager+CBCentralManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BluetoothManager+CBCentralManagerDelegate.swift"; sourceTree = "<group>"; };
+		326A19B329236063005748A7 /* ATMService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATMService.swift; sourceTree = "<group>"; };
+		326A19B529236079005748A7 /* BluetoothManager+CBPeripheralDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BluetoothManager+CBPeripheralDelegate.swift"; sourceTree = "<group>"; };
+		326A19BF29236829005748A7 /* ResponseManager+SentenceEmbedding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ResponseManager+SentenceEmbedding.swift"; sourceTree = "<group>"; };
+		326A19C4292383B7005748A7 /* reason.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = reason.csv; sourceTree = "<group>"; };
+		326A19C629238DAF005748A7 /* EmbeddingResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddingResult.swift; sourceTree = "<group>"; };
+		32935051291B580B00D6AB10 /* ResponseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseManager.swift; sourceTree = "<group>"; };
+		32935053291B584100D6AB10 /* SelectionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionState.swift; sourceTree = "<group>"; };
+		3293505A291B5BB900D6AB10 /* EmergencyHelpActiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyHelpActiveView.swift; sourceTree = "<group>"; };
+		3293505C291B5BD000D6AB10 /* EmergencyHelpSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyHelpSliderView.swift; sourceTree = "<group>"; };
+		3293505F291B5C4000D6AB10 /* CustomPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPageControl.swift; sourceTree = "<group>"; };
+		32935062291B606600D6AB10 /* ATMSuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATMSuccessView.swift; sourceTree = "<group>"; };
+		32935064291B640600D6AB10 /* SentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentData.swift; sourceTree = "<group>"; };
+		329350992923253D00D6AB10 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		32E3B2F12980E4AA00890A54 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		32FAD17A2919693F007C13DD /* OCBC Digital ATM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OCBC Digital ATM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		32FAD17D2919693F007C13DD /* OCBC_Digital_ATMApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCBC_Digital_ATMApp.swift; sourceTree = "<group>"; };
+		32FAD17F2919693F007C13DD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		32FAD18129196940007C13DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		32FAD18429196940007C13DD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		32FAD18B29196E09007C13DD /* HomeViewActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewActionButton.swift; sourceTree = "<group>"; };
+		32FAD18D291973B0007C13DD /* ATMView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATMView.swift; sourceTree = "<group>"; };
+		32FAD1A9291A0901007C13DD /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		32FAD1AB291A0B1C007C13DD /* EmergencyHelpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyHelpButton.swift; sourceTree = "<group>"; };
+		32FAD1AD291A12A6007C13DD /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
+		32FAD1AF291A13DD007C13DD /* OpenEndedQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenEndedQuestion.swift; sourceTree = "<group>"; };
+		32FAD1CB291B4E31007C13DD /* SpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		32FAD1772919693F007C13DD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32DFD777298A10D1006CDB6C /* FirebaseDatabaseSwift in Frameworks */,
+				32DFD775298A10D1006CDB6C /* FirebaseDatabase in Frameworks */,
+				32935068291B65F800D6AB10 /* RNCryptor in Frameworks */,
+				32DFD779298A10D1006CDB6C /* FirebaseStorage in Frameworks */,
+				32DFD77B298A10D1006CDB6C /* FirebaseStorageCombine-Community in Frameworks */,
+				326A19C3292383AD005748A7 /* SwiftCSV in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		326A19812923463A005748A7 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				32E3B2F12980E4AA00890A54 /* GoogleService-Info.plist */,
+				326A198229234641005748A7 /* GetURL.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		326A19B029236033005748A7 /* Bluetooth Manager */ = {
+			isa = PBXGroup;
+			children = (
+				326A199229235878005748A7 /* BluetoothManager.swift */,
+				326A19B529236079005748A7 /* BluetoothManager+CBPeripheralDelegate.swift */,
+				326A19B129236049005748A7 /* BluetoothManager+CBCentralManagerDelegate.swift */,
+			);
+			path = "Bluetooth Manager";
+			sourceTree = "<group>";
+		};
+		326A19BE2923614A005748A7 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				326A19C4292383B7005748A7 /* reason.csv */,
+				326A19B329236063005748A7 /* ATMService.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		32935055291B5B2400D6AB10 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				32935051291B580B00D6AB10 /* ResponseManager.swift */,
+				326A19BF29236829005748A7 /* ResponseManager+SentenceEmbedding.swift */,
+				32FAD1CB291B4E31007C13DD /* SpeechRecognizer.swift */,
+				326A19B029236033005748A7 /* Bluetooth Manager */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+		32935056291B5B4700D6AB10 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				32935053291B584100D6AB10 /* SelectionState.swift */,
+				32935064291B640600D6AB10 /* SentData.swift */,
+				326A19C629238DAF005748A7 /* EmbeddingResult.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		32935057291B5B5400D6AB10 /* Home Views */ = {
+			isa = PBXGroup;
+			children = (
+				32FAD17F2919693F007C13DD /* ContentView.swift */,
+				32FAD18B29196E09007C13DD /* HomeViewActionButton.swift */,
+			);
+			path = "Home Views";
+			sourceTree = "<group>";
+		};
+		32935058291B5B6500D6AB10 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				32935057291B5B5400D6AB10 /* Home Views */,
+				32935059291B5B7A00D6AB10 /* ATM Views */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		32935059291B5B7A00D6AB10 /* ATM Views */ = {
+			isa = PBXGroup;
+			children = (
+				32FAD18D291973B0007C13DD /* ATMView.swift */,
+				329350992923253D00D6AB10 /* LoadingView.swift */,
+				32935062291B606600D6AB10 /* ATMSuccessView.swift */,
+				3293505F291B5C4000D6AB10 /* CustomPageControl.swift */,
+				32935061291B5C6A00D6AB10 /* Slides */,
+				3293505E291B5C0B00D6AB10 /* Emergency Help Slider */,
+			);
+			path = "ATM Views";
+			sourceTree = "<group>";
+		};
+		3293505E291B5C0B00D6AB10 /* Emergency Help Slider */ = {
+			isa = PBXGroup;
+			children = (
+				32FAD1AB291A0B1C007C13DD /* EmergencyHelpButton.swift */,
+				3293505C291B5BD000D6AB10 /* EmergencyHelpSliderView.swift */,
+				3293505A291B5BB900D6AB10 /* EmergencyHelpActiveView.swift */,
+			);
+			path = "Emergency Help Slider";
+			sourceTree = "<group>";
+		};
+		32935061291B5C6A00D6AB10 /* Slides */ = {
+			isa = PBXGroup;
+			children = (
+				32FAD1A9291A0901007C13DD /* WelcomeView.swift */,
+				32FAD1AD291A12A6007C13DD /* QuestionView.swift */,
+				32FAD1AF291A13DD007C13DD /* OpenEndedQuestion.swift */,
+			);
+			path = Slides;
+			sourceTree = "<group>";
+		};
+		32FAD1712919693F007C13DD = {
+			isa = PBXGroup;
+			children = (
+				326A19842923465D005748A7 /* url.txt */,
+				32FAD17C2919693F007C13DD /* OCBC Digital ATM */,
+				32FAD17B2919693F007C13DD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		32FAD17B2919693F007C13DD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				32FAD17A2919693F007C13DD /* OCBC Digital ATM.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		32FAD17C2919693F007C13DD /* OCBC Digital ATM */ = {
+			isa = PBXGroup;
+			children = (
+				32FAD17D2919693F007C13DD /* OCBC_Digital_ATMApp.swift */,
+				326A19BE2923614A005748A7 /* Constants */,
+				32935056291B5B4700D6AB10 /* Models */,
+				32935058291B5B6500D6AB10 /* Views */,
+				32935055291B5B2400D6AB10 /* View Models */,
+				32FAD18129196940007C13DD /* Assets.xcassets */,
+				326A19812923463A005748A7 /* Utils */,
+				32FAD18329196940007C13DD /* Preview Content */,
+			);
+			path = "OCBC Digital ATM";
+			sourceTree = "<group>";
+		};
+		32FAD18329196940007C13DD /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				32FAD18429196940007C13DD /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		32FAD1792919693F007C13DD /* OCBC Digital ATM */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 32FAD18829196940007C13DD /* Build configuration list for PBXNativeTarget "OCBC Digital ATM" */;
+			buildPhases = (
+				32FAD1762919693F007C13DD /* Sources */,
+				32FAD1772919693F007C13DD /* Frameworks */,
+				32FAD1782919693F007C13DD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "OCBC Digital ATM";
+			packageProductDependencies = (
+				32935067291B65F800D6AB10 /* RNCryptor */,
+				326A19C2292383AD005748A7 /* SwiftCSV */,
+				32DFD774298A10D1006CDB6C /* FirebaseDatabase */,
+				32DFD776298A10D1006CDB6C /* FirebaseDatabaseSwift */,
+				32DFD778298A10D1006CDB6C /* FirebaseStorage */,
+				32DFD77A298A10D1006CDB6C /* FirebaseStorageCombine-Community */,
+			);
+			productName = "OCBC Digital ATM";
+			productReference = 32FAD17A2919693F007C13DD /* OCBC Digital ATM.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		32FAD1722919693F007C13DD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1400;
+				LastUpgradeCheck = 1400;
+				TargetAttributes = {
+					32FAD1792919693F007C13DD = {
+						CreatedOnToolsVersion = 14.0;
+					};
+				};
+			};
+			buildConfigurationList = 32FAD1752919693F007C13DD /* Build configuration list for PBXProject "OCBC Digital ATM" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 32FAD1712919693F007C13DD;
+			packageReferences = (
+				32935066291B65F800D6AB10 /* XCRemoteSwiftPackageReference "RNCryptor" */,
+				326A19C1292383AD005748A7 /* XCRemoteSwiftPackageReference "SwiftCSV" */,
+				32DFD773298A10D1006CDB6C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
+			productRefGroup = 32FAD17B2919693F007C13DD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				32FAD1792919693F007C13DD /* OCBC Digital ATM */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		32FAD1782919693F007C13DD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				326A19C5292383B7005748A7 /* reason.csv in Resources */,
+				326A19852923465D005748A7 /* url.txt in Resources */,
+				32FAD18529196940007C13DD /* Preview Assets.xcassets in Resources */,
+				32FAD18229196940007C13DD /* Assets.xcassets in Resources */,
+				32E3B2F22980E4AA00890A54 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		32FAD1762919693F007C13DD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32935052291B580B00D6AB10 /* ResponseManager.swift in Sources */,
+				32FAD1AA291A0901007C13DD /* WelcomeView.swift in Sources */,
+				32FAD18E291973B0007C13DD /* ATMView.swift in Sources */,
+				326A199329235878005748A7 /* BluetoothManager.swift in Sources */,
+				32FAD1802919693F007C13DD /* ContentView.swift in Sources */,
+				3293509A2923253D00D6AB10 /* LoadingView.swift in Sources */,
+				326A19C729238DAF005748A7 /* EmbeddingResult.swift in Sources */,
+				32FAD1AE291A12A6007C13DD /* QuestionView.swift in Sources */,
+				32FAD1B0291A13DD007C13DD /* OpenEndedQuestion.swift in Sources */,
+				326A19B429236063005748A7 /* ATMService.swift in Sources */,
+				3293505D291B5BD000D6AB10 /* EmergencyHelpSliderView.swift in Sources */,
+				326A19B629236079005748A7 /* BluetoothManager+CBPeripheralDelegate.swift in Sources */,
+				32FAD1CC291B4E31007C13DD /* SpeechRecognizer.swift in Sources */,
+				3293505B291B5BB900D6AB10 /* EmergencyHelpActiveView.swift in Sources */,
+				326A198329234641005748A7 /* GetURL.swift in Sources */,
+				32935054291B584100D6AB10 /* SelectionState.swift in Sources */,
+				326A19C029236829005748A7 /* ResponseManager+SentenceEmbedding.swift in Sources */,
+				32FAD18C29196E09007C13DD /* HomeViewActionButton.swift in Sources */,
+				326A19B229236049005748A7 /* BluetoothManager+CBCentralManagerDelegate.swift in Sources */,
+				32935060291B5C4000D6AB10 /* CustomPageControl.swift in Sources */,
+				32935063291B606600D6AB10 /* ATMSuccessView.swift in Sources */,
+				32935065291B640600D6AB10 /* SentData.swift in Sources */,
+				32FAD1AC291A0B1C007C13DD /* EmergencyHelpButton.swift in Sources */,
+				32FAD17E2919693F007C13DD /* OCBC_Digital_ATMApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		32FAD18629196940007C13DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		32FAD18729196940007C13DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		32FAD18929196940007C13DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"OCBC Digital ATM/Preview Content\"";
+				DEVELOPMENT_TEAM = XL5JK4F896;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "OCBC Digital";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Connect to ATM";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Verify identity using biometric authentication";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "To track scams";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Fraud prevention";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Fraud prevention";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "app.jiachen.OCBC-Digital-ATM";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		32FAD18A29196940007C13DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"OCBC Digital ATM/Preview Content\"";
+				DEVELOPMENT_TEAM = XL5JK4F896;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "OCBC Digital";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Connect to ATM";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Verify identity using biometric authentication";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "To track scams";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Fraud prevention";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Fraud prevention";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "app.jiachen.OCBC-Digital-ATM";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		32FAD1752919693F007C13DD /* Build configuration list for PBXProject "OCBC Digital ATM" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				32FAD18629196940007C13DD /* Debug */,
+				32FAD18729196940007C13DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		32FAD18829196940007C13DD /* Build configuration list for PBXNativeTarget "OCBC Digital ATM" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				32FAD18929196940007C13DD /* Debug */,
+				32FAD18A29196940007C13DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		326A19C1292383AD005748A7 /* XCRemoteSwiftPackageReference "SwiftCSV" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/swiftcsv/SwiftCSV";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.8.1;
+			};
+		};
+		32935066291B65F800D6AB10 /* XCRemoteSwiftPackageReference "RNCryptor" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RNCryptor/RNCryptor";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		32DFD773298A10D1006CDB6C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		326A19C2292383AD005748A7 /* SwiftCSV */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 326A19C1292383AD005748A7 /* XCRemoteSwiftPackageReference "SwiftCSV" */;
+			productName = SwiftCSV;
+		};
+		32935067291B65F800D6AB10 /* RNCryptor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 32935066291B65F800D6AB10 /* XCRemoteSwiftPackageReference "RNCryptor" */;
+			productName = RNCryptor;
+		};
+		32DFD774298A10D1006CDB6C /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 32DFD773298A10D1006CDB6C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		32DFD776298A10D1006CDB6C /* FirebaseDatabaseSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 32DFD773298A10D1006CDB6C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabaseSwift;
+		};
+		32DFD778298A10D1006CDB6C /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 32DFD773298A10D1006CDB6C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		32DFD77A298A10D1006CDB6C /* FirebaseStorageCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 32DFD773298A10D1006CDB6C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseStorageCombine-Community";
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 32FAD1722919693F007C13DD /* Project object */;
+}
