@@ -57,7 +57,7 @@ const handleSelect = (selection: any) => {
 		</ul>
 		<div v-else class="flex items-center justify-end w-full gap-2 ml-3">
 			{{ title }}
-			<div class="rounded-full border-[0.5px] border-white/20 px-3">
+			<div class="rounded-full border-[0.5px] border-[#e5e7eb] dark:border-white/20 px-3">
 				{{ currentSelection.length }} / {{ data.length }}
 			</div>
 		</div>

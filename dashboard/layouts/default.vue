@@ -31,4 +31,34 @@ html[data-theme="light"] .glow::before {
 .apexcharts-tooltip {
     @apply text-black dark:text-white dark:!bg-[#18181b] !rounded-md !border-0 !shadow-md
 }
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.right-enter-active,
+.right-leave-active {
+  transition: all 0.5s ease-in-out;
+}
+
+.right-enter-from,
+.right-leave-to {
+  transform: translateX(100%);
+}
+
+.top-enter-active,
+.top-leave-active {
+  transition: all 0.5s ease-in-out;
+}
+
+.top-enter-from,
+.top-leave-to {
+  transform: translateY(100%);
+}
 </style>

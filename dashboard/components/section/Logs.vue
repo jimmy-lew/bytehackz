@@ -28,7 +28,7 @@ const hasFilters = computed(() => !!useSlots().filters)
 	<MiscGlowWrapper class="w-full min-h-[calc(100vh-305px)] bg-[#f8f8f8] dark:bg-[#121212]">
 		<div class="mx-auto max-w-7xl h-full">
 			<div class="py-12">
-				<Transition>
+				<Transition name="fade">
 					<slot />
 				</Transition>
 			</div>
@@ -37,13 +37,4 @@ const hasFilters = computed(() => !!useSlots().filters)
 </template>
 
 <style scoped>
-.v-enter-active,
-.v-leave-active {
-  transition: opacity 0.4s ease-out;
-}
-
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
-}
 </style>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Lyra } from '@lyrasearch/lyra/dist/types'
+import type { Lyra } from '@lyrasearch/lyra'
 const {
 	handlers,
 } = defineProps<{

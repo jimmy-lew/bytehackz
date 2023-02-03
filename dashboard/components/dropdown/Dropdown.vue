@@ -25,7 +25,7 @@ whenever(enter, () => focused.value && toggleMenu())
 		<div ref="trigger" tabindex="0" class="focus:outline-0 focus:scale-110 hover:scale-110 transition-all duration-300 ease-in-out" @click="toggleMenu">
 			<slot name="trigger" />
 		</div>
-		<Transition>
+		<Transition name="fade">
 			<ul v-if="isMenuActive" ref="menu" class="absolute z-40 right-0 flex flex-col mt-5 rounded-md bg-white dark:bg-[#0c0c0c] shadow-lg origin-top-right ring-1 ring-[#e5e7eb] dark:ring-white/20 min-w-[12rem]">
 				<LazyDropdownItem v-for="item in items" :key="item.label" v-bind="item" @action="toggleMenu" />
 				<slot name="items" />
@@ -35,13 +35,4 @@ whenever(enter, () => focused.value && toggleMenu())
 </template>
 
 <style scoped>
-.v-enter-active,
-.v-leave-active {
-  transition: opacity 0.4s ease-in;
-}
-
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
-}
 </style>
